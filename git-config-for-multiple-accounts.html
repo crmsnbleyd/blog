@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://drewsh.com/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://drewsh.com/theme/pygments/inkpot.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light)"
+          href="https://drewsh.com/theme/pygments/friendly.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/solid.css">
+
+
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+
+
+  <link href="https://drewsh.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Drew's blogsite Atom">
+
+
+
+
+
+
+
+
+
+<meta name="author" content="Drew Jose">
+<meta name="description" content="Snippets of useful git configurations (when you have multiple identities)">
+<meta name="keywords" content="">
+
+
+  <meta property="og:site_name" content="Drew's blogsite">
+  <meta property="og:title" content="Git config for multiple accounts">
+  <meta property="og:description" content="Snippets of useful git configurations (when you have multiple identities)">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://drewsh.com/git-config-for-multiple-accounts.html">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2025-12-20 12:50:00+05:30">
+  <meta property="article:modified_time" content="">
+  <meta property="article:author" content="https://drewsh.com/author/drew-jose.html">
+  <meta property="article:section" content="blogpost">
+  <meta property="og:image" content="/images/emacs.jpg">
+  <meta name="fediverse:creator" content="@crmsnbleyd@hachyderm.io">
+
+  <title>Git config for multiple accounts | Drew's blogsite</title>
+
+
+</head>
+<body >
+
+<aside>
+  <div>
+    <a href="https://drewsh.com/">
+      <img src="/images/emacs.jpg" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://drewsh.com/"></a>
+    </h1>
+
+    <p class="site-subtitle">These are public thoughts</p>
+
+
+    <nav>
+      <ul class="list">
+
+
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/interesting-links.html">
+                Bookmarks
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/buttons.html">
+                Buttons
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/newsletter.html">
+                Newsletter
+              </a>
+            </li>
+
+          <li>
+            <a target="_self" href="https://drewsh.com/category/toot" >Short&nbspposts</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-mastodon"
+	   aria-label="link to mastodon"
+rel="me"           href="https://hachyderm.io/@crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-mastodon">
+	  </span>
+	  <span class="visually-hidden">
+	    mastodon
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-git"
+	   aria-label="link to git"
+           href="https://git.drewsh.com/crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-git">
+	  </span>
+	  <span class="visually-hidden">
+	    git
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-rss"
+	   aria-label="link to rss"
+           href="https://drewsh.com/feeds/all.atom.xml">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-solid fa-rss">
+	  </span>
+	  <span class="visually-hidden">
+	    rss
+	  </span>
+        </a>
+      </li>
+    </ul>
+    <span class="theme-switch-links">
+      <br>
+    Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+    </span>
+  <script id="dark-theme-script"
+          src="https://drewsh.com/theme/dark-theme/dark-theme.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+  </div>
+
+
+</aside>
+  <main>
+
+<nav>
+  <a href="https://drewsh.com/">Home</a>
+
+  <a href="/archives.html">Archives</a>
+  <a href="/categories.html">Categories</a>
+  <a href="/tags.html">Tags</a>
+
+  <a href="https://drewsh.com/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="post">
+  <header>
+      
+    <h1 id="git-config-for-multiple-accounts">Git config for multiple accounts</h1>
+    <p>
+      Posted on Dec 20, 2025 in <a href="https://drewsh.com/category/blogpost.html">blogpost</a>
+
+    </p>
+  </header>
+
+
+  <div class="post-content">
+    <p>I use <code>git</code>, as the version control system both at my workplace and to store my personal code (including the source of this blog).</p>
+<p>I use different e-mails for personal and work repositories, as well as different SSH keys for different accounts (this is because Github, at least, does not allow different accounts to use the same key, which I was not sure of, but <a href="https://eigenmagic.net/@arichtman/115757915345301797">Ariel confirmed on fedi</a>).</p>
+<p>After a bunch of trial-and-error, I have figured out a way to do ssh for two different github accounts using different keys on the same device. The <code>.sshconfig</code> looks a bit like this:</p>
+<div class="highlight"><pre><span></span><code>Host work
+  User git
+  HostName github.com
+  IdentityFile ~/.ssh/id_work_github
+
+Host personal
+  User git
+  HostName github.com
+  IdentityFile ~/.ssh/id_personal_github
+</code></pre></div>
+
+<p>So, if I want to clone a work repo, I need to do <code>git clone work:&lt;WorkOrg&gt;/&lt;RepoName&gt;.git</code>,
+and if I want to do the same using my personal account, <code>git clone personal:&lt;Org&gt;/&lt;RepoName&gt;.git</code>, and it just works.</p>
+<p>I have to remember to use the correct prefix, <code>work</code> or <code>personal</code>, and if I use the wrong one, I get an error saying I can’t access the repository. 
+To do this, I either have to change the original clone url copied from the forge, which would be something like <code>git@github.com:&lt;Org&gt;/&lt;RepoName&gt;.git</code>,
+or type the whole thing out.</p>
+<p>Turns out, <code>git</code> allows one to use text substution for URLs, which fixes the problem!</p>
+<div class="highlight"><pre><span></span><code><span class="k">[url &quot;work:&lt;WorkOrg&gt;/&quot;]</span>
+<span class="w">    </span><span class="na">insteadOf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">https://github.com/&lt;WorkOrg&gt;/</span>
+<span class="w">    </span><span class="na">insteadOf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ssh://git@github.com/&lt;WorkOrg&gt;/</span>
+
+<span class="k">[url &quot;personal&quot;]</span>
+<span class="w">    </span><span class="na">insteadOf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">https://github.com</span>
+<span class="w">    </span><span class="na">insteadOf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ssh://git@github.com</span>
+</code></pre></div>
+
+<p><code>git</code> substitutes using the longest matching URL, so if the repository is under the work Org, it will use the first rule, and otherwise use my personal key+account.</p>
+<p>This is not the only problem though. 
+Git forges do not use the ssh key (or your username+password) to identify the committer, but rather the email address and name set in your git config.
+Yes, this means anyone can spoof your identity on their commits (which is why we have signed commits).
+How you fix this, is you run the following commands per repository if you are using a different name and email than the ones you have set globally:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Drew Jose&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;abc@example.com&quot;</span>
+</code></pre></div>
+
+<p>If I forget this, however, the commits will be seen as authored by my work account, which I don’t want.
+To automatically set this up, there’s two steps:</p>
+<ol>
+<li>
+<p>Keep all the personal repositories in one folder, and in the root create a <code>.gitconfig</code> file containing the name and email you want</p>
+<div class="highlight"><pre><span></span><code><span class="k">[user]</span>
+<span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">abc@example.com</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">Drew Jose</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>Add a conditional inclusion to the global git config. 
+It includes a given <code>.gitconfig</code> file when git commands are run inside some directory. 
+This should be after the globally defined <code>[user]</code> config, so that this takes precedence.</p>
+<div class="highlight"><pre><span></span><code><span class="k">[includeIf</span><span class="w"> </span><span class="s2">&quot;gitdir:~/code/&quot;</span><span class="k">]</span>
+<span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">~/code/.gitconfig</span>
+</code></pre></div>
+
+</li>
+</ol>
+<p>This is quite neat and does what I want. One could extend this to add even more sorts of dynamic inclusions per folder.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>
+  &copy; 2026 Drew Jose - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Share-alike license</a>
+</p>
+<p>
+Built with <a href="https://getpelican.com" target="_blank">Pelican</a>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15">
+  </a>
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Drew's blogsite ",
+  "url" : "https://drewsh.com",
+  "image": "/images/emacs.jpg",
+  "description": "Texts mostly about tech and writing."
+}
+</script>
+</body>
+</html>

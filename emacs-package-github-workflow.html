@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://drewsh.com/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://drewsh.com/theme/pygments/inkpot.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light)"
+          href="https://drewsh.com/theme/pygments/friendly.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/solid.css">
+
+
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+
+
+  <link href="https://drewsh.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Drew's blogsite Atom">
+
+
+
+
+
+
+
+
+
+<meta name="author" content="Drew Jose">
+<meta name="description" content="Use this if you want to publish your emacs package to Melpa">
+<meta name="keywords" content="emacs, github">
+
+
+  <meta property="og:site_name" content="Drew's blogsite">
+  <meta property="og:title" content="Minimally useful Github workflow for Emacs packages">
+  <meta property="og:description" content="Use this if you want to publish your emacs package to Melpa">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://drewsh.com/emacs-package-github-workflow.html">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2024-09-02 10:26:00+05:30">
+  <meta property="article:modified_time" content="">
+  <meta property="article:author" content="https://drewsh.com/author/drew-jose.html">
+  <meta property="article:section" content="blogpost">
+  <meta property="article:tag" content="emacs">
+  <meta property="article:tag" content="github">
+  <meta property="og:image" content="https://drewsh.com/images/github_workflow_result.avif">
+  <meta name="fediverse:creator" content="@crmsnbleyd@hachyderm.io">
+
+  <title>Minimally useful Github workflow for Emacs packages | Drew's blogsite</title>
+
+
+</head>
+<body >
+
+<aside>
+  <div>
+    <a href="https://drewsh.com/">
+      <img src="/images/emacs.jpg" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://drewsh.com/"></a>
+    </h1>
+
+    <p class="site-subtitle">These are public thoughts</p>
+
+
+    <nav>
+      <ul class="list">
+
+
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/interesting-links.html">
+                Bookmarks
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/buttons.html">
+                Buttons
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/newsletter.html">
+                Newsletter
+              </a>
+            </li>
+
+          <li>
+            <a target="_self" href="https://drewsh.com/category/toot" >Short&nbspposts</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-mastodon"
+	   aria-label="link to mastodon"
+rel="me"           href="https://hachyderm.io/@crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-mastodon">
+	  </span>
+	  <span class="visually-hidden">
+	    mastodon
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-git"
+	   aria-label="link to git"
+           href="https://git.drewsh.com/crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-git">
+	  </span>
+	  <span class="visually-hidden">
+	    git
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-rss"
+	   aria-label="link to rss"
+           href="https://drewsh.com/feeds/all.atom.xml">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-solid fa-rss">
+	  </span>
+	  <span class="visually-hidden">
+	    rss
+	  </span>
+        </a>
+      </li>
+    </ul>
+    <span class="theme-switch-links">
+      <br>
+    Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+    </span>
+  <script id="dark-theme-script"
+          src="https://drewsh.com/theme/dark-theme/dark-theme.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+  </div>
+
+
+</aside>
+  <main>
+
+<nav>
+  <a href="https://drewsh.com/">Home</a>
+
+  <a href="/archives.html">Archives</a>
+  <a href="/categories.html">Categories</a>
+  <a href="/tags.html">Tags</a>
+
+  <a href="https://drewsh.com/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="post">
+  <header>
+      
+    <h1 id="emacs-package-github-workflow">Minimally useful Github workflow for Emacs packages</h1>
+    <p>
+      Posted on Sep 02, 2024 in <a href="https://drewsh.com/category/blogpost.html">blogpost</a>
+
+    </p>
+  </header>
+
+
+  <div class="post-content">
+    <p><a href="https://melpa.org/">Melpa</a> is one of the most popular and probably the most accessible emacs package repository to publish to.
+All you need to do is add a ‘recipe’ to the <a href="https://github.com/melpa/melpa">melpa git repository</a> by following the instructions.</p>
+<p>They also have a few requirements that you need to adhere to:  </p>
+<ul>
+<li>
+<p>Your functions and variables should have adequate documentation, as determined by <code>checkdoc</code>, an emacs built-in.</p>
+</li>
+<li>
+<p>Your files should follow some elisp programming conventions, which is checked using the <a href="https://github.com/purcell/package-lint">package-lint</a> package.</p>
+</li>
+<li>
+<p>Your package should not throw any errors/warnings when byte-compiled</p>
+</li>
+</ul>
+<p>Now you can check all of these manually, and the <a href="https://github.com/melpa/melpa/blob/master/CONTRIBUTING.org">contribution guidelines</a> show exactly how to do that, but there’s a better way: using github workflows!</p>
+<p>In fact, the melpa repository uses a similar workflow to see if your package is up to snuff.</p>
+<h2>The setup</h2>
+<p>We have two parts, an init.el file which sets up melpa, and the ci.yaml, which installs emacs, package-lint, and our package.</p>
+<p>Both of these files should be in <Project-dir>/.github/workflows.</p>
+<h3>init.el</h3>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">progn</span>
+<span class="w">  </span><span class="p">(</span><span class="nb">require</span><span class="w"> </span><span class="ss">&#39;package</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="nb">push</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;melpa&quot;</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">&quot;https://melpa.org/packages/&quot;</span><span class="p">)</span><span class="w"> </span><span class="nv">package-archives</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="nv">package-initialize</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="nb">unless</span><span class="w"> </span><span class="p">(</span><span class="nv">seq-find</span><span class="w"> </span><span class="p">(</span><span class="nb">lambda</span><span class="w"> </span><span class="p">(</span><span class="nv">e</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">string=</span><span class="w"> </span><span class="s">&quot;melpa&quot;</span><span class="w"> </span><span class="p">(</span><span class="nv">package-desc-archive</span><span class="w"> </span><span class="p">(</span><span class="nv">cadr</span><span class="w"> </span><span class="nv">e</span><span class="p">))))</span><span class="w"> </span><span class="nv">package-archive-contents</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="nv">package-refresh-contents</span><span class="p">)))</span>
+</code></pre></div>
+
+<h3>ci.yml</h3>
+<p>This is where the actual workflow is defined: what base image we use, installing emacs and package-lint, running package lint and byte-compilation.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matrix</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">include</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">emacs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">27.1</span>
+<span class="w">            </span><span class="nt">ts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">            </span><span class="nt">lint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">emacs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">snapshot</span>
+<span class="w">            </span><span class="nt">ts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">            </span><span class="nt">lint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">purcell/setup-emacs@master</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.emacs }}</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install package-lint</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">emacs -Q -l .github/workflows/init.el -batch</span>
+<span class="w">                    </span><span class="l l-Scalar l-Scalar-Plain">--eval &quot;(package-install &#39;package-lint)&quot;</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Lint flexoki-themes</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">emacs -Q -l .github/workflows/init.el -batch</span>
+<span class="w">                    </span><span class="l l-Scalar l-Scalar-Plain">-f package-lint-batch-and-exit</span>
+<span class="w">                    </span><span class="l l-Scalar l-Scalar-Plain">flexoki-themes.el</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Byte-compile</span>
+<span class="w">      </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">emacs -Q -l .github/workflows/init.el -batch</span>
+<span class="w">                    </span><span class="l l-Scalar l-Scalar-Plain">-L .</span>
+<span class="w">                    </span><span class="l l-Scalar l-Scalar-Plain">--eval &quot;(setq byte-compile-error-on-warn t)&quot;</span>
+<span class="w">                    </span><span class="l l-Scalar l-Scalar-Plain">-f batch-byte-compile</span>
+<span class="w">                    </span><span class="l l-Scalar l-Scalar-Plain">*.el</span>
+</code></pre></div></td></tr></table></div>
+
+<p>In the <code>jobs.build.strategy.matrix.include</code> you can add other emacs versions you want to test on, I’ve seen people use 24 a lot.</p>
+<p>Instead of <code>flexoki-themes</code> use your own package name, obviously.</p>
+<h2>What to expect</h2>
+<p><img alt="Github UI with a green tick next to the latest commit message" src="https://drewsh.com/images/github_workflow_result.avif"></p>
+<p>The tick indicates that the workflow is successful, and a red cross would indicate that the workflow failed.
+You can click on them to see the result of the workflow.</p>
+<p>If the workflow succeeds, your package will probably be accepted by MELPA.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://drewsh.com/tag/emacs.html">emacs</a>
+      <a href="https://drewsh.com/tag/github.html">github</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>
+  &copy; 2026 Drew Jose - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Share-alike license</a>
+</p>
+<p>
+Built with <a href="https://getpelican.com" target="_blank">Pelican</a>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15">
+  </a>
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Drew's blogsite ",
+  "url" : "https://drewsh.com",
+  "image": "/images/emacs.jpg",
+  "description": "Texts mostly about tech and writing."
+}
+</script>
+</body>
+</html>

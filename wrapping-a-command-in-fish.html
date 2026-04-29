@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://drewsh.com/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://drewsh.com/theme/pygments/inkpot.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light)"
+          href="https://drewsh.com/theme/pygments/friendly.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/solid.css">
+
+
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+
+
+  <link href="https://drewsh.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Drew's blogsite Atom">
+
+
+
+
+
+
+
+
+
+<meta name="author" content="Drew Jose">
+<meta name="description" content="Fish function example that allows you to use docker compose instead of docker-compose">
+<meta name="keywords" content="shell, short">
+
+
+  <meta property="og:site_name" content="Drew's blogsite">
+  <meta property="og:title" content="Making the &#34;compose&#34; subcommand available to docker CLI in fish shell">
+  <meta property="og:description" content="Fish function example that allows you to use docker compose instead of docker-compose">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://drewsh.com/wrapping-a-command-in-fish.html">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2024-11-27 23:26:00+05:30">
+  <meta property="article:modified_time" content="">
+  <meta property="article:author" content="https://drewsh.com/author/drew-jose.html">
+  <meta property="article:section" content="blogpost">
+  <meta property="article:tag" content="shell">
+  <meta property="article:tag" content="short">
+  <meta property="og:image" content="/images/emacs.jpg">
+  <meta name="fediverse:creator" content="@crmsnbleyd@hachyderm.io">
+
+  <title>Making the &#34;compose&#34; subcommand available to docker CLI in fish shell | Drew's blogsite</title>
+
+
+</head>
+<body >
+
+<aside>
+  <div>
+    <a href="https://drewsh.com/">
+      <img src="/images/emacs.jpg" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://drewsh.com/"></a>
+    </h1>
+
+    <p class="site-subtitle">These are public thoughts</p>
+
+
+    <nav>
+      <ul class="list">
+
+
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/interesting-links.html">
+                Bookmarks
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/buttons.html">
+                Buttons
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/newsletter.html">
+                Newsletter
+              </a>
+            </li>
+
+          <li>
+            <a target="_self" href="https://drewsh.com/category/toot" >Short&nbspposts</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-mastodon"
+	   aria-label="link to mastodon"
+rel="me"           href="https://hachyderm.io/@crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-mastodon">
+	  </span>
+	  <span class="visually-hidden">
+	    mastodon
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-git"
+	   aria-label="link to git"
+           href="https://git.drewsh.com/crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-git">
+	  </span>
+	  <span class="visually-hidden">
+	    git
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-rss"
+	   aria-label="link to rss"
+           href="https://drewsh.com/feeds/all.atom.xml">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-solid fa-rss">
+	  </span>
+	  <span class="visually-hidden">
+	    rss
+	  </span>
+        </a>
+      </li>
+    </ul>
+    <span class="theme-switch-links">
+      <br>
+    Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+    </span>
+  <script id="dark-theme-script"
+          src="https://drewsh.com/theme/dark-theme/dark-theme.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+  </div>
+
+
+</aside>
+  <main>
+
+<nav>
+  <a href="https://drewsh.com/">Home</a>
+
+  <a href="/archives.html">Archives</a>
+  <a href="/categories.html">Categories</a>
+  <a href="/tags.html">Tags</a>
+
+  <a href="https://drewsh.com/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="post">
+  <header>
+      
+    <h1 id="wrapping-a-command-in-fish">Making the "compose" subcommand available to docker CLI in fish shell</h1>
+    <p>
+      Posted on Nov 27, 2024 in <a href="https://drewsh.com/category/blogpost.html">blogpost</a>
+
+    </p>
+  </header>
+
+
+  <div class="post-content">
+    <p>Development tools today are very complicated to install and deal with, the foremost of which is the <code>docker</code> CLI.
+You install it via shell script on most systems and if you want <a href="https://docs.docker.com/compose/">docker compose</a>, you need to install it separately.
+In some systems, it gets added as a subcommand, so that the docker binary can handle it, but on others you specifically have to call <code>docker-compose</code>, a single script, without spaces.
+If you try to run the <code>compose</code> subcommand in this case, docker will complain about it not being available.</p>
+<p>The solution: using a fish function!</p>
+<div class="highlight"><pre><span></span><code><span class="k">function</span> docker -d <span class="s2">&quot;docker command with compose subcommand&quot;</span> -w docker
+  <span class="k">if</span> match <span class="s2">&quot;</span><span class="nv">$argv</span><span class="s2">[1]&quot;</span> <span class="s2">&quot;compose&quot;</span>
+    docker-compose <span class="nv">$argv</span><span class="o">[</span>2..-1<span class="o">]</span>
+  <span class="k">else</span>
+    <span class="nb">command </span>docker <span class="nv">$argv</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+
+<p>Save this in a file called <code>docker.fish</code> in your fish function directory (it’s in $XDG_CONFIG_DIR/fish/functions, or ~/.config/fish/functions).<br>
+<code>-d</code> gives the description of the function, and <code>-w</code> indicates that the function is wrapping the <code>docker</code> command, giving access to useful completions.
+The <code>command</code> fish built-in ensures that the function does not call itself, but rather the real docker binary.</p>
+<h2>Update:</h2>
+<p>Turns out all of this was unnecessary, and the only reason <code>docker compose</code> wasn't showing up as a subcommand is because it could not find the <code>compose</code> plugin</p>
+<p>When you download docker-compose you might get this helpful tip</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Compose is a Docker plugin. For Docker to find the plugin, add &quot;cliPluginsExtraDirs&quot; to ~/.docker/config.json:</span>
+<span class="w">  </span><span class="s">&quot;cliPluginsExtraDirs&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="s">&quot;/Users/arnavandrewjose/homebrew/lib/docker/cli-plugins&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">]</span>
+</code></pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://drewsh.com/tag/shell.html">shell</a>
+      <a href="https://drewsh.com/tag/short.html">short</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>
+  &copy; 2026 Drew Jose - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Share-alike license</a>
+</p>
+<p>
+Built with <a href="https://getpelican.com" target="_blank">Pelican</a>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15">
+  </a>
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Drew's blogsite ",
+  "url" : "https://drewsh.com",
+  "image": "/images/emacs.jpg",
+  "description": "Texts mostly about tech and writing."
+}
+</script>
+</body>
+</html>

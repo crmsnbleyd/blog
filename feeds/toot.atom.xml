@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Drew's blogsite - toot</title><link href="https://drewsh.com/" rel="alternate"/><link href="https://drewsh.com/feeds/toot.atom.xml" rel="self"/><id>https://drewsh.com/</id><updated>2025-02-15T16:05:00+05:30</updated><subtitle>These are public thoughts</subtitle><entry><title>Influencer faces legal consequences for crass joke</title><link href="https://drewsh.com/influencer-faces-consequences-for-joke.html" rel="alternate"/><published>2025-02-15T16:05:00+05:30</published><updated>2025-02-15T16:05:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-02-15:/influencer-faces-consequences-for-joke.html</id><summary type="html">&lt;p&gt;There's this podcaster in India known as BeerBiceps, his real name being Ranveer Allahbadia.&lt;br&gt;
+I've been a hater of his for a long time because of his cosying with the right-wing and penchant for saying things that don't make a lick of sense, without a hint of irony.
+The Prime …&lt;/p&gt;</summary><content type="html">&lt;p&gt;There's this podcaster in India known as BeerBiceps, his real name being Ranveer Allahbadia.&lt;br&gt;
+I've been a hater of his for a long time because of his cosying with the right-wing and penchant for saying things that don't make a lick of sense, without a hint of irony.
+The Prime Minister gave him some sort of national award in 2024.&lt;/p&gt;
+&lt;p&gt;Recently, he went on a game show with more annoying people as a judge, and asked a question to a contestant that went something like this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Would you rather have to watch your parents have sex every day for the rest of your life, or join them once and stop it forever?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This has caused a huge uproar. Charges have been filed against everyone involved in the show. People want him to be jailed for some reason. Some are &lt;a href="https://archive.is/tmzBW"&gt;threatening him with violence over this&lt;/a&gt;&lt;sup id="fnref:toi"&gt;&lt;a class="footnote-ref" href="#fn:toi"&gt;1&lt;/a&gt;&lt;/sup&gt;.  He might be called to the &lt;em&gt;parliament of the nation&lt;/em&gt; for this. You can read this article on "World Is One News", an international organisation that sometimes reports on India, to see just how many people have censured him: &lt;a href="https://archive.is/iYNlu"&gt;archived from WION&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;While it is satisfying to see someone being treated horribly by the same oppressive forces they support, it's annoying to see just how regressive and angry so many people in India are. Nobody speaks up about how weird this is because they just don't care.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:toi"&gt;
+&lt;p&gt;I put this Times of India article into archive.is to prevent link rot, and it took &lt;em&gt;ages&lt;/em&gt; to download everything due to how much cruft there is on the modern web :/&amp;#160;&lt;a class="footnote-backref" href="#fnref:toi" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content><category term="toot"/></entry><entry><title>Changed up my site's philosophy</title><link href="https://drewsh.com/reorganising-site-repositories.html" rel="alternate"/><published>2025-01-15T21:31:00+05:30</published><updated>2025-01-15T21:31:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-01-15:/reorganising-site-repositories.html</id><summary type="html">&lt;p&gt;I have decided to not package my site's theme to be reused by others anymore&lt;/p&gt;</summary><content type="html">&lt;p&gt;Earlier, my site used to have two parts in my &lt;a href="https://git.drewsh.com"&gt;git forge&lt;/a&gt;; blog, and Solarized-Flex.
+“blog” contained just the text and the pelican config,
+while “Solarized-Flex” is my fork of &lt;a href="https://github.com/alexandrevicenzi/flex"&gt;another pelican theme&lt;/a&gt; with colours I like.&lt;/p&gt;
+&lt;p&gt;I noticed that the font files and css used by my site was much heavier than what I actually needed, as it used &lt;a href="https://fontawesome.com/"&gt;font-awesome&lt;/a&gt;, a big font with icons meant to be used as little images. My site only used four of them.&lt;/p&gt;
+&lt;p&gt;I kept them as-is though, in case someone else wanted to use my theme.&lt;/p&gt;
+&lt;p&gt;That's probably never going to happen, so now I have a much smaller site with all the extra bits removed; and just one git repository to deal with.&lt;/p&gt;</content><category term="toot"/><category term="short"/><category term="blogging"/></entry><entry><title>Subsetting my fonts to speed up page loads</title><link href="https://drewsh.com/subsetting-fontawesome.html" rel="alternate"/><published>2025-01-10T19:46:00+05:30</published><updated>2025-01-28T19:46:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-01-10:/subsetting-fontawesome.html</id><summary type="html">&lt;p&gt;Removing unused fonts from my site to reduce its download size.&lt;/p&gt;</summary><content type="html">&lt;p&gt;EDIT: I accidentally deleted this post without backups, so I have written it down again as I remember it.&lt;/p&gt;
+&lt;p&gt;Subsetting a font means to remove all the characters you don’t actually use in order to reduce the size of the files.
+My site theme uses the &lt;a href="https://fontawesome.com/"&gt;font-awesome&lt;/a&gt; icon font, which maps code points to tiny images like the mastodon logo for example.
+I only use 4 of these, so the thousands of other icons is just unnecessary data that viewers have to download.&lt;/p&gt;
+&lt;p&gt;I will be using a js package called &lt;a href="https://github.com/zachleat/glyphhanger"&gt;&lt;code&gt;glyphhanger&lt;/code&gt;&lt;/a&gt;, which in turn uses the python library &lt;code&gt;fonttools&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use npm or pnpm to install glyphhanger globally: &lt;code&gt;pnpm add -g glyphhanger&lt;/code&gt; or &lt;code&gt;npm install -g glyphhanger&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Use pipx to install fonttools into its own virtual environment (you can install pipx via your package manager or via pip) &lt;code&gt;pipx install fonttools&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install compression libraries for use by glyphhanger into the fonttool environment: &lt;code&gt;pipx inject fonttools zopfli brotli&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Move to the directory with your fonts and execute: &lt;code&gt;glyphhanger 'https://drewsh.com' --subset='*.ttf'&lt;/code&gt;.
+   This will subset all fonts with the .ttf extension based on what is used in drewsh.com.
+   You can also give a path to HTML files if you haven’t published the site yet.&lt;/li&gt;
+&lt;li&gt;You will get a bunch of files ending with &lt;code&gt;-subset&lt;/code&gt; and then the extension, which you can use in your site.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can see the size savings for yourself:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="output of glyphhanger: a few unicode points, then next 10 lines are of the form &amp;quot;Subsetting x.ttf to x-subset.woff2&amp;quot;, most of them are reduced by 98%" src="https://drewsh.com/images/subset-fonts.avif"&gt;&lt;/p&gt;</content><category term="toot"/><category term="web"/><category term="short"/></entry></feed>

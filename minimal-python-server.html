@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://drewsh.com/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://drewsh.com/theme/pygments/inkpot.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light)"
+          href="https://drewsh.com/theme/pygments/friendly.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/solid.css">
+
+
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+
+
+  <link href="https://drewsh.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Drew's blogsite Atom">
+
+
+
+
+
+
+
+
+
+<meta name="author" content="Drew Jose">
+<meta name="description" content="Code example using just built-ins for testing small proofs-of-concept">
+<meta name="keywords" content="short, python, web">
+
+
+  <meta property="og:site_name" content="Drew's blogsite">
+  <meta property="og:title" content="Small server in python without dependencies">
+  <meta property="og:description" content="Code example using just built-ins for testing small proofs-of-concept">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://drewsh.com/minimal-python-server.html">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2025-01-28 21:31:00+05:30">
+  <meta property="article:modified_time" content="">
+  <meta property="article:author" content="https://drewsh.com/author/drew-jose.html">
+  <meta property="article:section" content="blogpost">
+  <meta property="article:tag" content="short">
+  <meta property="article:tag" content="python">
+  <meta property="article:tag" content="web">
+  <meta property="og:image" content="/images/emacs.jpg">
+  <meta name="fediverse:creator" content="@crmsnbleyd@hachyderm.io">
+
+  <title>Small server in python without dependencies | Drew's blogsite</title>
+
+
+</head>
+<body >
+
+<aside>
+  <div>
+    <a href="https://drewsh.com/">
+      <img src="/images/emacs.jpg" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://drewsh.com/"></a>
+    </h1>
+
+    <p class="site-subtitle">These are public thoughts</p>
+
+
+    <nav>
+      <ul class="list">
+
+
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/interesting-links.html">
+                Bookmarks
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/buttons.html">
+                Buttons
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/newsletter.html">
+                Newsletter
+              </a>
+            </li>
+
+          <li>
+            <a target="_self" href="https://drewsh.com/category/toot" >Short&nbspposts</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-mastodon"
+	   aria-label="link to mastodon"
+rel="me"           href="https://hachyderm.io/@crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-mastodon">
+	  </span>
+	  <span class="visually-hidden">
+	    mastodon
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-git"
+	   aria-label="link to git"
+           href="https://git.drewsh.com/crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-git">
+	  </span>
+	  <span class="visually-hidden">
+	    git
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-rss"
+	   aria-label="link to rss"
+           href="https://drewsh.com/feeds/all.atom.xml">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-solid fa-rss">
+	  </span>
+	  <span class="visually-hidden">
+	    rss
+	  </span>
+        </a>
+      </li>
+    </ul>
+    <span class="theme-switch-links">
+      <br>
+    Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+    </span>
+  <script id="dark-theme-script"
+          src="https://drewsh.com/theme/dark-theme/dark-theme.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+  </div>
+
+
+</aside>
+  <main>
+
+<nav>
+  <a href="https://drewsh.com/">Home</a>
+
+  <a href="/archives.html">Archives</a>
+  <a href="/categories.html">Categories</a>
+  <a href="/tags.html">Tags</a>
+
+  <a href="https://drewsh.com/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="post">
+  <header>
+      
+    <h1 id="minimal-python-server">Small server in python without dependencies</h1>
+    <p>
+      Posted on Jan 28, 2025 in <a href="https://drewsh.com/category/blogpost.html">blogpost</a>
+
+    </p>
+  </header>
+
+
+  <div class="post-content">
+    <p>Python is a batteries-included kind of language, and so of course it comes with an HTTP server module.
+Today I wanted to have something small running on my computer without dependencies to test a server-side example,
+so I looked into how to create a minimal server using python built-ins. This is what I ended up with:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">http.server</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span> <span class="nc">Resp</span><span class="p">(</span><span class="n">BaseHTTPRequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">do_GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;&quot;&quot;HTTP/1.1 200 OK</span>
+<span class="s2">Content-Type: text/html</span>
+<span class="s2">Location: localhost:8000</span>
+
+<span class="s2">&lt;html&gt;</span>
+<span class="s2">&lt;head&gt;&lt;title&gt;Hello, world&lt;/title&gt;&lt;/head&gt;</span>
+<span class="s2">&lt;body&gt;Minimal page written in python&lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">server_class</span><span class="o">=</span><span class="n">HTTPServer</span><span class="p">,</span> <span class="n">handler_class</span><span class="o">=</span><span class="n">BaseHTTPRequestHandler</span><span class="p">):</span>
+    <span class="n">server_address</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">8000</span><span class="p">)</span>
+    <span class="n">httpd</span> <span class="o">=</span> <span class="n">server_class</span><span class="p">(</span><span class="n">server_address</span><span class="p">,</span> <span class="n">handler_class</span><span class="p">)</span>
+    <span class="n">httpd</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+
+<span class="n">run</span><span class="p">(</span><span class="n">HTTPServer</span><span class="p">,</span> <span class="n">Resp</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+
+<p>First of all, since this is just for trying it out, I imported everything from <code>http.server</code>. <strong>Never do this in normal code.</strong>
+We use <code>HTTPServer</code> and initialise it with the port we want to serve to and a handler class <code>Resp</code> that we subclass from <code>BaseHTTPRequestHandler</code>.</p>
+<p>We add a <code>do_GET</code> method to our class, making it reply to all GET requests with that module.
+I don’t know how they implemented this, but it doesn’t sound like it would be pretty.</p>
+<p>The request handler class has an instance variable <code>wfile</code> which is where we’re supposed to write our response.
+The response is supposed to be a bytestring, hence the <code>b"""</code>,
+and it needs to be valid HTTP so that whatever tool we use to read it does not choke on it.
+Write the headers you want (including response code) and then the body.</p>
+<p><img alt="the response open in emacs saying &quot;minimal page written in python&quot;" src="https://drewsh.com/images/eww-minimal-page.avif"></p>
+<p>There’s also a <a href="https://docs.python.org/3/library/http.server.html#http.server.ThreadingHTTPServer">threading server</a> you can use if you want concurrency, I’ve never tried it.</p>
+<h2>Extra info because I’m nice</h2>
+<p>Inside any directory with web files, you can run</p>
+<div class="highlight"><pre><span></span><code><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="o">.</span><span class="n">server</span> <span class="mi">8000</span> <span class="c1"># use the port you want</span>
+</code></pre></div>
+
+<p>to serve the files to your browser. This is useful to get around restrictions that plain html files have when opened.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://drewsh.com/tag/short.html">short</a>
+      <a href="https://drewsh.com/tag/python.html">python</a>
+      <a href="https://drewsh.com/tag/web.html">web</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>
+  &copy; 2026 Drew Jose - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Share-alike license</a>
+</p>
+<p>
+Built with <a href="https://getpelican.com" target="_blank">Pelican</a>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15">
+  </a>
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Drew's blogsite ",
+  "url" : "https://drewsh.com",
+  "image": "/images/emacs.jpg",
+  "description": "Texts mostly about tech and writing."
+}
+</script>
+</body>
+</html>

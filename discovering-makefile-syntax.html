@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://drewsh.com/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://drewsh.com/theme/pygments/inkpot.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light)"
+          href="https://drewsh.com/theme/pygments/friendly.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/solid.css">
+
+
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+
+
+  <link href="https://drewsh.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Drew's blogsite Atom">
+
+
+
+
+
+
+
+
+
+<meta name="author" content="Drew Jose">
+<meta name="description" content="A jumpstart to GNU Make, and a really specific example of its utility.">
+<meta name="keywords" content="unix, linux">
+
+
+  <meta property="og:site_name" content="Drew's blogsite">
+  <meta property="og:title" content="Compiling targets deep in a directory with make">
+  <meta property="og:description" content="A jumpstart to GNU Make, and a really specific example of its utility.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://drewsh.com/discovering-makefile-syntax.html">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2023-08-11 16:58:00+05:30">
+  <meta property="article:modified_time" content="2024-01-04 16:58:00+05:30">
+  <meta property="article:author" content="https://drewsh.com/author/drew-jose.html">
+  <meta property="article:section" content="blogpost">
+  <meta property="article:tag" content="unix">
+  <meta property="article:tag" content="linux">
+  <meta property="og:image" content="/images/emacs.jpg">
+  <meta name="fediverse:creator" content="@crmsnbleyd@hachyderm.io">
+
+  <title>Compiling targets deep in a directory with make | Drew's blogsite</title>
+
+
+</head>
+<body >
+
+<aside>
+  <div>
+    <a href="https://drewsh.com/">
+      <img src="/images/emacs.jpg" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://drewsh.com/"></a>
+    </h1>
+
+    <p class="site-subtitle">These are public thoughts</p>
+
+
+    <nav>
+      <ul class="list">
+
+
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/interesting-links.html">
+                Bookmarks
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/buttons.html">
+                Buttons
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/newsletter.html">
+                Newsletter
+              </a>
+            </li>
+
+          <li>
+            <a target="_self" href="https://drewsh.com/category/toot" >Short&nbspposts</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-mastodon"
+	   aria-label="link to mastodon"
+rel="me"           href="https://hachyderm.io/@crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-mastodon">
+	  </span>
+	  <span class="visually-hidden">
+	    mastodon
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-git"
+	   aria-label="link to git"
+           href="https://git.drewsh.com/crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-git">
+	  </span>
+	  <span class="visually-hidden">
+	    git
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-rss"
+	   aria-label="link to rss"
+           href="https://drewsh.com/feeds/all.atom.xml">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-solid fa-rss">
+	  </span>
+	  <span class="visually-hidden">
+	    rss
+	  </span>
+        </a>
+      </li>
+    </ul>
+    <span class="theme-switch-links">
+      <br>
+    Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+    </span>
+  <script id="dark-theme-script"
+          src="https://drewsh.com/theme/dark-theme/dark-theme.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+  </div>
+
+
+</aside>
+  <main>
+
+<nav>
+  <a href="https://drewsh.com/">Home</a>
+
+  <a href="/archives.html">Archives</a>
+  <a href="/categories.html">Categories</a>
+  <a href="/tags.html">Tags</a>
+
+  <a href="https://drewsh.com/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="post">
+  <header>
+      
+    <h1 id="discovering-makefile-syntax">Compiling targets deep in a directory with make</h1>
+    <p>
+      Posted on Aug 11, 2023 in <a href="https://drewsh.com/category/blogpost.html">blogpost</a>
+
+    </p>
+  </header>
+
+
+  <div class="post-content">
+    <p>In this post I'm going to be talking about GNU make, an awesome tool that few people outside of the usual suspects (read: <em>C programmers</em>) use.</p>
+<p>I'm specifying the GNU version because:</p>
+<ul>
+<li>Most people have it by default anyway (unless you're on Windows, in which case, my condolences, and you can probably use <a href="https://chocolatey.org/">chocolatey</a> to install it)</li>
+<li><code>%</code>, a feature I'll be using in this example is implementation-defined according to POSIX.</li>
+</ul>
+<h3>Background</h3>
+<p>The pelican theme I'm using as a base for my own, <a href="https://flex.alxd.me">Flex</a>, uses Less (though that is being phased out at the time of writing) as a CSS preprocessor.</p>
+<p>Less files cannot be used in the browser directly without compiling, unless you use a javascript library to do it client-side, which sounds awful. The alternative is to compile the less files using <code>lessc</code> to convert it to regular old CSS before shipping it to your website.</p>
+<p>Like a dumbass, I had been running the compiler manually, only choosing the files that I had changed. I'm not sure why I did not automate the process even earlier.</p>
+<h3>Enter Make</h3>
+<p>The elevator(or lift, if you're British) pitch for Make is: you give it a set of instructions, and you can call those instructions with a short name, saving a bunch of repetition.</p>
+<p>If that were all, though, one would just use shell scripts. The <strong>actual</strong> pitch for make is that you can specify targets and sources and specify dependencies between them, so that you only build the files whose sources you have actually modified, saving you and the computer a ton of effort.</p>
+<p>Here's a minimal example of what I'm talking about:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">LESSDIR</span><span class="o">=</span><span class="k">$(</span>CURDIR<span class="k">)</span>/themes/Solarized-Flex/static/stylesheet
+
+<span class="cp">vpath %.less $(LESSDIR)</span>
+
+<span class="nf">$(LESSDIR)/%.min.css</span><span class="o">:</span><span class="w"> </span>%.<span class="n">less</span> <span class="n">variables</span>.<span class="n">less</span>
+<span class="w">    </span>lessc<span class="w"> </span>$&lt;<span class="w"> </span>--clean-css<span class="o">=</span><span class="s2">&quot;--s1 --advanced --compatibility=ie8&quot;</span><span class="w"> </span><span class="nv">$@</span>
+
+<span class="nf">less</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">LESSDIR</span><span class="k">)</span>/<span class="n">style</span>.<span class="n">min</span>.<span class="n">css</span> <span class="k">$(</span><span class="nv">LESSDIR</span><span class="k">)</span>/<span class="n">dark</span>-<span class="n">theme</span>.<span class="n">min</span>.<span class="n">css</span>
+
+<span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">less</span>
+</code></pre></div></td></tr></table></div>
+
+<h3>What's going on here</h3>
+<p>You can set variables and refer to them as <code>$(VARIABLE)</code>. <code>CURDIR</code> is a variable pointing to the working directory of make.</p>
+<p><code>vpath</code> tells make to look for files ending with the extension .less in <code>LESSDIR</code>.</p>
+<p>Now we get to the fun stuff: for targets in LESSDIR ending in .min.css, we have the source files %.less and variables.less. Note that make already knows to look for these files because of vpath and we don't need to prepend them with the directory path. <code>%</code> acts as a wildcard which matches everything, so this line reads something like: "for every target abc.min.css, use abc.less and variables.less as source". The line below is the actual command which will create the target (note that you need to add a tab before this). <code>$&lt;</code> is an automatic variable which refers to the first source file, which for the example given would be abc.less, and <code>$@</code> refers to the name of the target.</p>
+<p>The next target is <code>less</code>, which just asks make to build style.min.css and dark-theme.min.css. The trick with <code>.PHONY</code> is that <code>less</code> is not actually a file we want to build, so we make it so whenever <code>make less</code> is called, make initiates the build process, and builds the targets based on the %.min.css rule. If we did not add the <code>.PHONY</code> line, any file <em>actually</em> named "less" would interfere with our plans.</p>
+<h3>Why (and when) you should care</h3>
+<p>When you're working with something that does not have its own botique build tool (like npm, maven, cargo, you get the point), Make is a great tool to get things done. Even when you're mucking about with something like Java, it can be supremely useful if your focus is on doing things quick and be done with coding in Java as soon as possible.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://drewsh.com/tag/unix.html">unix</a>
+      <a href="https://drewsh.com/tag/linux.html">linux</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>
+  &copy; 2026 Drew Jose - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Share-alike license</a>
+</p>
+<p>
+Built with <a href="https://getpelican.com" target="_blank">Pelican</a>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15">
+  </a>
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Drew's blogsite ",
+  "url" : "https://drewsh.com",
+  "image": "/images/emacs.jpg",
+  "description": "Texts mostly about tech and writing."
+}
+</script>
+</body>
+</html>

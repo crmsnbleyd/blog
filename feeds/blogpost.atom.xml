@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Drew's blogsite - blogpost</title><link href="https://drewsh.com/" rel="alternate"/><link href="https://drewsh.com/feeds/blogpost.atom.xml" rel="self"/><id>https://drewsh.com/</id><updated>2026-01-26T10:53:00+05:30</updated><subtitle>These are public thoughts</subtitle><entry><title>Git config for multiple accounts</title><link href="https://drewsh.com/git-config-for-multiple-accounts.html" rel="alternate"/><published>2025-12-20T12:50:00+05:30</published><updated>2025-12-20T12:50:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-12-20:/git-config-for-multiple-accounts.html</id><summary type="html">&lt;p&gt;Snippets of useful git configurations (when you have multiple identities)&lt;/p&gt;</summary><content type="html">&lt;p&gt;I use &lt;code&gt;git&lt;/code&gt;, as the version control system both at my workplace and to store my personal code (including the source of this blog).&lt;/p&gt;
+&lt;p&gt;I use different e-mails for personal and work repositories, as well as different SSH keys for different accounts (this is because Github, at least, does not allow different accounts to use the same key, which I was not sure of, but &lt;a href="https://eigenmagic.net/@arichtman/115757915345301797"&gt;Ariel confirmed on fedi&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;After a bunch of trial-and-error, I have figured out a way to do ssh for two different github accounts using different keys on the same device. The &lt;code&gt;.sshconfig&lt;/code&gt; looks a bit like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Host work
+  User git
+  HostName github.com
+  IdentityFile ~/.ssh/id_work_github
+
+Host personal
+  User git
+  HostName github.com
+  IdentityFile ~/.ssh/id_personal_github
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;So, if I want to clone a work repo, I need to do &lt;code&gt;git clone work:&amp;lt;WorkOrg&amp;gt;/&amp;lt;RepoName&amp;gt;.git&lt;/code&gt;,
+and if I want to do the same using my personal account, &lt;code&gt;git clone personal:&amp;lt;Org&amp;gt;/&amp;lt;RepoName&amp;gt;.git&lt;/code&gt;, and it just works.&lt;/p&gt;
+&lt;p&gt;I have to remember to use the correct prefix, &lt;code&gt;work&lt;/code&gt; or &lt;code&gt;personal&lt;/code&gt;, and if I use the wrong one, I get an error saying I can’t access the repository. 
+To do this, I either have to change the original clone url copied from the forge, which would be something like &lt;code&gt;git@github.com:&amp;lt;Org&amp;gt;/&amp;lt;RepoName&amp;gt;.git&lt;/code&gt;,
+or type the whole thing out.&lt;/p&gt;
+&lt;p&gt;Turns out, &lt;code&gt;git&lt;/code&gt; allows one to use text substution for URLs, which fixes the problem!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[url &amp;quot;work:&amp;lt;WorkOrg&amp;gt;/&amp;quot;]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;insteadOf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;https://github.com/&amp;lt;WorkOrg&amp;gt;/&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;insteadOf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;ssh://git@github.com/&amp;lt;WorkOrg&amp;gt;/&lt;/span&gt;
+
+&lt;span class="k"&gt;[url &amp;quot;personal&amp;quot;]&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;insteadOf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;https://github.com&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="na"&gt;insteadOf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;ssh://git@github.com&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;git&lt;/code&gt; substitutes using the longest matching URL, so if the repository is under the work Org, it will use the first rule, and otherwise use my personal key+account.&lt;/p&gt;
+&lt;p&gt;This is not the only problem though. 
+Git forges do not use the ssh key (or your username+password) to identify the committer, but rather the email address and name set in your git config.
+Yes, this means anyone can spoof your identity on their commits (which is why we have signed commits).
+How you fix this, is you run the following commands per repository if you are using a different name and email than the ones you have set globally:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;git&lt;span class="w"&gt; &lt;/span&gt;config&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;user.name&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Drew Jose&amp;quot;&lt;/span&gt;
+git&lt;span class="w"&gt; &lt;/span&gt;config&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;user.email&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;abc@example.com&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If I forget this, however, the commits will be seen as authored by my work account, which I don’t want.
+To automatically set this up, there’s two steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Keep all the personal repositories in one folder, and in the root create a &lt;code&gt;.gitconfig&lt;/code&gt; file containing the name and email you want&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[user]&lt;/span&gt;
+&lt;span class="n"&gt;email&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;abc@example.com&lt;/span&gt;
+&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;Drew Jose&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add a conditional inclusion to the global git config. 
+It includes a given &lt;code&gt;.gitconfig&lt;/code&gt; file when git commands are run inside some directory. 
+This should be after the globally defined &lt;code&gt;[user]&lt;/code&gt; config, so that this takes precedence.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[includeIf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;gitdir:~/code/&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;~/code/.gitconfig&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This is quite neat and does what I want. One could extend this to add even more sorts of dynamic inclusions per folder.&lt;/p&gt;</content><category term="blogpost"/></entry><entry><title>Development setup for three services with a database</title><link href="https://drewsh.com/dev-setup-with-tmux.html" rel="alternate"/><published>2025-04-15T15:00:00+05:30</published><updated>2025-04-15T15:00:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-04-15:/dev-setup-with-tmux.html</id><summary type="html">&lt;p&gt;Using tmux and scripting to set up a development environment for microservices locally.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="diagram of 4 panes open on a terminal" src="./images/tmux-example.svg"&gt;&lt;/p&gt;
+&lt;p&gt;At work, I have to develop a service that has an API server, a web server that serves UI, and a Slack bot.
+This uses a database. I can either run it locally via podman, or connect to one which already runs in a development cluster.&lt;/p&gt;
+&lt;p&gt;The web server requires the API server to provide some basic functionality, so even if I'm only developing the web service,
+I need both the API server and the database available, and vice versa.&lt;/p&gt;
+&lt;p&gt;Silly ’ol me was creating multiple tabs in my terminal, going to them manually, and running the setup commands via shell history.
+After the 90th time of doing this, I realised that I’m a programmer and such toil deserves to be scripted. So here we are.&lt;/p&gt;
+&lt;h2&gt;Enter tmux&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;tmux&lt;/code&gt;, as many of you already know, is a terminal multiplexer, sort of a window manager for terminal processes.
+You can create a session and either interact with it by pressing key sequences from your keyboard,
+or you can send those key sequences from the terminal to automate some setup.&lt;/p&gt;
+&lt;p&gt;Here’s a script I created to set up all of the services.&lt;/p&gt;
+&lt;h3&gt;Create a tmux session&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="ch"&gt;#!/usr/bin/env zsh&lt;/span&gt;
+
+&lt;span class="nv"&gt;WORK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;&lt;span class="s2"&gt;/work&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Or wherever your WORK directory is&lt;/span&gt;
+
+tmux&lt;span class="w"&gt; &lt;/span&gt;kill-session&lt;span class="w"&gt; &lt;/span&gt;-t&lt;span class="w"&gt; &lt;/span&gt;devops-buddy
+tmux&lt;span class="w"&gt; &lt;/span&gt;new-session&lt;span class="w"&gt; &lt;/span&gt;-d&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt; &lt;/span&gt;devops-buddy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We create a detached session with whatever name we want,
+and we kill a session with that name if it already exists.
+I don’t really care about persisting state manually because that’s what the database is for.&lt;/p&gt;
+&lt;h3&gt;First service&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Pane 1: make watch&lt;/span&gt;
+tmux&lt;span class="w"&gt; &lt;/span&gt;send-keys&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;cd &lt;/span&gt;&lt;span class="nv"&gt;$WORK&lt;/span&gt;&lt;span class="s2"&gt;/backend&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;C-m
+tmux&lt;span class="w"&gt; &lt;/span&gt;send-keys&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;make watch&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;C-m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We &lt;code&gt;cd&lt;/code&gt; to the repository of the first service and run whatever command we want.
+&lt;code&gt;send-keys&lt;/code&gt; sends whatever text we enclose in quotes literally, and &lt;code&gt;C-m&lt;/code&gt; means CTRL+m, which is the code for Enter.
+This actually executes the command.
+We can do it all in one line if we want but it looks cleaner this way.&lt;/p&gt;
+&lt;h3&gt;Splitting the window and running the second process&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;tmux&lt;span class="w"&gt; &lt;/span&gt;split-window&lt;span class="w"&gt; &lt;/span&gt;-h&lt;span class="w"&gt; &lt;/span&gt;-t&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-c&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$WORK&lt;/span&gt;/frontend&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="se"&gt;\;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;send-keys&lt;span class="w"&gt; &lt;/span&gt;-t&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$pane2&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;npm run dev&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;C-m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can split commands to tmux with an escaped semicolon: &lt;code&gt;\;&lt;/code&gt;.
+&lt;code&gt;split-window -h&lt;/code&gt; splits the window 
+(tmux terminology for a single screen with multiple panes, sort of like a desktop) horizontally.
+The &lt;code&gt;-c&lt;/code&gt; flag sents the current directory of the new pane, so we don’t have to execute &lt;code&gt;cd&lt;/code&gt; manually.
+&lt;code&gt;send-keys&lt;/code&gt; by default sends the keys to the &lt;em&gt;active pane&lt;/em&gt;, which is, in this case, the newest one created.&lt;/p&gt;
+&lt;h3&gt;Do this twice more&lt;/h3&gt;
+&lt;p&gt;If you want to run four processes, you’d have to do the same thing again, twice, but with different arguments to &lt;code&gt;split-window&lt;/code&gt; and &lt;code&gt;send-keys&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Attach to the session&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;tmux&lt;span class="w"&gt; &lt;/span&gt;attach-session&lt;span class="w"&gt; &lt;/span&gt;-t&lt;span class="w"&gt; &lt;/span&gt;devops-buddy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This puts the &lt;code&gt;tmux&lt;/code&gt; session in the foreground, split between your four panes.
+The good thing about this being a shell script is that you can do all sorts of setup interspersed with your &lt;code&gt;tmux&lt;/code&gt; calls.&lt;/p&gt;
+&lt;p&gt;For instance, to connect to the database instance, I first connect to the kubernetes cluster it’s running in,
+and only then create the tmux pane that port-forwards to it.&lt;/p&gt;
+&lt;h2&gt;How to use it&lt;/h2&gt;
+&lt;p&gt;Just like a shell script! Since I’ve given all of the paths as absolute,
+I can run this script from any directory and get the same results.
+You can put something like this in your &lt;code&gt;$PATH&lt;/code&gt; to not have to remember where you put it.&lt;/p&gt;</content><category term="blogpost"/><category term="shell"/><category term="tmux"/></entry><entry><title>Small server in python without dependencies</title><link href="https://drewsh.com/minimal-python-server.html" rel="alternate"/><published>2025-01-28T21:31:00+05:30</published><updated>2025-01-28T21:31:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-01-28:/minimal-python-server.html</id><summary type="html">&lt;p&gt;Code example using just built-ins for testing small proofs-of-concept&lt;/p&gt;</summary><content type="html">&lt;p&gt;Python is a batteries-included kind of language, and so of course it comes with an HTTP server module.
+Today I wanted to have something small running on my computer without dependencies to test a server-side example,
+so I looked into how to create a minimal server using python built-ins. This is what I ended up with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;
+&lt;span class="normal"&gt;19&lt;/span&gt;
+&lt;span class="normal"&gt;20&lt;/span&gt;
+&lt;span class="normal"&gt;21&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;http.server&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Resp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BaseHTTPRequestHandler&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;do_GET&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wfile&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;quot;&amp;quot;HTTP/1.1 200 OK&lt;/span&gt;
+&lt;span class="s2"&gt;Content-Type: text/html&lt;/span&gt;
+&lt;span class="s2"&gt;Location: localhost:8000&lt;/span&gt;
+
+&lt;span class="s2"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;lt;head&amp;gt;&amp;lt;title&amp;gt;Hello, world&amp;lt;/title&amp;gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;lt;body&amp;gt;Minimal page written in python&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;server_class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;HTTPServer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;handler_class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;BaseHTTPRequestHandler&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;server_address&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;httpd&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;server_class&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;server_address&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;handler_class&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;httpd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;serve_forever&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HTTPServer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Resp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;First of all, since this is just for trying it out, I imported everything from &lt;code&gt;http.server&lt;/code&gt;. &lt;strong&gt;Never do this in normal code.&lt;/strong&gt;
+We use &lt;code&gt;HTTPServer&lt;/code&gt; and initialise it with the port we want to serve to and a handler class &lt;code&gt;Resp&lt;/code&gt; that we subclass from &lt;code&gt;BaseHTTPRequestHandler&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;We add a &lt;code&gt;do_GET&lt;/code&gt; method to our class, making it reply to all GET requests with that module.
+I don’t know how they implemented this, but it doesn’t sound like it would be pretty.&lt;/p&gt;
+&lt;p&gt;The request handler class has an instance variable &lt;code&gt;wfile&lt;/code&gt; which is where we’re supposed to write our response.
+The response is supposed to be a bytestring, hence the &lt;code&gt;b"""&lt;/code&gt;,
+and it needs to be valid HTTP so that whatever tool we use to read it does not choke on it.
+Write the headers you want (including response code) and then the body.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="the response open in emacs saying &amp;quot;minimal page written in python&amp;quot;" src="https://drewsh.com/images/eww-minimal-page.avif"&gt;&lt;/p&gt;
+&lt;p&gt;There’s also a &lt;a href="https://docs.python.org/3/library/http.server.html#http.server.ThreadingHTTPServer"&gt;threading server&lt;/a&gt; you can use if you want concurrency, I’ve never tried it.&lt;/p&gt;
+&lt;h2&gt;Extra info because I’m nice&lt;/h2&gt;
+&lt;p&gt;Inside any directory with web files, you can run&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;python3&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="mi"&gt;8000&lt;/span&gt; &lt;span class="c1"&gt;# use the port you want&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;to serve the files to your browser. This is useful to get around restrictions that plain html files have when opened.&lt;/p&gt;</content><category term="blogpost"/><category term="short"/><category term="python"/><category term="web"/></entry><entry><title>Do not ask me to use Visual Studio Code or Chrome</title><link href="https://drewsh.com/i-wont-change-editors-or-browsers.html" rel="alternate"/><published>2025-01-22T18:33:00+05:30</published><updated>2025-01-22T18:33:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-01-22:/i-wont-change-editors-or-browsers.html</id><summary type="html">&lt;p&gt;I have been asked a couple times to switch from Emacs to VS Code or from Firefox/Safari to Chrome. Here’s why I will never do it.&lt;/p&gt;</summary><content type="html">&lt;p&gt;I’m a software developer by profession, and most developers have settled on a couple of essential tools: VS Code for writing code, and the Chrome browser.&lt;/p&gt;
+&lt;p&gt;Obviously I have no problem with this; people can use the tools they want to (though the trillion-dollar corporations developing these tools do not have their best interests at heart), but some people do not abide by this rule and have told me to stop using the tools &lt;em&gt;I&lt;/em&gt; want to use.&lt;/p&gt;
+&lt;p&gt;They have their reasons which make sense to them, the foremost being that everyone else uses Chrome/VS Code, and so using it will make sure I do not face weird issues, and that people looking at my screen actually have some idea of what’s going on.&lt;/p&gt;
+&lt;p&gt;Here are some reasons why I won’t ever switch to these tools:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Chrome does not support a lot of useful extensions like &lt;a href="https://ublockorigin.com/"&gt;uBlock origin&lt;/a&gt; (the Chrome store does list it but it is a hobbled version).&lt;/li&gt;
+&lt;li&gt;They are not open source, which means that you are never sure what code you are running on your computer, and if there is a bug there is not a good way to look into it. Chrome and VS Code are “based on” open source projects called Chromium and Code - OSS, but these projects omit important functionality such as extensions.&lt;/li&gt;
+&lt;li&gt;Chrome is effectively a monopoly, which causes web programmers to only test on Chrome to save on effort, making the web worse for everyone else (Safari, Firefox, Servo, etc.). If more people were to use these alternatives, it would stop the feedback loop of Chrome taking over the web because some sites just won’t work without it.&lt;/li&gt;
+&lt;li&gt;VS Code and Chrome both send back usage data to their respective Trillion-dollar companies, which is a violation of privacy.&lt;/li&gt;
+&lt;li&gt;I am quite happy using Emacs, and find it to be more featureful than VS Code. I can extend it easily using &lt;a href="https://en.wikipedia.org/wiki/Emacs_Lisp"&gt;Emacs Lisp&lt;/a&gt;, and it is much smaller in size than VS Code (both in terms of size-on-disk and RAM usage), which means I can run it on any computer I want.&lt;/li&gt;
+&lt;li&gt;VS Code is chiefly a marketing tool for Microsoft, and it allows them to get mindshare amongst developers. They also promote their own tools and cloud service within it. Emacs, developed by volunteers, does not want to sell me anything.&lt;/li&gt;
+&lt;/ol&gt;</content><category term="blogpost"/><category term="short"/><category term="web"/><category term="rant"/></entry><entry><title>Fauxspresso Lemonade</title><link href="https://drewsh.com/fauxspresso-lemonade.html" rel="alternate"/><published>2024-12-10T14:49:00+05:30</published><updated>2024-12-10T14:49:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-12-10:/fauxspresso-lemonade.html</id><summary type="html">&lt;p&gt;Something that tastes like espresso lemonade, but with less fancy ingredients&lt;/p&gt;</summary><content type="html">&lt;p&gt;Okay, this is actually an aeropress limeade.&lt;br&gt;
+This is sort of a modified version of an &lt;a href="https://www.youtube.com/watch?v=PUsHI7jdX1k"&gt;aeropress recipe from Coffee with April&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Ingredients&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;13 grams coffee, medium roast&lt;/li&gt;
+&lt;li&gt;130 ml water&lt;/li&gt;
+&lt;li&gt;Half a lime (15 grams)&lt;/li&gt;
+&lt;li&gt;Lots of ice (at least 40 grams)&lt;/li&gt;
+&lt;li&gt;Sugar/sweetener to taste&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The lime variety I use is Key Lime, but any will do I suppose.
+I have made this with either a bit of maple syrup or artificial sweetener,
+you don't need a lot of it to make the drink taste good.
+If you don’t have an aeropress,
+130ml of coffee in 1:10 ratio made with any method will work.&lt;/p&gt;
+&lt;h2&gt;Steps&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Heat up 130 ml of water in a kettle to 100℃.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Grind the coffee to a medium consistency,
+for reference it is 5 clicks on the &lt;a href="https://sigmacoffee.co.uk/products/timemore_grinder_go_advanced"&gt;Timemore Go&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pour in 50ml of the hot water in the aeropress, stir it a little bit and seal the aeropress so water doesn’t pass down (you do it by putting the plunger in a little bit and then pulling it almost all the way out to create pressure that prevents the water from leaving)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After 30 seconds, put in the rest of the water (100ml), and wait for 90 seconds more.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pour the coffee out of the aeropress, and mix in your sweetener.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add the ice.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content><category term="blogpost"/><category term="recipe"/><category term="food"/></entry><entry><title>Making the "compose" subcommand available to docker CLI in fish shell</title><link href="https://drewsh.com/wrapping-a-command-in-fish.html" rel="alternate"/><published>2024-11-27T23:26:00+05:30</published><updated>2024-11-27T23:26:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-11-27:/wrapping-a-command-in-fish.html</id><summary type="html">&lt;p&gt;Fish function example that allows you to use &lt;code&gt;docker compose&lt;/code&gt; instead of &lt;code&gt;docker-compose&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Development tools today are very complicated to install and deal with, the foremost of which is the &lt;code&gt;docker&lt;/code&gt; CLI.
+You install it via shell script on most systems and if you want &lt;a href="https://docs.docker.com/compose/"&gt;docker compose&lt;/a&gt;, you need to install it separately.
+In some systems, it gets added as a subcommand, so that the docker binary can handle it, but on others you specifically have to call &lt;code&gt;docker-compose&lt;/code&gt;, a single script, without spaces.
+If you try to run the &lt;code&gt;compose&lt;/code&gt; subcommand in this case, docker will complain about it not being available.&lt;/p&gt;
+&lt;p&gt;The solution: using a fish function!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;function&lt;/span&gt; docker -d &lt;span class="s2"&gt;&amp;quot;docker command with compose subcommand&amp;quot;&lt;/span&gt; -w docker
+  &lt;span class="k"&gt;if&lt;/span&gt; match &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$argv&lt;/span&gt;&lt;span class="s2"&gt;[1]&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;compose&amp;quot;&lt;/span&gt;
+    docker-compose &lt;span class="nv"&gt;$argv&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;2..-1&lt;span class="o"&gt;]&lt;/span&gt;
+  &lt;span class="k"&gt;else&lt;/span&gt;
+    &lt;span class="nb"&gt;command &lt;/span&gt;docker &lt;span class="nv"&gt;$argv&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Save this in a file called &lt;code&gt;docker.fish&lt;/code&gt; in your fish function directory (it’s in $XDG_CONFIG_DIR/fish/functions, or ~/.config/fish/functions).&lt;br&gt;
+&lt;code&gt;-d&lt;/code&gt; gives the description of the function, and &lt;code&gt;-w&lt;/code&gt; indicates that the function is wrapping the &lt;code&gt;docker&lt;/code&gt; command, giving access to useful completions.
+The &lt;code&gt;command&lt;/code&gt; fish built-in ensures that the function does not call itself, but rather the real docker binary.&lt;/p&gt;
+&lt;h2&gt;Update:&lt;/h2&gt;
+&lt;p&gt;Turns out all of this was unnecessary, and the only reason &lt;code&gt;docker compose&lt;/code&gt; wasn't showing up as a subcommand is because it could not find the &lt;code&gt;compose&lt;/code&gt; plugin&lt;/p&gt;
+&lt;p&gt;When you download docker-compose you might get this helpful tip&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Compose is a Docker plugin. For Docker to find the plugin, add &amp;quot;cliPluginsExtraDirs&amp;quot; to ~/.docker/config.json:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;cliPluginsExtraDirs&amp;quot;&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;[&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/Users/arnavandrewjose/homebrew/lib/docker/cli-plugins&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p p-Indicator"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blogpost"/><category term="shell"/><category term="short"/></entry><entry><title>Things to do on an upcoming flight</title><link href="https://drewsh.com/staving-off-flight-boredom.html" rel="alternate"/><published>2024-10-26T00:40:00+05:30</published><updated>2024-10-26T00:40:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-10-26:/staving-off-flight-boredom.html</id><summary type="html">&lt;p&gt;Some things I can do that do not require an internet connection&lt;/p&gt;</summary><content type="html">&lt;p&gt;I hate flying.&lt;/p&gt;
+&lt;p&gt;It's incredibly boring, the security circus is pointless and brings out the worst in co-passengers,
+more time is spent waiting for things to happen than actually being up in the air,
+and it's not great for the environment 
+(though even if we were to stop taking flights, &lt;a href="https://archive.is/rJjtB"&gt;apparently just as many planes would take off&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;I am also not used to being disconnected from the internet.  &lt;/p&gt;
+&lt;p&gt;Here are some things I need to do, though, which can be easily accomplished during this great sinkhole of time.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Writing bindings for &lt;a href="https://melonjs.org/"&gt;MelonJS&lt;/a&gt; for use with &lt;a href="https://spritely.institute/hoot/"&gt;Hoot&lt;/a&gt;, a Wasm compiler for Guile Scheme.
+  To write bindings, you need the API reference, which is available at &lt;a href="https://melonjs.github.io/melonJS/"&gt;https://melonjs.github.io/melonJS/&lt;/a&gt;.
+  They do not make it easy to find and download any offline documentation, which is baffling, surely the docs
+  exist somewhere before you bundle it into a website, why not make it available as text?
+  Anyway, I found a tool called &lt;a href="https://archivebox.io/"&gt;archivebox&lt;/a&gt;, which downloads a website with all linked assets as a bundle,
+  so that should be good enough.&lt;br/&gt;
+  Sidebar: Installing it on a 2015 MacBook Pro via Homebrew turned it into a furnace,
+  probably because it &lt;em&gt;installs node from source&lt;/em&gt;.&lt;br/&gt;
+  Update from the next day: You need to clone the repo, install &lt;code&gt;pnpm&lt;/code&gt;, and run &lt;code&gt;pnpm install&lt;/code&gt; and then &lt;code&gt;pnpm doc&lt;/code&gt; to have the docs show up in the melonjs/docs folder.
+  &lt;img alt="MelonJS homepage, their logo is a hollow green circle with a red dot" src="https://drewsh.com/images/melonjs.webp"&gt;
+  &lt;strong&gt;Their logo isn't even a melon!&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Continuing work on my &lt;a href="https://git.drewsh.com/crmsnbleyd/sitegen-in-c"&gt;C-based static-site generator&lt;/a&gt;.
+  This is not time-sensitive at all, but I find it quite fun and all I need to work on it is gdb and gcc.&lt;/li&gt;
+&lt;li&gt;Writing more of the &lt;a href="https://drewsh.com/lisp-book"&gt;Beginner Common Lisp book&lt;/a&gt;. I don't need to be connected to the internet for this,
+  but &lt;a href="https://www.cs.cmu.edu/Groups/AI/html/cltl/cltl2.html"&gt;Common List the Language, 2e&lt;/a&gt; by Guy Steele Jr. is a great reference for it so I have downloaded it.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="blogpost"/><category term="writing"/><category term="lisp"/><category term="short"/></entry><entry><title>Minimally useful Github workflow for Emacs packages</title><link href="https://drewsh.com/emacs-package-github-workflow.html" rel="alternate"/><published>2024-09-02T10:26:00+05:30</published><updated>2024-09-02T10:26:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-09-02:/emacs-package-github-workflow.html</id><summary type="html">&lt;p&gt;Use this if you want to publish your emacs package to Melpa&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://melpa.org/"&gt;Melpa&lt;/a&gt; is one of the most popular and probably the most accessible emacs package repository to publish to.
+All you need to do is add a ‘recipe’ to the &lt;a href="https://github.com/melpa/melpa"&gt;melpa git repository&lt;/a&gt; by following the instructions.&lt;/p&gt;
+&lt;p&gt;They also have a few requirements that you need to adhere to:  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Your functions and variables should have adequate documentation, as determined by &lt;code&gt;checkdoc&lt;/code&gt;, an emacs built-in.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Your files should follow some elisp programming conventions, which is checked using the &lt;a href="https://github.com/purcell/package-lint"&gt;package-lint&lt;/a&gt; package.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Your package should not throw any errors/warnings when byte-compiled&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now you can check all of these manually, and the &lt;a href="https://github.com/melpa/melpa/blob/master/CONTRIBUTING.org"&gt;contribution guidelines&lt;/a&gt; show exactly how to do that, but there’s a better way: using github workflows!&lt;/p&gt;
+&lt;p&gt;In fact, the melpa repository uses a similar workflow to see if your package is up to snuff.&lt;/p&gt;
+&lt;h2&gt;The setup&lt;/h2&gt;
+&lt;p&gt;We have two parts, an init.el file which sets up melpa, and the ci.yaml, which installs emacs, package-lint, and our package.&lt;/p&gt;
+&lt;p&gt;Both of these files should be in &lt;Project-dir&gt;/.github/workflows.&lt;/p&gt;
+&lt;h3&gt;init.el&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;progn&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;#39;package&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;push&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;melpa&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://melpa.org/packages/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;package-archives&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;package-initialize&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;unless&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;seq-find&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;lambda&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;melpa&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;package-desc-archive&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;cadr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;e&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;package-archive-contents&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;package-refresh-contents&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;ci.yml&lt;/h3&gt;
+&lt;p&gt;This is where the actual workflow is defined: what base image we use, installing emacs and package-lint, running package lint and byte-compilation.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;
+&lt;span class="normal"&gt;19&lt;/span&gt;
+&lt;span class="normal"&gt;20&lt;/span&gt;
+&lt;span class="normal"&gt;21&lt;/span&gt;
+&lt;span class="normal"&gt;22&lt;/span&gt;
+&lt;span class="normal"&gt;23&lt;/span&gt;
+&lt;span class="normal"&gt;24&lt;/span&gt;
+&lt;span class="normal"&gt;25&lt;/span&gt;
+&lt;span class="normal"&gt;26&lt;/span&gt;
+&lt;span class="normal"&gt;27&lt;/span&gt;
+&lt;span class="normal"&gt;28&lt;/span&gt;
+&lt;span class="normal"&gt;29&lt;/span&gt;
+&lt;span class="normal"&gt;30&lt;/span&gt;
+&lt;span class="normal"&gt;31&lt;/span&gt;
+&lt;span class="normal"&gt;32&lt;/span&gt;
+&lt;span class="normal"&gt;33&lt;/span&gt;
+&lt;span class="normal"&gt;34&lt;/span&gt;
+&lt;span class="normal"&gt;35&lt;/span&gt;
+&lt;span class="normal"&gt;36&lt;/span&gt;
+&lt;span class="normal"&gt;37&lt;/span&gt;
+&lt;span class="normal"&gt;38&lt;/span&gt;
+&lt;span class="normal"&gt;39&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;CI&lt;/span&gt;
+
+&lt;span class="nt"&gt;on&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;pull_request&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;push&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+&lt;span class="nt"&gt;jobs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;build&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;runs-on&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;ubuntu-latest&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;strategy&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;matrix&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;include&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;emacs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;27.1&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nt"&gt;ts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nt"&gt;lint&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;emacs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;snapshot&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nt"&gt;ts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nt"&gt;lint&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;steps&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;uses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;purcell/setup-emacs@master&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;with&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;version&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;${{ matrix.emacs }}&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;uses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;actions/checkout@v4&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Install package-lint&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;run&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;emacs -Q -l .github/workflows/init.el -batch&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;--eval &amp;quot;(package-install &amp;#39;package-lint)&amp;quot;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Lint flexoki-themes&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;run&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;emacs -Q -l .github/workflows/init.el -batch&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;-f package-lint-batch-and-exit&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;flexoki-themes.el&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Byte-compile&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;run&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;emacs -Q -l .github/workflows/init.el -batch&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;-L .&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;--eval &amp;quot;(setq byte-compile-error-on-warn t)&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;-f batch-byte-compile&lt;/span&gt;
+&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;*.el&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;In the &lt;code&gt;jobs.build.strategy.matrix.include&lt;/code&gt; you can add other emacs versions you want to test on, I’ve seen people use 24 a lot.&lt;/p&gt;
+&lt;p&gt;Instead of &lt;code&gt;flexoki-themes&lt;/code&gt; use your own package name, obviously.&lt;/p&gt;
+&lt;h2&gt;What to expect&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Github UI with a green tick next to the latest commit message" src="https://drewsh.com/images/github_workflow_result.avif"&gt;&lt;/p&gt;
+&lt;p&gt;The tick indicates that the workflow is successful, and a red cross would indicate that the workflow failed.
+You can click on them to see the result of the workflow.&lt;/p&gt;
+&lt;p&gt;If the workflow succeeds, your package will probably be accepted by MELPA.&lt;/p&gt;</content><category term="blogpost"/><category term="emacs"/><category term="github"/></entry><entry><title>Games I want to emulate</title><link href="https://drewsh.com/retro-games-to-play.html" rel="alternate"/><published>2024-04-19T19:35:00+05:30</published><updated>2024-05-17T19:35:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-04-19:/retro-games-to-play.html</id><summary type="html">&lt;p&gt;‘Retro’ games I want to play.&lt;/p&gt;</summary><content type="html">&lt;p&gt;I like older games a lot, I grew up playing the gameboy pokémons
+and the gameboy advance fire emblems on my cracked PSP. I did
+play a couple of actual PSP games on it as well.&lt;/p&gt;
+&lt;h2&gt;The hardware&lt;/h2&gt;
+&lt;p&gt;Hopefully a Retroid 4 pro, which is an android device with decent
+specs which should allow up to PS2 emulation. I placed an order
+for it a month ago and there’s no sign of it yet, but I’ve got my
+fingers crossed. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update 17 May 2024&lt;/strong&gt;: Looks like I won’t be getting the device after all.
+I shall be playing these on my PC instead.&lt;/p&gt;
+&lt;h2&gt;Games list&lt;/h2&gt;
+&lt;p&gt;I’m only listing games I haven’t played, and as you could probably
+tell, I haven’t played many of the classics!&lt;/p&gt;
+&lt;h3&gt;SNES&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;The Mega Man X series&lt;/strong&gt; : I’ll probably only play the first one
+  and move on to the sequels when I’m done with the other games
+  on the list&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chrono Trigger&lt;/strong&gt; : Maybe the most well-known JRPG? I find playing
+  RPGs a bit taxing due to how long they are, but I’ll make an
+  exception for this and possibly &lt;a href="https://en.wikipedia.org/wiki/EarthBound"&gt;one more&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;PlayStation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Castlevania Symphony of the Night&lt;/strong&gt; : The game that put ‘vania’ in
+  metroidvania. I played the Castlevania advance collection on my
+  switch and this is supposed to be much better, so I’m excited.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Metal Gear Solid&lt;/strong&gt; : I might play MGS2 and MGS3 later as well.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Dreamcast&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Jet Set Radio&lt;/strong&gt; : The graphics still seem to hold up today.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Crazy Taxi&lt;/strong&gt; : I played a bit of this in an arcade 10 years ago.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;GBA&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Legend of Zelda minish cap&lt;/strong&gt; : I got stuck at some point as a child
+  and could not advance the story, time for revenge.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Metroid Fusion&lt;/strong&gt; : I guess this puts the ‘metroid’ in metroidvania?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kuru Kuru Kururin&lt;/strong&gt; : Awesome name&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;N64&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Majora’s Mask&lt;/strong&gt; : I love the Legend of Zelda, how could you tell?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mario 64&lt;/strong&gt; : This would be my first 3D Mario, actually.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Crowdsourced suggestions&lt;/h2&gt;
+&lt;p&gt;From the lovely community over on the
+&lt;a href="https://emacs.ch/@crmsnbleyd/112298365477625955"&gt;fediverse&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://mirageisland.nl/users/prinsje"&gt;https://mirageisland.nl/users/prinsje&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Banjo-Kazooie (N64)&lt;/li&gt;
+&lt;li&gt;Grandia (PS1)&lt;/li&gt;
+&lt;li&gt;Kirby Super Star (SNES)&lt;/li&gt;
+&lt;li&gt;Kirby’s Dream Land 3 (SNES)&lt;/li&gt;
+&lt;li&gt;Kirby: The Crystal Shards (N64)&lt;/li&gt;
+&lt;li&gt;Knuckles Chaotix (32X)&lt;/li&gt;
+&lt;li&gt;NIGHTS into Dreams (Sega Saturn)&lt;/li&gt;
+&lt;li&gt;Pokemon Puzzle Challenge (GBC)&lt;/li&gt;
+&lt;li&gt;Sonic CD (Sega CD)&lt;/li&gt;
+&lt;li&gt;Sonic R (Sega Saturn)&lt;/li&gt;
+&lt;li&gt;Sonic Spinball (Sega Genesis)&lt;/li&gt;
+&lt;li&gt;The Pokémon Stadium games (N64)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="https://emacs.ch/@yeti"&gt;https://emacs.ch/@yeti&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Any Leo Cristopherson game (TRS-80)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="https://social.sdf.org/@notptr"&gt;https://social.sdf.org/@notptr&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Quest 64 (N64, duh)&lt;/li&gt;
+&lt;li&gt;Jetpack (DOS)&lt;/li&gt;
+&lt;/ul&gt;</content><category term="blogpost"/><category term="short"/></entry><entry><title>Participating in the Spring Lisp Game jam, why and how</title><link href="https://drewsh.com/lisp-game-jam.html" rel="alternate"/><published>2024-04-17T11:42:00+05:30</published><updated>2024-05-16T19:08:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-04-17:/lisp-game-jam.html</id><summary type="html">&lt;p&gt;My tech stack for the lisp game jam, why I’m using it, and how
+I’m planning to distribute my game.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://lobste.rs/s/qomtd5/participating_spring_lisp_game_jam_why"&gt;Discussion at lobste.rs&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Please participate in the jam!&lt;/h2&gt;
+&lt;p&gt;If you’re on this webpage, there’s a good chance you’re already into lisp,
+or that the new notation will not scare you. The link to the jam:
+&lt;a href="https://itch.io/jam/spring-lisp-game-jam-2024"&gt;https://itch.io/jam/spring-lisp-game-jam-2024&lt;/a&gt;. 
+Read ahead if you’re interested in participating, I have some game engine options you might like!&lt;/p&gt;
+&lt;p&gt;&lt;img alt="A happy goblin and an owl looking at multicolored text that reads “Lisp Game Jam”" src="/images/spring_game_jam_spritely.avif"&gt;  &lt;/p&gt;
+&lt;center&gt;
+&lt;i&gt;
+Image by the &lt;a href="https://spritely.institute"&gt;Spritely Institute&lt;/a&gt;
+&lt;/i&gt;
+&lt;/center&gt;
+&lt;h2&gt;Why I love the concept&lt;/h2&gt;
+&lt;p&gt;I’m a big lisp-head, with my longtime editor being emacs, and my current
+preferred language for doing tasks being Common Lisp.
+This is why I was chuffed to hear about the tradition of Lisp Game Jams,
+even though I’ve never made a game before.&lt;/p&gt;
+&lt;h2&gt;What should you use to participate?&lt;/h2&gt;
+&lt;p&gt;For someone who has &lt;em&gt;never&lt;/em&gt; made a video game, it’s best to use a game
+engine/library to handle the nitty-gritty of game code and just focus on the
+ideas you are bringing. &lt;/p&gt;
+&lt;h3&gt;Game engines and libraries for classic lisps&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://shirakumo.github.io/trial"&gt;Trial&lt;/a&gt;, a Common Lisp game engine
+  that has already been used to make a commercial game, &lt;a href="https://store.steampowered.com/app/1261430/Kandria/"&gt;Kandria&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://dthompson.us/projects/chickadee.html"&gt;Chickadee&lt;/a&gt;, 
+  a game development library (as the 
+  &lt;a href="https://lobste.rs/s/qomtd5/participating_spring_lisp_game_jam_why#c_fujjmc"&gt;author clarified&lt;/a&gt;)
+  for Guile Scheme, a language that would be familiar to users of the
+  Guix package manager.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I like both of these options, but at first I dismissed them because there
+is no way to distribute these games on the web in the form of HTML5 games.&lt;/p&gt;
+&lt;h3&gt;Godot&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://godotengine.org/"&gt;Godot&lt;/a&gt; is a classic game engine with a GUI,
+sort of reminiscent of something like Unity or Unreal, but much better
+because it’s free and open source. It supports a lot of languages, one
+of which is a native lisp called &lt;a href="https://github.com/Mercerenies/gdlisp"&gt;GDLisp&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Use this if you like Graphical interfaces, and would love to have
+way more tutorials than all of the other options combined.&lt;/p&gt;
+&lt;h3&gt;Javascript game frameworks&lt;/h3&gt;
+&lt;p&gt;There are two ways to compile a lisp to JavaScript,
+&lt;a href="https://clojurescript.org/"&gt;ClojureScript&lt;/a&gt;,
+and &lt;a href="https://parenscript.common-lisp.dev/"&gt;Parenscript&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;ClojureScript is the whole clojure language that compiles to javascript,
+and has lispy bindings available to a lot of javascript libraries. I found
+the setup a bit compilcated, but it’s a great choice. More information about
+a setup here: &lt;a href="https://github.com/trevordilley/phaser-cljs-template"&gt;https://github.com/trevordilley/phaser-cljs-template&lt;/a&gt; (it is
+a bit out-dated so you can shoot me an email on clojure @ this domain if you
+want help)&lt;/p&gt;
+&lt;p&gt;Parenscript is a common lisp library that allows you to use macros to
+generate javascript. In this method we would just write lisp with an eye
+on the javascript being generated as we go, as this is not a language
+proper. The mailing list is incredibly helpful: &lt;a href="https://common-lisp.net/cgi-bin/mailman/listinfo/parenscript-devel"&gt;https://common-lisp.net/cgi-bin/mailman/listinfo/parenscript-devel&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Alright, now that we know how to use lisps to generate javascript, here’s
+a couple libraries you can use:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://phaser.io"&gt;https://phaser.io&lt;/a&gt;: Seems to be the most popular JS game library,
+  and has a module available for Clojure&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://melonjs.org/"&gt;https://melonjs.org/&lt;/a&gt;: Has a bit simpler of an API, but is not as
+  popular.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Lua land&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://fennel-lang.org/"&gt;Fennel&lt;/a&gt; is a lispy layer
+over Lua that is compiled out to plain Lua.
+I don’t particularly like it because it is a very leaky
+abstraction exactly due to the fact that it does not have a runtime,
+you sort of have to learn Lua to actually use it. This limitation comes
+with a great benefit though, you can use it wherever you can use lua.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://www.love2d.org/"&gt;Love2D&lt;/a&gt;, a 2D (duh) game engine that uses
+  Lua, and games made here can be compiled to absolutely any platform,
+  including the browser, which makes it a great choice for game jams,
+  where you want as many people to be able to play your game as possible.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://tic80.com/"&gt;TIC-80&lt;/a&gt;, a fantasy console that is a self-contained
+  application for making games, with a built-in code editor,
+  audio workstation, map, and sprite editor. Probably the best choice
+  for making a tiny game and supports fennel as well. The only possible
+  drawback might be the retro limitations on code size, sound channels,
+  4-bit colour, etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is what I would recommend if you are fine with Lua.&lt;/p&gt;
+&lt;p&gt;Edit from June 2025: I quite like fennel now, and in fact, I &lt;a href="https://nebunez.itch.io/slugger"&gt;wrote a game in it!&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Web with Scheme&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://spritely.institute/hoot/"&gt;Guile Hoot&lt;/a&gt; is a toolchain that compiles scheme to webassembly.
+Last year, two games for the lisp game jam were using this stack, using an earlier version and loads of boilerplate.
+This year, all of that work is done for you already, using the HTML5 Canvas API for drawing things to the screen.
+Learn more about it at spritely’s blog post: &lt;a href="https://spritely.institute/news/make-a-game-with-hoot-for-the-lisp-game-jam.html"&gt;https://spritely.institute/news/make-a-game-with-hoot-for-the-lisp-game-jam.html&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Dark horse: Python!?&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.pygame.org/wiki/about"&gt;PyGame&lt;/a&gt; is a very simple game library
+that runs absolutely anywhere you could run python. I use python for
+my dayjob, and I love it very much. &lt;/p&gt;
+&lt;p&gt;Coming to how to use it with lisp, &lt;a href="https://hylang.org/"&gt;Hy&lt;/a&gt; is a lisp
+that runs on python and can use any python library. It feels much nicer
+to use than Fennel, and any leakiness in the implementation is not an issue
+for me, since I’m quite good at python.&lt;/p&gt;
+&lt;center&gt;
+&lt;img src="https://drewsh.com/images/cuddles.avif" alt="Cuddles, the Hylang mascot, a squid"&gt;
+&lt;br&gt;&lt;em&gt;&lt;strong&gt;A cute mascot is a plus!&lt;/strong&gt;&lt;/em&gt;
+&lt;/center&gt;
+
+&lt;p&gt;There are many ways to bundle python scripts into self contained 
+applications, which need you to have the platforms on hand to actually
+do it for different operating systems, which is also not an issue for
+me since I have access to all three major operating systems.&lt;/p&gt;
+&lt;p&gt;The issue with this is you can’t compile for the web without uploading
+a whole python interpreter using WebAssembly, which sounds like
+something I do not want to do.&lt;/p&gt;
+&lt;h2&gt;Other useful tools:&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.mapeditor.org/"&gt;Tiled&lt;/a&gt;, a map editor natively supported by
+  many engines&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://libresprite.github.io/#!/"&gt;LibreSprite&lt;/a&gt;, a great sprite editor.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://milkytracker.org/"&gt;Milkytracker&lt;/a&gt;, an old school audio
+  workstation.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="blogpost"/><category term="lisp"/><category term="python"/></entry><entry><title>How to act on command output containing spaces in Bash loops</title><link href="https://drewsh.com/working-on-input-with-spaces-bash.html" rel="alternate"/><published>2024-02-27T14:08:00+05:30</published><updated>2025-12-26T19:23:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-02-27:/working-on-input-with-spaces-bash.html</id><summary type="html">&lt;p&gt;A fool-proof way to write loops in bash that don't split input on spaces.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Bash is weird&lt;/h2&gt;
+&lt;p&gt;Whenever you make an input in bash, it gets split into "words" based on whitespace.
+Usually, this is what you want, and it lets you write commands like&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;x&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;~/Documents&lt;span class="w"&gt; &lt;/span&gt;~/Downloads&lt;span class="w"&gt; &lt;/span&gt;~/Photos
+&lt;span class="k"&gt;do&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;du&lt;span class="w"&gt; &lt;/span&gt;-h&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$x&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Here, all of the filenames given are interpreted separately.&lt;br&gt;
+If in case you want to pass the name of a string with does have spaces in it,
+you would usually quote it with single quotes, which makes sure the shell does
+not process it and takes it literally.&lt;br&gt;
+For example 'My Photos' is the name of a single directory and not two directories.
+However, the &lt;code&gt;du -h $x&lt;/code&gt; command will then try to access them separately and complain
+about 'My' and 'Photos' not existing!&lt;/p&gt;
+&lt;h2&gt;Strings with spaces in them are sometimes messed up&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;test&lt;/span&gt;
+touch&lt;span class="w"&gt; &lt;/span&gt;test/&lt;span class="s1"&gt;&amp;#39;this has spaces&amp;#39;&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;x&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;ls&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;test&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;do&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;file&lt;span class="w"&gt; &lt;/span&gt;test/&lt;span class="nv"&gt;$x&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You will get the output&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;test/this:    cannot open `test/this&amp;#39; (No such file or directory)
+test/has:     cannot open `test/has&amp;#39; (No such file or directory)
+test/spaces:  cannot open `test/spaces&amp;#39; (No such file or directory)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can see that the loop tries to take each space-delimited "word" as an item
+of the loop, which is not what we actually want. We want to treat each line of
+ls as an item, and not break up each individual line.&lt;/p&gt;
+&lt;p&gt;Just to be clear, I'd personally use &lt;a href="https://en.wikipedia.org/wiki/Xargs"&gt;&lt;code&gt;xargs&lt;/code&gt;&lt;/a&gt; and do the rather silly looking&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ls&lt;span class="w"&gt; &lt;/span&gt;~/test/&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;tr&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\n&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\0&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;xargs&lt;span class="w"&gt; &lt;/span&gt;-0&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;printf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;test/%s\0&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;xargs&lt;span class="w"&gt; &lt;/span&gt;-0&lt;span class="w"&gt; &lt;/span&gt;file
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;my &lt;code&gt;xargs&lt;/code&gt; does not seem to have the &lt;code&gt;--delimiter&lt;/code&gt; flag, so I had to use the
+&lt;code&gt;-0&lt;/code&gt; flag that takes the null byte as separator. &lt;/p&gt;
+&lt;h2&gt;How to control the splitting&lt;/h2&gt;
+&lt;p&gt;Bash uses a special variable called &lt;code&gt;$IFS&lt;/code&gt; which
+controls how bash splits strings.&lt;/p&gt;
+&lt;p&gt;Its default value contains the space character,
+tab character and the newline character.&lt;/p&gt;
+&lt;p&gt;You can edit it to only be the newline character
+if you wish to only split on newlines 
+(like for example in the case of ls, which gives each file/dir its own line)&lt;/p&gt;
+&lt;p&gt;To make more resilient scripts, be sure to store the previous value of &lt;code&gt;$IFS&lt;/code&gt;
+somewhere before changing it, and revert back to that value when you're done.
+This will prevent nasty and confusing bugs.&lt;/p&gt;
+&lt;h2&gt;Putting the pieces together&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Set IFS to newline to properly handle filenames with spaces&lt;/span&gt;
+&lt;span class="nv"&gt;OLD_IFS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$IFS&lt;/span&gt;
+&lt;span class="nv"&gt;IFS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;$&amp;#39;\n&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Loop over each file in the directory&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;file&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;ls&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;do&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;test&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-f&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$file&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Processing file: &lt;/span&gt;&lt;span class="nv"&gt;$file&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+
+&lt;span class="c1"&gt;# revert to old IFS&lt;/span&gt;
+&lt;span class="nv"&gt;IFS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$OLD_IFS&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;p&gt;I still prefer the &lt;code&gt;xargs&lt;/code&gt; solution.&lt;/p&gt;
+&lt;p&gt;EDIT: Using &lt;code&gt;ls&lt;/code&gt; for looping through directory members is actually not a great idea. Filenames &lt;em&gt;may&lt;/em&gt; contain newlines, after all, and there is a much better solution given on this &lt;a href="https://mywiki.wooledge.org/BashPitfalls#for_f_in_.24.28ls_.2A.mp3.29:~:text=So%2C%20what%27s%20the%20right%20way%20to%20do%20it"&gt;wiki page of bash pitfalls&lt;/a&gt;&lt;/p&gt;</content><category term="blogpost"/><category term="unix"/><category term="linux"/><category term="shell"/><category term="short"/></entry><entry><title>When you might want classes</title><link href="https://drewsh.com/state-without-classes.html" rel="alternate"/><published>2024-02-19T11:29:00+05:30</published><updated>2024-02-19T11:29:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-02-19:/state-without-classes.html</id><summary type="html">&lt;p&gt;Sometimes it's much easier to work in inherently stateful design spaces with an Object-Oriented-first design approach.&lt;/p&gt;</summary><content type="html">&lt;p&gt;The &lt;a href="https://craftinginterpreters.com/contents.html"&gt;web version of the crafting interpreters book&lt;/a&gt; is available to read for free.
+It uses Java, a popular Object-Oriented language to explain the implementation of an interpreter
+for a simple language. It does not actually do so in a language-agnostic way
+(which would obviously be pretty hard to do), thus using an Object-Oriented approach.
+The language I am using to go through it, Common Lisp,
+while having &lt;a href="https://lispcookbook.github.io/cl-cookbook/clos.html"&gt;an impressive implementation of object-oriented programming&lt;/a&gt;,
+does not really prefer any programming style in particular.&lt;/p&gt;
+&lt;p&gt;I would not like to pull in classes till they are absolutely needed
+(and they definitely might at some point when creating an interpreter),
+but the book adds features as it goes along, increasing the complexity of the implementation slowly.&lt;/p&gt;
+&lt;p&gt;For example, one of the first pieces of code uses the Java Scanner class to split a line of input into
+tokens. This usually occurs on-demand, with the user calling scanner.token() to get the next token.
+The code in question just splits it into an array of tokens, sidestepping any complexity mentioned here,
+but I accidentally made things harder for myself by overlooking that.&lt;/p&gt;
+&lt;p&gt;Anyway, the &lt;code&gt;scanner&lt;/code&gt; class will have the string in question stored in some member variable, with
+a pointer to the current location in the generating process. All of this is hidden from the caller,
+so that it's just a simple call to get the next token.&lt;/p&gt;
+&lt;p&gt;We do not have this luxury in a non-OO environment, and have to handle everything ourselves.
+In this case, the state space is modeled entirely through function signatures, somewhat like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;nextToken&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;::&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;Char&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Where the first &lt;code&gt;String&lt;/code&gt; is the input, &lt;code&gt;Char&lt;/code&gt; is the delimiter,
+and the output tuple represenst the output token, and the rest of the string.&lt;/p&gt;
+&lt;p&gt;What was being handled by a class is now passed to any calling functions,
+which are free to do whatever they wish with the output, even discard it completely.&lt;/p&gt;
+&lt;p&gt;This &lt;em&gt;might&lt;/em&gt; lead to unintended consequences, so the OO approach can be considered safer.&lt;/p&gt;
+&lt;p&gt;It's a bit tedious to implement, however.&lt;/p&gt;</content><category term="blogpost"/><category term="short"/></entry><entry><title>Write your first drafts with pen and paper (...if you are able to, at least)</title><link href="https://drewsh.com/writing-with-pen-and-paper.html" rel="alternate"/><published>2024-02-10T18:15:00+05:30</published><updated>2026-01-26T10:53:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-02-10:/writing-with-pen-and-paper.html</id><summary type="html">&lt;p&gt;I wrote this blog post first on paper, and had a lot of fun doing it. Maybe you'd like to try it as well.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Why would you ever do this?&lt;/h2&gt;
+&lt;p&gt;If the unending deluge of online content is stopping you from undertaking creative activities, insulating yourself from them might make you more productive.&lt;/p&gt;
+&lt;p&gt;At least, that is what &lt;a href="https://getfreewrite.com/"&gt;Freewrite&lt;/a&gt; says, the creator of many devices and
+online platforms that help you write in a low-noise environment and then export
+it to your editing software. The freewrite typewriters purport to minimize
+distractions and let you focus on getting your ideas out on the medium as fast as possible. &lt;/p&gt;
+&lt;p&gt;The issue for me is that they also cost a lot,
+more than many laptops, which I cannot abide.
+To me they are just a combination of a microprocessor and an LCD or e-ink screen.
+No shade to the creators, but I feel like I'm getting the same results out of
+the really fancy fountain pen and matcha green ink my partner got me,
+which looks much prettier than an 80-column monochrome screen,
+and is about 1/50&lt;sup&gt;th&lt;/sup&gt; of the cost to boot.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="freewrite alpha, writing tool with a small LCD screen and a keyboard in a tiny form factor" src="https://drewsh.com/images/small_freewrite.webp"&gt;&lt;br&gt;
+&lt;strong&gt;&lt;em&gt;The cheapest freewrite device stands at USD 350&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;With this setup, just like with a Freewrite, there is nothing to distract you while you write,
+no notifications, no way to accidentally switch desktops
+and end up on an open browser window that has some useless website open which has nothing to do with what you're writing.&lt;/p&gt;
+&lt;p&gt;There might be less pressure to get everything perfect based on how you view
+the medium of handwriting, for instance if it feels less permanent to you,
+less &lt;u&gt;final&lt;/u&gt;&lt;/p&gt;
+&lt;h3&gt;How do I write &lt;strong&gt;bold&lt;/strong&gt; text on paper?&lt;/h3&gt;
+&lt;p&gt;You can use light-weight markup to indicate how you want your text to be styled,
+like *this* for bold. This corresponds to how I write my blog anyway, but might
+be a bit foreign to users of editors such as LibreOffice Writer. Or, you could simply make your letters thicker.&lt;/p&gt;
+&lt;h2&gt;The downsides&lt;/h2&gt;
+&lt;h3&gt;Typing everything wholesale, after you've already written it down&lt;/h3&gt;
+&lt;p&gt;You have to get your words to other people in some way, and the most common way to do that is to use a computer.
+If you've started by writing everything out on paper, you will now have to type out everything you've written
+a second time, just to get it in a usable medium. You could use Optical Character Recognition, which tries its
+best to digitize everything you've written by scanning your words, but your results will depend on how legible
+your handwriting is in the first place.&lt;/p&gt;
+&lt;h3&gt;You're probably going to be slower&lt;/h3&gt;
+&lt;p&gt;Most people type much faster than they can write, on account of typing using both hands (ideally). It might get
+a smidge frustrating having to slow down your thoughts for the benefit your pen. You could try learning how to
+write &lt;a href="https://en.wikipedia.org/wiki/Teeline_Shorthand"&gt;shorthand&lt;/a&gt;, but personally, that seems like a waste of time to me.
+Experienced practitioners can get up to 100WPM using the Teeline shorthand system linked above.&lt;/p&gt;
+&lt;h3&gt;Some people have horrendous writing&lt;/h3&gt;
+&lt;p&gt;Your handwriting needs to be readable, at least by you. I went to school with a few people who could not read
+what they'd written in haste just days ago. Make sure this isn't you.&lt;/p&gt;
+&lt;h2&gt;Prior art&lt;/h2&gt;
+&lt;p&gt;Of course, I am not the first person to ever think of writing drafts down on paper.
+Here are a few articles I've seen online about the topic, for your benefit.
+Endorsements from published writers might carry more weight as well.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://web.archive.org/web/20221208163319/https://followthatstory.substack.com/p/why-i-handwrite-first-drafts-and"&gt;Why I Handwrite First Drafts (and why you might consider it), by Diana Zahuranec&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.bryndonovan.com/2020/09/16/the-benefits-of-writing-a-novel-by-hand/"&gt;The benefits of writing a novel by hand, by Bryn Donovan&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;A confession&lt;/h2&gt;
+&lt;p&gt;While I thought I had the meat of the article all set when I was done writing it on paper,
+in the process of transferring it to Emacs, I felt like adding more stuff, reordering headings, and the sort.
+I suppose it adds up to more than simply an editing phase.
+There is also the fact that while editing for a hyper-textual medium you need to
+get references and outbound links to make your document livelier.
+This requires you to surf websites anyway, and maybe you'll find interesting things you'd want to add to your writing.
+It might be beneficial to integrate this earlier in your writing process,
+which the distraction-free clique says you &lt;em&gt;shouldn’t&lt;/em&gt; do.&lt;/p&gt;
+&lt;!-- Notes --&gt;</content><category term="blogpost"/><category term="blogging"/><category term="writing"/></entry><entry><title>Reading CBZ Manga in emacs</title><link href="https://drewsh.com/reading-naruto-in-emacs.html" rel="alternate"/><published>2024-02-01T09:11:00+05:30</published><updated>2024-02-01T09:11:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-02-01:/reading-naruto-in-emacs.html</id><summary type="html">&lt;p&gt;An excuse to write more emacs lisp, saving seconds of effort on my part in my
+quest to read all of "Naruto".&lt;/p&gt;</summary><content type="html">&lt;p&gt;After purchasing a physical copy of the popular Naruto manga's volume 3, I set out
+to read the rest of the chapters until the end. I've obtained an archive of CBZs
+(basically a zip file of images representing comic book pages).&lt;/p&gt;
+&lt;p&gt;Somehow, on trying to open them in Calibre, it tries to convert the CBZs to... CBZ?
+This seems to lead to an infinite loop so you can't really read them directly.
+Resigned to my fate, I loaded them 10 at a time to calibre and converted them to PDFs.
+This is really manual and sort of boring, so I set out to discover something better.&lt;/p&gt;
+&lt;h2&gt;Do it in Emacs!&lt;/h2&gt;
+&lt;p&gt;I already read PDFs and EPUBs in emacs 
+(epubs via &lt;a href="https://depp.brause.cc/nov.el/"&gt;nov.el&lt;/a&gt;, which is a really good name),
+so I figured why not just try and find a package to read comics in it as well.&lt;/p&gt;
+&lt;p&gt;Turns out the built-in doc-view mode natively supports CBRs by opening each as an archive
+and allowing the reader to go the the next or previous image via &lt;code&gt;n&lt;/code&gt; or &lt;code&gt;p&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Since it's basically images nested deep in a few directories, going to the next chapter
+is not the greatest UX, so I just automated it in a function since the chapters are numbered
+predictably (000-500, left padded with 0s).&lt;/p&gt;
+&lt;h2&gt;Emacs Lisp!&lt;/h2&gt;
+&lt;p&gt;You could say I am rather fond of &lt;a href="https://drewsh.com/monkeytype-emacs-workflow.html"&gt;writing emacs-lisp&lt;/a&gt;, so this was a joy, writing something for my specific needs only.
+This only works while you're already reading a chapter!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;next-comic&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;curr-img&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;buffer-file-name&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;curr-cbz&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;car&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;split-string&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;curr-img&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;:&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;;; buffer has the name file:001.png for instance&lt;/span&gt;
+&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;curr-volume&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string-to-number&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;file-name-base&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;file-name-sans-extension&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;curr-cbz&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;volumes-dir&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;file-name-directory&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;curr-img&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;next-file&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;expand-file-name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;%03d.cbz&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;curr-volume&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;;; pad to 3 digits&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="nv"&gt;volumes-dir&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;kill-buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;find-file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;next-file&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;bind-key&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;kbd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;C-c n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;#39;next-comic&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;#39;image-mode-map&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;;; nifty binding&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blogpost"/><category term="emacs"/><category term="reading"/></entry><entry><title>Trying out Meow, an emacs-native modal editing package</title><link href="https://drewsh.com/trying-out-meow.html" rel="alternate"/><published>2024-01-30T19:00:00+05:30</published><updated>2024-01-31T07:00:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-01-30:/trying-out-meow.html</id><summary type="html">&lt;p&gt;Pros and cons of the meow package from an avid evil-mode user.&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've used modal editing almost as long as I've been using Emacs,
+thanks to the wonderful &lt;a href="https://github.com/doomemacs/doomemacs"&gt;Doom Emacs&lt;/a&gt; 
+starter kit, which aims to be
+fast and also for some reason be enticing to vim users.&lt;/p&gt;
+&lt;p&gt;I abandoned it due to it constantly breaking on me in arcane ways,
+and not exactly enjoying the fact that it uses custom macros and commands
+to set everything up. I still found what it offered appealing, hence
+manually adding parts of doom emacs into my configuration piecemeal,
+like vi bindings and the doom modeline. 
+For a while I also used its splash screen via 
+&lt;a href="https://github.com/emacs-dashboard/emacs-dashboard"&gt;emacs-dashboard&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;What I like&lt;/h2&gt;
+&lt;p&gt;The visual feedback is great, especially in KEYPAD mode, which actually
+shows you what commands are bound to which keys.&lt;/p&gt;
+&lt;p&gt;Doom-modeline shows the current mode in the modeline just like it does
+for evil mode, which is great.&lt;/p&gt;
+&lt;p&gt;The tutorial is much better than that of &lt;a href="https://helix-editor.com/"&gt;Helix&lt;/a&gt;,
+a batteries-included terminal
+editor that is similarly based on Kakuone-style editing. 
+In fact, if helix actually has the features of meow that I use,
+I might ditch vim entirely.&lt;/p&gt;
+&lt;p&gt;I don't have to specifically bind commands that I want to use
+with evil bindings. I didn't want to do that earlier,
+my list of evil-specific bindings already being too long,
+leading me to leave a lot of commands with vanilla emacs
+bindings like &lt;code&gt;C-x b&lt;/code&gt; to change buffers and so on.
+With meow, there are shortcuts to use such commands
+without holding a modifier key down, which is nifty.&lt;/p&gt;
+&lt;h2&gt;My gripes&lt;/h2&gt;
+&lt;p&gt;The composability of commands does not seem to be that great.
+For example, in evil-mode if you use the delete verb &lt;code&gt;d&lt;/code&gt;,
+any command you then proceed to do will be considered as the 'noun'.
+For example, pressing &lt;code&gt;d&lt;/code&gt; then &lt;code&gt;M-x forward-sexp&lt;/code&gt; will delete the next
+S-expression. If you wish to do the same thing with meow, you will have to
+start selecting with &lt;code&gt;C-&amp;lt;SPC&amp;gt;&lt;/code&gt;, do &lt;code&gt;M-x forward-sexp&lt;/code&gt;, and only &lt;strong&gt;then&lt;/strong&gt;
+delete the selection with &lt;code&gt;s&lt;/code&gt;. This is a bit longer, which is not the end
+of the world, but still annoying.&lt;/p&gt;
+&lt;p&gt;I have been really used to &lt;a href="https://github.com/emacs-evil/evil-surround"&gt;evil-surround&lt;/a&gt; which I now need to find a replacement for.&lt;/p&gt;
+&lt;p&gt;There seems to be no shortcut to use Ctrl+&amp;lt;key&amp;gt; combinations 
+without chording, which I can get used to, I suppose.&lt;/p&gt;
+&lt;h2&gt;Will I continue to use it?&lt;/h2&gt;
+&lt;p&gt;Yep, I love it. It makes a lot of sense to continue using it,
+especially with the extra features it bakes in compared to plain old evil,
+and the fact that you don't have to especially add bindings to every single
+function you want to use.&lt;/p&gt;</content><category term="blogpost"/><category term="emacs"/></entry></feed>

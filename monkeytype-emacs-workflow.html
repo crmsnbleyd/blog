@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://drewsh.com/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://drewsh.com/theme/pygments/inkpot.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light)"
+          href="https://drewsh.com/theme/pygments/friendly.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/solid.css">
+
+
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+
+
+  <link href="https://drewsh.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Drew's blogsite Atom">
+
+
+
+
+
+
+
+
+
+<meta name="author" content="Drew Jose">
+<meta name="description" content="Getting the words to use monkeytype mode (typing test) in Emacs.">
+<meta name="keywords" content="short, emacs">
+
+
+  <meta property="og:site_name" content="Drew's blogsite">
+  <meta property="og:title" content="The touch typing test text editor">
+  <meta property="og:description" content="Getting the words to use monkeytype mode (typing test) in Emacs.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://drewsh.com/monkeytype-emacs-workflow.html">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2024-01-11 16:53:00+05:30">
+  <meta property="article:modified_time" content="2024-01-11 16:53:00+05:30">
+  <meta property="article:author" content="https://drewsh.com/author/drew-jose.html">
+  <meta property="article:section" content="blogpost">
+  <meta property="article:tag" content="short">
+  <meta property="article:tag" content="emacs">
+  <meta property="og:image" content="https://drewsh.com/images/monkeytype-emacs.avif">
+  <meta name="fediverse:creator" content="@crmsnbleyd@hachyderm.io">
+
+  <title>The touch typing test text editor | Drew's blogsite</title>
+
+
+</head>
+<body >
+
+<aside>
+  <div>
+    <a href="https://drewsh.com/">
+      <img src="/images/emacs.jpg" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://drewsh.com/"></a>
+    </h1>
+
+    <p class="site-subtitle">These are public thoughts</p>
+
+
+    <nav>
+      <ul class="list">
+
+
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/interesting-links.html">
+                Bookmarks
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/buttons.html">
+                Buttons
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/newsletter.html">
+                Newsletter
+              </a>
+            </li>
+
+          <li>
+            <a target="_self" href="https://drewsh.com/category/toot" >Short&nbspposts</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-mastodon"
+	   aria-label="link to mastodon"
+rel="me"           href="https://hachyderm.io/@crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-mastodon">
+	  </span>
+	  <span class="visually-hidden">
+	    mastodon
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-git"
+	   aria-label="link to git"
+           href="https://git.drewsh.com/crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-git">
+	  </span>
+	  <span class="visually-hidden">
+	    git
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-rss"
+	   aria-label="link to rss"
+           href="https://drewsh.com/feeds/all.atom.xml">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-solid fa-rss">
+	  </span>
+	  <span class="visually-hidden">
+	    rss
+	  </span>
+        </a>
+      </li>
+    </ul>
+    <span class="theme-switch-links">
+      <br>
+    Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+    </span>
+  <script id="dark-theme-script"
+          src="https://drewsh.com/theme/dark-theme/dark-theme.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+  </div>
+
+
+</aside>
+  <main>
+
+<nav>
+  <a href="https://drewsh.com/">Home</a>
+
+  <a href="/archives.html">Archives</a>
+  <a href="/categories.html">Categories</a>
+  <a href="/tags.html">Tags</a>
+
+  <a href="https://drewsh.com/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="post">
+  <header>
+      
+    <h1 id="monkeytype-emacs-workflow">The touch typing test text editor</h1>
+    <p>
+      Posted on Jan 11, 2024 in <a href="https://drewsh.com/category/blogpost.html">blogpost</a>
+
+    </p>
+  </header>
+
+
+  <div class="post-content">
+    <p>I've somewhat arbritarily decided to finally learn how to touch-type.
+There's a ton of typing tests online, most popular of which is <a href="https://monkeytype.com/">Monkeytype</a>.
+I would happily use that, but this is such a simple want, it's quite natural to wonder if this can be done in a terminal,
+or indeed, within Emacs.</p>
+<p>There's the gorgeous <a href="https://github.com/jpablobr/emacs-monkeytype">emacs-monkeytype</a> package which fits my needs and is very customizable, however, it does not come with any words. You're supposed to simply type the words that you wish to use yourself or have files ready with a few words you want, I suppose.</p>
+<p>At first I made a silly <a href="https://drewsh.com/fish-just-works.html">fish</a> script which was still fast enough and so I did not care about the horrible time complexity. I share it here for comedic purposes (it scans through possibly all of the file 50 times).</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> i <span class="k">in</span> <span class="o">(</span>seq <span class="m">1</span> 50<span class="o">)</span><span class="p">;</span> sed <span class="s2">&quot;</span><span class="nv">$(</span><span class="s2">random 1 235976)!d&quot;</span> words <span class="o">|</span> tr <span class="s2">&quot;\n&quot;</span> <span class="s2">&quot; &quot;</span><span class="o">|</span> <span class="k">echo</span><span class="p">;</span> <span class="k">end</span><span class="p">;</span> <span class="k">echo</span>
+</code></pre></div>
+
+<p>You can clear scratch, call this with a prefix argument, and have it entered into a buffer, then call <code>monkeytype-buffer</code>.</p>
+<h2>Emacs lisp solution</h2>
+<p>Get a list of words, preferably more than 100 (got it from <a href="https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists/English/Wikipedia_(2016)">wikitionary</a>).</p>
+<p>Put this function in a site in your site-lisp:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">defun</span><span class="w"> </span><span class="nv">functions/monkeytype-load-and-start</span><span class="w"> </span><span class="p">(</span><span class="nv">arg</span><span class="w"> </span><span class="kp">&amp;optional</span><span class="w"> </span><span class="nv">file-name</span><span class="w"> </span><span class="nv">num-words</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="k">interactive</span><span class="w"> </span><span class="s">&quot;p&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="nb">when</span><span class="w"> </span><span class="p">(</span><span class="nf">/=</span><span class="w"> </span><span class="nv">arg</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nb">setf</span><span class="w"> </span><span class="nv">file-name</span><span class="w"> </span><span class="p">(</span><span class="nv">read-file-name</span><span class="w"> </span><span class="s">&quot;Insert name of file with words: &quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="p">(</span><span class="nb">setf</span><span class="w"> </span><span class="nv">num-words</span><span class="w"> </span><span class="p">(</span><span class="nv">read-number</span><span class="w"> </span><span class="s">&quot;Insert number of words you require: &quot;</span><span class="w"> </span><span class="mi">50</span><span class="p">)))</span>
+
+<span class="w">    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">res</span><span class="w"> </span><span class="o">&#39;</span><span class="p">())</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">final-buffer</span><span class="w"> </span><span class="s">&quot;*Monkeytype-words*&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">true-num-words</span><span class="w"> </span><span class="p">(</span><span class="k">or</span><span class="w"> </span><span class="nv">num-words</span><span class="w"> </span><span class="mi">50</span><span class="p">))</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">num-buffer-words</span><span class="w"> </span><span class="no">nil</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">indices</span><span class="w"> </span><span class="no">nil</span><span class="p">))</span>
+
+<span class="w">        </span><span class="p">(</span><span class="nb">with-temp-buffer</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">insert-file-contents</span>
+<span class="w">        </span><span class="p">(</span><span class="k">or</span><span class="w"> </span><span class="nv">file-name</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">expand-file-name</span>
+<span class="w">            </span><span class="s">&quot;wikipedia2k.txt&quot;</span>
+<span class="w">            </span><span class="s">&quot;~/.monkeytype&quot;</span><span class="p">)))</span>
+
+<span class="w">        </span><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">num-buffer-words</span>
+<span class="w">            </span><span class="p">(</span><span class="nv">count-words</span>
+<span class="w">            </span><span class="p">(</span><span class="nf">point-min</span><span class="p">)</span>
+<span class="w">            </span><span class="p">(</span><span class="nf">point-max</span><span class="p">)))</span>
+<span class="w">        </span><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">indices</span>
+<span class="w">            </span><span class="p">(</span><span class="nf">sort</span>
+<span class="w">            </span><span class="p">(</span><span class="nb">cl-loop</span><span class="w"> </span><span class="nv">for</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="nv">from</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="nv">below</span><span class="w"> </span><span class="nv">true-num-words</span>
+<span class="w">                </span><span class="nv">collect</span>
+<span class="w">                </span><span class="p">(</span><span class="nf">random</span><span class="w"> </span><span class="p">(</span><span class="nf">-</span><span class="w"> </span><span class="nv">num-buffer-words</span><span class="w"> </span><span class="nv">i</span><span class="p">)))</span>
+<span class="w">            </span><span class="ss">&#39;&lt;</span><span class="p">))</span>
+<span class="w">        </span><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">res</span>
+<span class="w">            </span><span class="p">(</span><span class="nb">cl-loop</span><span class="w"> </span><span class="nv">repeat</span><span class="w"> </span><span class="nv">true-num-words</span>
+<span class="w">                </span><span class="nv">for</span><span class="w"> </span><span class="nv">idx</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">indices</span>
+<span class="w">                </span><span class="nv">collect</span>
+<span class="w">                </span><span class="p">(</span><span class="k">progn</span>
+<span class="w">                </span><span class="p">(</span><span class="nf">goto-char</span><span class="w"> </span><span class="p">(</span><span class="nf">point-min</span><span class="p">))</span>
+<span class="w">                </span><span class="p">(</span><span class="nf">forward-word</span><span class="w"> </span><span class="nv">idx</span><span class="p">)</span>
+<span class="w">                </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">((</span><span class="nv">word-to-return</span>
+<span class="w">                    </span><span class="p">(</span><span class="nv">string-trim</span><span class="w"> </span>
+<span class="w">                    </span><span class="p">(</span><span class="nf">buffer-substring-no-properties</span>
+<span class="w">                    </span><span class="p">(</span><span class="nf">point</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">(</span><span class="k">progn</span><span class="w"> </span><span class="p">(</span><span class="nf">forward-word</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nf">point</span><span class="p">))))))</span>
+<span class="w">                </span><span class="p">(</span><span class="nv">kill-word</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span>
+<span class="w">                </span><span class="nv">word-to-return</span><span class="p">)))))</span>
+
+<span class="w">        </span><span class="p">(</span><span class="nb">with-current-buffer</span><span class="w"> </span><span class="p">(</span><span class="nf">get-buffer-create</span><span class="w"> </span><span class="nv">final-buffer</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">erase-buffer</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nf">insert</span><span class="w"> </span><span class="p">(</span><span class="nf">mapconcat</span><span class="w"> </span><span class="ss">&#39;identity</span><span class="w"> </span><span class="nv">res</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">)))</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">switch-to-buffer</span><span class="w"> </span><span class="nv">final-buffer</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="nv">monkeytype-buffer</span><span class="p">)))</span>
+</code></pre></div>
+
+<p>Now you can type <code>M-x functions/monkeytype-load-and-start</code>
+to have a similar UX to the website!</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://drewsh.com/tag/short.html">short</a>
+      <a href="https://drewsh.com/tag/emacs.html">emacs</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>
+  &copy; 2026 Drew Jose - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Share-alike license</a>
+</p>
+<p>
+Built with <a href="https://getpelican.com" target="_blank">Pelican</a>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15">
+  </a>
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Drew's blogsite ",
+  "url" : "https://drewsh.com",
+  "image": "/images/emacs.jpg",
+  "description": "Texts mostly about tech and writing."
+}
+</script>
+</body>
+</html>

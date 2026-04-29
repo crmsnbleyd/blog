@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://drewsh.com/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://drewsh.com/theme/pygments/inkpot.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light)"
+          href="https://drewsh.com/theme/pygments/friendly.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/solid.css">
+
+
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+
+
+  <link href="https://drewsh.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Drew's blogsite Atom">
+
+
+
+
+
+
+
+
+
+<meta name="author" content="Drew Jose">
+<meta name="description" content="An exploration of typst, its positives and drawbacks according to me, and a neat and minimal resume template.">
+<meta name="keywords" content="typst">
+
+
+  <meta property="og:site_name" content="Drew's blogsite">
+  <meta property="og:title" content="Making a resume in typst on my first time using it">
+  <meta property="og:description" content="An exploration of typst, its positives and drawbacks according to me, and a neat and minimal resume template.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://drewsh.com/first-look-at-typst.html">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2024-01-18 19:46:00+05:30">
+  <meta property="article:modified_time" content="2024-01-18 19:46:00+05:30">
+  <meta property="article:author" content="https://drewsh.com/author/drew-jose.html">
+  <meta property="article:section" content="blogpost">
+  <meta property="article:tag" content="typst">
+  <meta property="og:image" content="https://drewsh.com/images/lorem_ipsum_resume.avif">
+  <meta name="fediverse:creator" content="@crmsnbleyd@hachyderm.io">
+
+  <title>Making a resume in typst on my first time using it | Drew's blogsite</title>
+
+
+</head>
+<body >
+
+<aside>
+  <div>
+    <a href="https://drewsh.com/">
+      <img src="/images/emacs.jpg" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://drewsh.com/"></a>
+    </h1>
+
+    <p class="site-subtitle">These are public thoughts</p>
+
+
+    <nav>
+      <ul class="list">
+
+
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/interesting-links.html">
+                Bookmarks
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/buttons.html">
+                Buttons
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/newsletter.html">
+                Newsletter
+              </a>
+            </li>
+
+          <li>
+            <a target="_self" href="https://drewsh.com/category/toot" >Short&nbspposts</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-mastodon"
+	   aria-label="link to mastodon"
+rel="me"           href="https://hachyderm.io/@crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-mastodon">
+	  </span>
+	  <span class="visually-hidden">
+	    mastodon
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-git"
+	   aria-label="link to git"
+           href="https://git.drewsh.com/crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-git">
+	  </span>
+	  <span class="visually-hidden">
+	    git
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-rss"
+	   aria-label="link to rss"
+           href="https://drewsh.com/feeds/all.atom.xml">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-solid fa-rss">
+	  </span>
+	  <span class="visually-hidden">
+	    rss
+	  </span>
+        </a>
+      </li>
+    </ul>
+    <span class="theme-switch-links">
+      <br>
+    Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+    </span>
+  <script id="dark-theme-script"
+          src="https://drewsh.com/theme/dark-theme/dark-theme.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+  </div>
+
+
+</aside>
+  <main>
+
+<nav>
+  <a href="https://drewsh.com/">Home</a>
+
+  <a href="/archives.html">Archives</a>
+  <a href="/categories.html">Categories</a>
+  <a href="/tags.html">Tags</a>
+
+  <a href="https://drewsh.com/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="post">
+  <header>
+      
+    <h1 id="first-look-at-typst">Making a resume in typst on my first time using it</h1>
+    <p>
+      Posted on Jan 18, 2024 in <a href="https://drewsh.com/category/blogpost.html">blogpost</a>
+
+    </p>
+  </header>
+
+
+  <div class="post-content">
+    <p>I decided to update my resume today, just for fun.
+I originally wrote it in Overleaf, the online 
+<span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> compiler,
+but for a while, I've been meaning to rewrite it in Emacs' native org mode
+(which has native HTML and <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> export capabilities),
+or something like <a href="https://jsonresume.org/">JSON resume</a>,
+so that I could change the content with ease.</p>
+<p>However, the creator of <a href="https://git.sr.ht/~meow_king/typst-ts-mode">typst-ts-mode</a>
+for emacs is on my Mastodon server, and a post from them
+inspired me to check it out.</p>
+<p><a href="https://github.com/typst/typst">Typst</a> is a relatively new system for
+typesetting documents. It aims to be as powerful as <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> while being easier to learn.
+It also has scripting capabilities.
+I rewrote my whole resume in it on a whim.</p>
+<h2>Great things about typst</h2>
+<h3>It's really fast</h3>
+<p>Both the web application and the command-line version are fast,
+giving almost instant updates when you change the inputs,
+especially when compared to <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span> offerings like Overleaf or python PDFLaTeX.</p>
+<h3>It looks and feels simpler</h3>
+<p>Typst definitely leans more towards markdown than something like
+<a href="https://www.maketecheasier.com/troff-format-pdf-documents-linux/">troff</a>,
+where you're likely to see more markup than actual content.
+When you write Typst, you can write more content, with unobstrusive markup
+while in <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span>
+it's definitely more in the way.</p>
+<h3>Builtins</h3>
+<p>In <span class="latex">L<sup>a</sup>T<sub>e</sub>X</span>,
+most things you would want to do require plugins.</p>
+<p>Typst takes more of the Python approach, giving you
+many of the tools that you might need.
+The <a href="https://typst.app/docs/reference/">typst reference</a>
+is really useful, and looks pretty to boot!</p>
+<h3>Hooks</h3>
+<p>You can associate every instance of an item with
+some functions or rules that will be executed whenever
+they are used.</p>
+<p>Given is an example of styling a link. We pass a function
+that is executed whenever we create a link,
+which wraps it in a box (the equivalent of <code>&lt;span&gt;</code> in typst),
+sets the text colour to blue in the box and underlines the link
+(which we can refer to by the name "item" anywhere we want
+in this function)</p>
+<p>This, in my opinion, is a very elegent way of adding
+callbacks and the like.
+Also cool is that the <code>#set</code> command is only valid inside
+the box we create, sort of like
+<a href="https://textbooks.cs.ksu.edu/cs-zero/x-cis115-labs/9-nested-conditionals/04-blocks-scope/">block scope</a>
+in C-like languages.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">#show</span><span class="w"> </span><span class="nv">link</span><span class="p">:</span><span class="w"> </span>item =&gt; box[
+<span class="w">    </span><span class="kd">#set</span><span class="w"> </span><span class="nf">text</span><span class="p">(</span>blue)
+<span class="w">    </span><span class="nf">#underline</span><span class="p">(</span>item)
+<span class="p">]</span>
+</code></pre></div>
+
+<h2>My only qualm</h2>
+<h3>The function syntax is confusing</h3>
+<p>If you call a function in regular text, you do it like so:
+<code>#function(parameter)</code>. Similarly you can set a variable and use it
+as <code>#variable</code></p>
+<p>If you want to call it inside a function, you do <code>function(parameter)</code>
+or <code>variable</code></p>
+<p>If you want to use a passed parameter in a function, you simply use it:
+<code>parameter</code>.</p>
+<p>If you want to concatenate items in a function, you need to use semicolons:
+<code>parameter; line(length: 100%)</code></p>
+<p>If you want to use regular markup like <em>emphasis</em> or <strong>bold</strong>,
+you need to wrap it in square brackets, but within square brackets
+you need to pass the parameter like a variable: <code>[*#parameter*]</code></p>
+<p>Functions also have a special way of calling it if you want them
+to transform text, like <code>function[body]</code>, where the body can have
+any regular text with inline markup.</p>
+<p>I sort of get why they did this and understand it now,
+but your mileage may vary.</p>
+<h2>Resume template</h2>
+<p>You can find the resume template using which I explored typst
+<a href="https://gist.github.com/crmsnbleyd/df6f6c651dfa0441d7c72a46aaae15a3">at this link</a>. It is also available on the <a href="https://typst.app/project/reVBhUNZ4WrvL4LXSDcc6U">typst application</a> as a project that you can copy.
+Let me know if you end up using this, or if you would like some clarification.</p>
+<p><img alt="Screenshot of the resume template given above" src="https://drewsh.com/images/lorem_ipsum_resume.avif"><br>
+<strong>You can change any of the colours to your liking!</strong></p>
+<h2>Acknowledgement</h2>
+<p>I used the <a href="https://github.com/skyzh/chicv/tree/master">typst CV</a>
+by Alex Chi Z. as a starting point,
+it is well annotated and has an example of
+almost every syntactical feature a beginner would want to use.</p>
+<style>
+.tex sub, .latex sub, .latex sup {
+      text-transform: uppercase;
+    }
+.tex sub, .latex sub {
+    vertical-align: -0.5ex;
+    margin-left: -0.1667em;
+    margin-right: -0.125em;
+}
+
+.tex, .latex, .tex sub, .latex sub {
+    font-size: 1em;
+    font-family: serif;
+}
+
+.latex sup {
+    font-size: 0.85em;
+    vertical-align: 0.15em;
+    margin-left: -0.36em;
+    margin-right: -0.15em;
+}
+</style>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://drewsh.com/tag/typst.html">typst</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>
+  &copy; 2026 Drew Jose - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Share-alike license</a>
+</p>
+<p>
+Built with <a href="https://getpelican.com" target="_blank">Pelican</a>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15">
+  </a>
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Drew's blogsite ",
+  "url" : "https://drewsh.com",
+  "image": "/images/emacs.jpg",
+  "description": "Texts mostly about tech and writing."
+}
+</script>
+</body>
+</html>

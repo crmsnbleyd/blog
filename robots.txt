@@ -1,0 +1,10 @@
+User-agent: CCBot
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: GPTBot
+User-agent: OpenAI
+Disallow: /
+
+User-agent: *
+Disallow: /llm-tarpit
+Disallow: /drafts/

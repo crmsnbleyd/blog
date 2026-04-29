@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://drewsh.com/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://drewsh.com/theme/pygments/inkpot.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light)"
+          href="https://drewsh.com/theme/pygments/friendly.min.css">
+
+
+
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/solid.css">
+
+
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+
+
+  <link href="https://drewsh.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Drew's blogsite Atom">
+
+
+
+
+
+
+
+
+
+<meta name="author" content="Drew Jose">
+<meta name="description" content="My tech stack for the lisp game jam, why I’m using it, and how I’m planning to distribute my game.">
+<meta name="keywords" content="lisp, python">
+
+
+  <meta property="og:site_name" content="Drew's blogsite">
+  <meta property="og:title" content="Participating in the Spring Lisp Game jam, why and how">
+  <meta property="og:description" content="My tech stack for the lisp game jam, why I’m using it, and how I’m planning to distribute my game.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://drewsh.com/lisp-game-jam.html">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2024-04-17 11:42:00+05:30">
+  <meta property="article:modified_time" content="2024-05-16 19:08:00+05:30">
+  <meta property="article:author" content="https://drewsh.com/author/drew-jose.html">
+  <meta property="article:section" content="blogpost">
+  <meta property="article:tag" content="lisp">
+  <meta property="article:tag" content="python">
+  <meta property="og:image" content="https://drewsh.com/images/spring_game_jam_spritely.avif">
+  <meta name="fediverse:creator" content="@crmsnbleyd@hachyderm.io">
+
+  <title>Participating in the Spring Lisp Game jam, why and how | Drew's blogsite</title>
+
+
+</head>
+<body >
+
+<aside>
+  <div>
+    <a href="https://drewsh.com/">
+      <img src="/images/emacs.jpg" alt="" title="">
+    </a>
+
+    <h1>
+      <a href="https://drewsh.com/"></a>
+    </h1>
+
+    <p class="site-subtitle">These are public thoughts</p>
+
+
+    <nav>
+      <ul class="list">
+
+
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/interesting-links.html">
+                Bookmarks
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/buttons.html">
+                Buttons
+              </a>
+            </li>
+            <li>
+              <a target="_self"
+                 href="https://drewsh.com/pages/newsletter.html">
+                Newsletter
+              </a>
+            </li>
+
+          <li>
+            <a target="_self" href="https://drewsh.com/category/toot" >Short&nbspposts</a>
+          </li>
+      </ul>
+    </nav>
+
+    <ul class="social">
+      <li>
+        <a class="sc-mastodon"
+	   aria-label="link to mastodon"
+rel="me"           href="https://hachyderm.io/@crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-mastodon">
+	  </span>
+	  <span class="visually-hidden">
+	    mastodon
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-git"
+	   aria-label="link to git"
+           href="https://git.drewsh.com/crmsnbleyd">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-brands fa-git">
+	  </span>
+	  <span class="visually-hidden">
+	    git
+	  </span>
+        </a>
+      </li>
+      <li>
+        <a class="sc-rss"
+	   aria-label="link to rss"
+           href="https://drewsh.com/feeds/all.atom.xml">
+          <span role="presentation"
+	     aria-hidden="true"
+	     class="fa-solid fa-rss">
+	  </span>
+	  <span class="visually-hidden">
+	    rss
+	  </span>
+        </a>
+      </li>
+    </ul>
+    <span class="theme-switch-links">
+      <br>
+    Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+    </span>
+  <script id="dark-theme-script"
+          src="https://drewsh.com/theme/dark-theme/dark-theme.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+  </div>
+
+
+</aside>
+  <main>
+
+<nav>
+  <a href="https://drewsh.com/">Home</a>
+
+  <a href="/archives.html">Archives</a>
+  <a href="/categories.html">Categories</a>
+  <a href="/tags.html">Tags</a>
+
+  <a href="https://drewsh.com/feeds/all.atom.xml">Atom</a>
+
+</nav>
+
+<article class="post">
+  <header>
+      
+    <h1 id="lisp-game-jam">Participating in the Spring Lisp Game jam, why and how</h1>
+    <p>
+      Posted on Apr 17, 2024 in <a href="https://drewsh.com/category/blogpost.html">blogpost</a>
+
+    </p>
+  </header>
+
+
+  <div class="post-content">
+    <p><a href="https://lobste.rs/s/qomtd5/participating_spring_lisp_game_jam_why">Discussion at lobste.rs</a></p>
+<h2>Please participate in the jam!</h2>
+<p>If you’re on this webpage, there’s a good chance you’re already into lisp,
+or that the new notation will not scare you. The link to the jam:
+<a href="https://itch.io/jam/spring-lisp-game-jam-2024">https://itch.io/jam/spring-lisp-game-jam-2024</a>. 
+Read ahead if you’re interested in participating, I have some game engine options you might like!</p>
+<p><img alt="A happy goblin and an owl looking at multicolored text that reads “Lisp Game Jam”" src="/images/spring_game_jam_spritely.avif">  </p>
+<center>
+<i>
+Image by the <a href="https://spritely.institute">Spritely Institute</a>
+</i>
+</center>
+<h2>Why I love the concept</h2>
+<p>I’m a big lisp-head, with my longtime editor being emacs, and my current
+preferred language for doing tasks being Common Lisp.
+This is why I was chuffed to hear about the tradition of Lisp Game Jams,
+even though I’ve never made a game before.</p>
+<h2>What should you use to participate?</h2>
+<p>For someone who has <em>never</em> made a video game, it’s best to use a game
+engine/library to handle the nitty-gritty of game code and just focus on the
+ideas you are bringing. </p>
+<h3>Game engines and libraries for classic lisps</h3>
+<ul>
+<li>
+<p><a href="https://shirakumo.github.io/trial">Trial</a>, a Common Lisp game engine
+  that has already been used to make a commercial game, <a href="https://store.steampowered.com/app/1261430/Kandria/">Kandria</a>.</p>
+</li>
+<li>
+<p><a href="https://dthompson.us/projects/chickadee.html">Chickadee</a>, 
+  a game development library (as the 
+  <a href="https://lobste.rs/s/qomtd5/participating_spring_lisp_game_jam_why#c_fujjmc">author clarified</a>)
+  for Guile Scheme, a language that would be familiar to users of the
+  Guix package manager.</p>
+</li>
+</ul>
+<p>I like both of these options, but at first I dismissed them because there
+is no way to distribute these games on the web in the form of HTML5 games.</p>
+<h3>Godot</h3>
+<p><a href="https://godotengine.org/">Godot</a> is a classic game engine with a GUI,
+sort of reminiscent of something like Unity or Unreal, but much better
+because it’s free and open source. It supports a lot of languages, one
+of which is a native lisp called <a href="https://github.com/Mercerenies/gdlisp">GDLisp</a>.</p>
+<p>Use this if you like Graphical interfaces, and would love to have
+way more tutorials than all of the other options combined.</p>
+<h3>Javascript game frameworks</h3>
+<p>There are two ways to compile a lisp to JavaScript,
+<a href="https://clojurescript.org/">ClojureScript</a>,
+and <a href="https://parenscript.common-lisp.dev/">Parenscript</a>.</p>
+<p>ClojureScript is the whole clojure language that compiles to javascript,
+and has lispy bindings available to a lot of javascript libraries. I found
+the setup a bit compilcated, but it’s a great choice. More information about
+a setup here: <a href="https://github.com/trevordilley/phaser-cljs-template">https://github.com/trevordilley/phaser-cljs-template</a> (it is
+a bit out-dated so you can shoot me an email on clojure @ this domain if you
+want help)</p>
+<p>Parenscript is a common lisp library that allows you to use macros to
+generate javascript. In this method we would just write lisp with an eye
+on the javascript being generated as we go, as this is not a language
+proper. The mailing list is incredibly helpful: <a href="https://common-lisp.net/cgi-bin/mailman/listinfo/parenscript-devel">https://common-lisp.net/cgi-bin/mailman/listinfo/parenscript-devel</a></p>
+<p>Alright, now that we know how to use lisps to generate javascript, here’s
+a couple libraries you can use:</p>
+<ul>
+<li>
+<p><a href="https://phaser.io">https://phaser.io</a>: Seems to be the most popular JS game library,
+  and has a module available for Clojure</p>
+</li>
+<li>
+<p><a href="https://melonjs.org/">https://melonjs.org/</a>: Has a bit simpler of an API, but is not as
+  popular.</p>
+</li>
+</ul>
+<h3>Lua land</h3>
+<p><a href="https://fennel-lang.org/">Fennel</a> is a lispy layer
+over Lua that is compiled out to plain Lua.
+I don’t particularly like it because it is a very leaky
+abstraction exactly due to the fact that it does not have a runtime,
+you sort of have to learn Lua to actually use it. This limitation comes
+with a great benefit though, you can use it wherever you can use lua.</p>
+<ul>
+<li>
+<p><a href="https://www.love2d.org/">Love2D</a>, a 2D (duh) game engine that uses
+  Lua, and games made here can be compiled to absolutely any platform,
+  including the browser, which makes it a great choice for game jams,
+  where you want as many people to be able to play your game as possible.</p>
+</li>
+<li>
+<p><a href="https://tic80.com/">TIC-80</a>, a fantasy console that is a self-contained
+  application for making games, with a built-in code editor,
+  audio workstation, map, and sprite editor. Probably the best choice
+  for making a tiny game and supports fennel as well. The only possible
+  drawback might be the retro limitations on code size, sound channels,
+  4-bit colour, etc.</p>
+</li>
+</ul>
+<p>This is what I would recommend if you are fine with Lua.</p>
+<p>Edit from June 2025: I quite like fennel now, and in fact, I <a href="https://nebunez.itch.io/slugger">wrote a game in it!</a></p>
+<h3>Web with Scheme</h3>
+<p><a href="https://spritely.institute/hoot/">Guile Hoot</a> is a toolchain that compiles scheme to webassembly.
+Last year, two games for the lisp game jam were using this stack, using an earlier version and loads of boilerplate.
+This year, all of that work is done for you already, using the HTML5 Canvas API for drawing things to the screen.
+Learn more about it at spritely’s blog post: <a href="https://spritely.institute/news/make-a-game-with-hoot-for-the-lisp-game-jam.html">https://spritely.institute/news/make-a-game-with-hoot-for-the-lisp-game-jam.html</a></p>
+<h3>Dark horse: Python!?</h3>
+<p><a href="https://www.pygame.org/wiki/about">PyGame</a> is a very simple game library
+that runs absolutely anywhere you could run python. I use python for
+my dayjob, and I love it very much. </p>
+<p>Coming to how to use it with lisp, <a href="https://hylang.org/">Hy</a> is a lisp
+that runs on python and can use any python library. It feels much nicer
+to use than Fennel, and any leakiness in the implementation is not an issue
+for me, since I’m quite good at python.</p>
+<center>
+<img src="https://drewsh.com/images/cuddles.avif" alt="Cuddles, the Hylang mascot, a squid">
+<br><em><strong>A cute mascot is a plus!</strong></em>
+</center>
+
+<p>There are many ways to bundle python scripts into self contained 
+applications, which need you to have the platforms on hand to actually
+do it for different operating systems, which is also not an issue for
+me since I have access to all three major operating systems.</p>
+<p>The issue with this is you can’t compile for the web without uploading
+a whole python interpreter using WebAssembly, which sounds like
+something I do not want to do.</p>
+<h2>Other useful tools:</h2>
+<ul>
+<li><a href="https://www.mapeditor.org/">Tiled</a>, a map editor natively supported by
+  many engines</li>
+<li><a href="https://libresprite.github.io/#!/">LibreSprite</a>, a great sprite editor.</li>
+<li><a href="https://milkytracker.org/">Milkytracker</a>, an old school audio
+  workstation.</li>
+</ul>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://drewsh.com/tag/lisp.html">lisp</a>
+      <a href="https://drewsh.com/tag/python.html">python</a>
+    </p>
+  </div>
+
+
+
+
+
+
+</article>
+
+<footer>
+<p>
+  &copy; 2026 Drew Jose - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/deed.en_US" target="_blank">Share-alike license</a>
+</p>
+<p>
+Built with <a href="https://getpelican.com" target="_blank">Pelican</a>
+</p><p>
+  <a rel="license"
+     href="http://creativecommons.org/licenses/by-sa/4.0/"
+     target="_blank">
+    <img alt="Creative Commons License"
+         title="Creative Commons License"
+         style="border-width:0"
+           src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"
+         width="80"
+         height="15">
+  </a>
+</p></footer>  </main>
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Drew's blogsite ",
+  "url" : "https://drewsh.com",
+  "image": "/images/emacs.jpg",
+  "description": "Texts mostly about tech and writing."
+}
+</script>
+</body>
+</html>
