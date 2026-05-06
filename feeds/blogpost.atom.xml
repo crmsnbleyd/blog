@@ -265,7 +265,7 @@ and it's not great for the environment
   Update from the next day: You need to clone the repo, install &lt;code&gt;pnpm&lt;/code&gt;, and run &lt;code&gt;pnpm install&lt;/code&gt; and then &lt;code&gt;pnpm doc&lt;/code&gt; to have the docs show up in the melonjs/docs folder.
   &lt;img alt="MelonJS homepage, their logo is a hollow green circle with a red dot" src="https://drewsh.com/images/melonjs.webp"&gt;
   &lt;strong&gt;Their logo isn't even a melon!&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Continuing work on my &lt;a href="https://git.drewsh.com/crmsnbleyd/sitegen-in-c"&gt;C-based static-site generator&lt;/a&gt;.
+&lt;li&gt;Continuing work on my C-based static-site generator (edit: I stopped work on it and nuked the codebase. maybe i'll do it in common lisp).
   This is not time-sensitive at all, but I find it quite fun and all I need to work on it is gdb and gcc.&lt;/li&gt;
 &lt;li&gt;Writing more of the &lt;a href="https://drewsh.com/lisp-book"&gt;Beginner Common Lisp book&lt;/a&gt;. I don't need to be connected to the internet for this,
   but &lt;a href="https://www.cs.cmu.edu/Groups/AI/html/cltl/cltl2.html"&gt;Common List the Language, 2e&lt;/a&gt; by Guy Steele Jr. is a great reference for it so I have downloaded it.&lt;/li&gt;
