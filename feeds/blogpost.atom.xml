@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Drew's blogsite - blogpost</title><link href="https://drewsh.com/" rel="alternate"/><link href="https://drewsh.com/feeds/blogpost.atom.xml" rel="self"/><id>https://drewsh.com/</id><updated>2026-01-26T10:53:00+05:30</updated><subtitle>These are public thoughts</subtitle><entry><title>Git config for multiple accounts</title><link href="https://drewsh.com/git-config-for-multiple-accounts.html" rel="alternate"/><published>2025-12-20T12:50:00+05:30</published><updated>2025-12-20T12:50:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-12-20:/git-config-for-multiple-accounts.html</id><summary type="html">&lt;p&gt;Snippets of useful git configurations (when you have multiple identities)&lt;/p&gt;</summary><content type="html">&lt;p&gt;I use &lt;code&gt;git&lt;/code&gt;, as the version control system both at my workplace and to store my personal code (including the source of this blog).&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Drew's blogsite - blogpost</title><link href="https://drewsh.com/" rel="alternate"/><link href="https://drewsh.com/feeds/blogpost.atom.xml" rel="self"/><id>https://drewsh.com/</id><updated>2026-07-04T16:20:00+05:30</updated><subtitle>These are public thoughts</subtitle><entry><title>What I would do if I was invisible for a day</title><link href="https://drewsh.com/invisible-for-a-day.html" rel="alternate"/><published>2026-07-04T16:20:00+05:30</published><updated>2026-07-04T16:20:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-07-04:/invisible-for-a-day.html</id><summary type="html">&lt;p&gt;Article based on a prompt. Suggestions welcome.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This prompt comes from &lt;a href="https://blr.indiewebclub.org/"&gt;IndieWebClub Bangalore&lt;/a&gt;. I have had 25 minutes to pen this down.&lt;/p&gt;
+&lt;p&gt;Frankly, logistics are the main constraint. I would hate to spend my period of invisibility on an airplane flying to a different country in order to optimise my experience, but thankfully there is much to do within the bounds of Bangalore.&lt;/p&gt;
+&lt;p&gt;Something that would be very tempting to do is go somewhere with a high density of valuable goods and start stealing stuff, but I don’t reckon the prompt was about how to extract the maximum economic benefit from my condition.&lt;/p&gt;
+&lt;p&gt;If highly illegal stuff (like say, breaking into a corrupt individual’s home in order to reveal their crimes, not that I would ever consider it in any other non-hypothetical situation) is off the table, I might go to a library, as schlocky as that may sound. I haven’t been to a proper, huge library since my university days, and would love to just go around looking at all the books available and noting down what interests me. The way one finds out what to read without a library is this neat trick called “asking people”, but I have not gotten many suggestions yet. If you’re reading this, email me book suggestions.&lt;/p&gt;
+&lt;p&gt;I am frankly ashamed of how little of an &lt;a href="https://en.wikipedia.org/wiki/Id,_ego_and_superego#Id"&gt;id&lt;/a&gt; I seem to have. I would go around petting dogs (who would not be alarmed since they’d be able to smell me), sampling small bits of food and drink from bakeries, and try to execute skateboarding tricks on some smooth paved road in someone’s private estate. I don’t know any skateboarding tricks other than pumping, but have been meaning to learn, so it’d be a great time to follow through without the fear of seeming silly and having access to a nice, smooth surface (a luxury within India).&lt;/p&gt;
+&lt;p&gt;Speaking of estates, I’m sure the super rich have some really cool artwork hidden in their homes that only their rich friends get to see. It would be hard to triage which ones to hit and in which order, but perhaps there’s a list out there of Bangalore millionaires with great taste. Magazines and e-papers thrive on such trite articles.&lt;/p&gt;
+&lt;p&gt;If there were any league football games on in the area I’d take the opportunity to get close to the field and experience the game in a way that’s hard to do from the stands or the screen. Maybe run around behind the referee.&lt;/p&gt;
+&lt;p&gt;I think the theme is I would like to partake in situations I would normally not be allowed to get close to in my civilian life? Here is where a lack of desire stymies me. I can play Persona on my switch in my home without being invisible and that’s what I’ve been feeling like doing the most lately anyway.&lt;/p&gt;</content><category term="blogpost"/></entry><entry><title>Git config for multiple accounts</title><link href="https://drewsh.com/git-config-for-multiple-accounts.html" rel="alternate"/><published>2025-12-20T12:50:00+05:30</published><updated>2025-12-20T12:50:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-12-20:/git-config-for-multiple-accounts.html</id><summary type="html">&lt;p&gt;Snippets of useful git configurations (when you have multiple identities)&lt;/p&gt;</summary><content type="html">&lt;p&gt;I use &lt;code&gt;git&lt;/code&gt;, as the version control system both at my workplace and to store my personal code (including the source of this blog).&lt;/p&gt;
 &lt;p&gt;I use different e-mails for personal and work repositories, as well as different SSH keys for different accounts (this is because Github, at least, does not allow different accounts to use the same key, which I was not sure of, but &lt;a href="https://eigenmagic.net/@arichtman/115757915345301797"&gt;Ariel confirmed on fedi&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;After a bunch of trial-and-error, I have figured out a way to do ssh for two different github accounts using different keys on the same device. The &lt;code&gt;.sshconfig&lt;/code&gt; looks a bit like this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Host work
@@ -787,48 +794,4 @@ This only works while you're already reading a chapter!&lt;/p&gt;
 &lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;find-file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;next-file&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
 
 &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;bind-key&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;kbd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;C-c n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;#39;next-comic&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;#39;image-mode-map&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;;; nifty binding&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blogpost"/><category term="emacs"/><category term="reading"/></entry><entry><title>Trying out Meow, an emacs-native modal editing package</title><link href="https://drewsh.com/trying-out-meow.html" rel="alternate"/><published>2024-01-30T19:00:00+05:30</published><updated>2024-01-31T07:00:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-01-30:/trying-out-meow.html</id><summary type="html">&lt;p&gt;Pros and cons of the meow package from an avid evil-mode user.&lt;/p&gt;</summary><content type="html">&lt;p&gt;I've used modal editing almost as long as I've been using Emacs,
-thanks to the wonderful &lt;a href="https://github.com/doomemacs/doomemacs"&gt;Doom Emacs&lt;/a&gt; 
-starter kit, which aims to be
-fast and also for some reason be enticing to vim users.&lt;/p&gt;
-&lt;p&gt;I abandoned it due to it constantly breaking on me in arcane ways,
-and not exactly enjoying the fact that it uses custom macros and commands
-to set everything up. I still found what it offered appealing, hence
-manually adding parts of doom emacs into my configuration piecemeal,
-like vi bindings and the doom modeline. 
-For a while I also used its splash screen via 
-&lt;a href="https://github.com/emacs-dashboard/emacs-dashboard"&gt;emacs-dashboard&lt;/a&gt;.&lt;/p&gt;
-&lt;h2&gt;What I like&lt;/h2&gt;
-&lt;p&gt;The visual feedback is great, especially in KEYPAD mode, which actually
-shows you what commands are bound to which keys.&lt;/p&gt;
-&lt;p&gt;Doom-modeline shows the current mode in the modeline just like it does
-for evil mode, which is great.&lt;/p&gt;
-&lt;p&gt;The tutorial is much better than that of &lt;a href="https://helix-editor.com/"&gt;Helix&lt;/a&gt;,
-a batteries-included terminal
-editor that is similarly based on Kakuone-style editing. 
-In fact, if helix actually has the features of meow that I use,
-I might ditch vim entirely.&lt;/p&gt;
-&lt;p&gt;I don't have to specifically bind commands that I want to use
-with evil bindings. I didn't want to do that earlier,
-my list of evil-specific bindings already being too long,
-leading me to leave a lot of commands with vanilla emacs
-bindings like &lt;code&gt;C-x b&lt;/code&gt; to change buffers and so on.
-With meow, there are shortcuts to use such commands
-without holding a modifier key down, which is nifty.&lt;/p&gt;
-&lt;h2&gt;My gripes&lt;/h2&gt;
-&lt;p&gt;The composability of commands does not seem to be that great.
-For example, in evil-mode if you use the delete verb &lt;code&gt;d&lt;/code&gt;,
-any command you then proceed to do will be considered as the 'noun'.
-For example, pressing &lt;code&gt;d&lt;/code&gt; then &lt;code&gt;M-x forward-sexp&lt;/code&gt; will delete the next
-S-expression. If you wish to do the same thing with meow, you will have to
-start selecting with &lt;code&gt;C-&amp;lt;SPC&amp;gt;&lt;/code&gt;, do &lt;code&gt;M-x forward-sexp&lt;/code&gt;, and only &lt;strong&gt;then&lt;/strong&gt;
-delete the selection with &lt;code&gt;s&lt;/code&gt;. This is a bit longer, which is not the end
-of the world, but still annoying.&lt;/p&gt;
-&lt;p&gt;I have been really used to &lt;a href="https://github.com/emacs-evil/evil-surround"&gt;evil-surround&lt;/a&gt; which I now need to find a replacement for.&lt;/p&gt;
-&lt;p&gt;There seems to be no shortcut to use Ctrl+&amp;lt;key&amp;gt; combinations 
-without chording, which I can get used to, I suppose.&lt;/p&gt;
-&lt;h2&gt;Will I continue to use it?&lt;/h2&gt;
-&lt;p&gt;Yep, I love it. It makes a lot of sense to continue using it,
-especially with the extra features it bakes in compared to plain old evil,
-and the fact that you don't have to especially add bindings to every single
-function you want to use.&lt;/p&gt;</content><category term="blogpost"/><category term="emacs"/></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blogpost"/><category term="emacs"/><category term="reading"/></entry></feed>
