@@ -6,7 +6,7 @@
 &lt;p&gt;I am frankly ashamed of how little of an &lt;a href="https://en.wikipedia.org/wiki/Id,_ego_and_superego#Id"&gt;id&lt;/a&gt; I seem to have. I would go around petting dogs (who would not be alarmed since they’d be able to smell me), sampling small bits of food and drink from bakeries, and try to execute skateboarding tricks on some smooth paved road in someone’s private estate. I don’t know any skateboarding tricks other than pumping, but have been meaning to learn, so it’d be a great time to follow through without the fear of seeming silly and having access to a nice, smooth surface (a luxury within India).&lt;/p&gt;
 &lt;p&gt;Speaking of estates, I’m sure the super rich have some really cool artwork hidden in their homes that only their rich friends get to see. It would be hard to triage which ones to hit and in which order, but perhaps there’s a list out there of Bangalore millionaires with great taste. Magazines and e-papers thrive on such trite articles.&lt;/p&gt;
 &lt;p&gt;If there were any league football games on in the area I’d take the opportunity to get close to the field and experience the game in a way that’s hard to do from the stands or the screen. Maybe run around behind the referee.&lt;/p&gt;
-&lt;p&gt;I think the theme is I would like to partake in situations I would normally not be allowed to get close to in my civilian life? Here is where a lack of desire stymies me. I can play Persona on my switch in my home without being invisible and that’s what I’ve been feeling like doing the most lately anyway.&lt;/p&gt;</content><category term="blogpost"/></entry><entry><title>Git config for multiple accounts</title><link href="https://drewsh.com/git-config-for-multiple-accounts.html" rel="alternate"/><published>2025-12-20T12:50:00+05:30</published><updated>2025-12-20T12:50:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-12-20:/git-config-for-multiple-accounts.html</id><summary type="html">&lt;p&gt;Snippets of useful git configurations (when you have multiple identities)&lt;/p&gt;</summary><content type="html">&lt;p&gt;I use &lt;code&gt;git&lt;/code&gt;, as the version control system both at my workplace and to store my personal code (including the source of this blog).&lt;/p&gt;
+&lt;p&gt;I think the theme is I would like to partake in situations I would normally not be allowed to get close to in my civilian life? Here is where a lack of desire stymies me. I can play Persona on my switch in my home without being invisible and that’s what I’ve been feeling like doing the most lately anyway.&lt;/p&gt;</content><category term="blogpost"/><category term="short"/><category term="writing"/></entry><entry><title>Git config for multiple accounts</title><link href="https://drewsh.com/git-config-for-multiple-accounts.html" rel="alternate"/><published>2025-12-20T12:50:00+05:30</published><updated>2025-12-20T12:50:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-12-20:/git-config-for-multiple-accounts.html</id><summary type="html">&lt;p&gt;Snippets of useful git configurations (when you have multiple identities)&lt;/p&gt;</summary><content type="html">&lt;p&gt;I use &lt;code&gt;git&lt;/code&gt;, as the version control system both at my workplace and to store my personal code (including the source of this blog).&lt;/p&gt;
 &lt;p&gt;I use different e-mails for personal and work repositories, as well as different SSH keys for different accounts (this is because Github, at least, does not allow different accounts to use the same key, which I was not sure of, but &lt;a href="https://eigenmagic.net/@arichtman/115757915345301797"&gt;Ariel confirmed on fedi&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;After a bunch of trial-and-error, I have figured out a way to do ssh for two different github accounts using different keys on the same device. The &lt;code&gt;.sshconfig&lt;/code&gt; looks a bit like this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Host work
@@ -65,7 +65,7 @@ This should be after the globally defined &lt;code&gt;[user]&lt;/code&gt; config
 
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;This is quite neat and does what I want. One could extend this to add even more sorts of dynamic inclusions per folder.&lt;/p&gt;</content><category term="blogpost"/></entry><entry><title>Development setup for three services with a database</title><link href="https://drewsh.com/dev-setup-with-tmux.html" rel="alternate"/><published>2025-04-15T15:00:00+05:30</published><updated>2025-04-15T15:00:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-04-15:/dev-setup-with-tmux.html</id><summary type="html">&lt;p&gt;Using tmux and scripting to set up a development environment for microservices locally.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="diagram of 4 panes open on a terminal" src="./images/tmux-example.svg"&gt;&lt;/p&gt;
+&lt;p&gt;This is quite neat and does what I want. One could extend this to add even more sorts of dynamic inclusions per folder.&lt;/p&gt;</content><category term="blogpost"/><category term="unix"/></entry><entry><title>Development setup for three services with a database</title><link href="https://drewsh.com/dev-setup-with-tmux.html" rel="alternate"/><published>2025-04-15T15:00:00+05:30</published><updated>2025-04-15T15:00:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-04-15:/dev-setup-with-tmux.html</id><summary type="html">&lt;p&gt;Using tmux and scripting to set up a development environment for microservices locally.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="diagram of 4 panes open on a terminal" src="./images/tmux-example.svg"&gt;&lt;/p&gt;
 &lt;p&gt;At work, I have to develop a service that has an API server, a web server that serves UI, and a Slack bot.
 This uses a database. I can either run it locally via podman, or connect to one which already runs in a development cluster.&lt;/p&gt;
 &lt;p&gt;The web server requires the API server to provide some basic functionality, so even if I'm only developing the web service,
@@ -121,7 +121,25 @@ and only then create the tmux pane that port-forwards to it.&lt;/p&gt;
 &lt;h2&gt;How to use it&lt;/h2&gt;
 &lt;p&gt;Just like a shell script! Since I’ve given all of the paths as absolute,
 I can run this script from any directory and get the same results.
-You can put something like this in your &lt;code&gt;$PATH&lt;/code&gt; to not have to remember where you put it.&lt;/p&gt;</content><category term="blogpost"/><category term="shell"/><category term="tmux"/></entry><entry><title>Small server in python without dependencies</title><link href="https://drewsh.com/minimal-python-server.html" rel="alternate"/><published>2025-01-28T21:31:00+05:30</published><updated>2025-01-28T21:31:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-01-28:/minimal-python-server.html</id><summary type="html">&lt;p&gt;Code example using just built-ins for testing small proofs-of-concept&lt;/p&gt;</summary><content type="html">&lt;p&gt;Python is a batteries-included kind of language, and so of course it comes with an HTTP server module.
+You can put something like this in your &lt;code&gt;$PATH&lt;/code&gt; to not have to remember where you put it.&lt;/p&gt;</content><category term="blogpost"/><category term="shell"/><category term="unix"/></entry><entry><title>Influencer faces legal consequences for crass joke</title><link href="https://drewsh.com/influencer-faces-consequences-for-joke.html" rel="alternate"/><published>2025-02-15T16:05:00+05:30</published><updated>2025-02-15T16:05:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-02-15:/influencer-faces-consequences-for-joke.html</id><summary type="html">&lt;p&gt;There's this podcaster in India known as BeerBiceps, his real name being Ranveer Allahbadia.&lt;br&gt;
+I've been a hater of his for a long time because of his cosying with the right-wing and penchant for saying things that don't make a lick of sense, without a hint of irony.
+The Prime …&lt;/p&gt;</summary><content type="html">&lt;p&gt;There's this podcaster in India known as BeerBiceps, his real name being Ranveer Allahbadia.&lt;br&gt;
+I've been a hater of his for a long time because of his cosying with the right-wing and penchant for saying things that don't make a lick of sense, without a hint of irony.
+The Prime Minister gave him some sort of national award in 2024.&lt;/p&gt;
+&lt;p&gt;Recently, he went on a game show with more annoying people as a judge, and asked a question to a contestant that went something like this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Would you rather have to watch your parents have sex every day for the rest of your life, or join them once and stop it forever?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This has caused a huge uproar. Charges have been filed against everyone involved in the show. People want him to be jailed for some reason. Some are &lt;a href="https://archive.is/tmzBW"&gt;threatening him with violence over this&lt;/a&gt;&lt;sup id="fnref:toi"&gt;&lt;a class="footnote-ref" href="#fn:toi"&gt;1&lt;/a&gt;&lt;/sup&gt;.  He might be called to the &lt;em&gt;parliament of the nation&lt;/em&gt; for this. You can read this article on "World Is One News", an international organisation that sometimes reports on India, to see just how many people have censured him: &lt;a href="https://archive.is/iYNlu"&gt;archived from WION&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;While it is satisfying to see someone being treated horribly by the same oppressive forces they support, it's annoying to see just how regressive and angry so many people in India are. Nobody speaks up about how weird this is because they just don't care.&lt;/p&gt;
+&lt;div class="footnote"&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id="fn:toi"&gt;
+&lt;p&gt;I put this Times of India article into archive.is to prevent link rot, and it took &lt;em&gt;ages&lt;/em&gt; to download everything due to how much cruft there is on the modern web :/&amp;#160;&lt;a class="footnote-backref" href="#fnref:toi" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</content><category term="blogpost"/><category term="short"/></entry><entry><title>Small server in python without dependencies</title><link href="https://drewsh.com/minimal-python-server.html" rel="alternate"/><published>2025-01-28T21:31:00+05:30</published><updated>2025-01-28T21:31:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-01-28:/minimal-python-server.html</id><summary type="html">&lt;p&gt;Code example using just built-ins for testing small proofs-of-concept&lt;/p&gt;</summary><content type="html">&lt;p&gt;Python is a batteries-included kind of language, and so of course it comes with an HTTP server module.
 Today I wanted to have something small running on my computer without dependencies to test a server-side example,
 so I looked into how to create a minimal server using python built-ins. This is what I ended up with:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
@@ -193,7 +211,26 @@ Write the headers you want (including response code) and then the body.&lt;/p&gt
 &lt;li&gt;VS Code and Chrome both send back usage data to their respective Trillion-dollar companies, which is a violation of privacy.&lt;/li&gt;
 &lt;li&gt;I am quite happy using Emacs, and find it to be more featureful than VS Code. I can extend it easily using &lt;a href="https://en.wikipedia.org/wiki/Emacs_Lisp"&gt;Emacs Lisp&lt;/a&gt;, and it is much smaller in size than VS Code (both in terms of size-on-disk and RAM usage), which means I can run it on any computer I want.&lt;/li&gt;
 &lt;li&gt;VS Code is chiefly a marketing tool for Microsoft, and it allows them to get mindshare amongst developers. They also promote their own tools and cloud service within it. Emacs, developed by volunteers, does not want to sell me anything.&lt;/li&gt;
-&lt;/ol&gt;</content><category term="blogpost"/><category term="short"/><category term="web"/><category term="rant"/></entry><entry><title>Fauxspresso Lemonade</title><link href="https://drewsh.com/fauxspresso-lemonade.html" rel="alternate"/><published>2024-12-10T14:49:00+05:30</published><updated>2024-12-10T14:49:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-12-10:/fauxspresso-lemonade.html</id><summary type="html">&lt;p&gt;Something that tastes like espresso lemonade, but with less fancy ingredients&lt;/p&gt;</summary><content type="html">&lt;p&gt;Okay, this is actually an aeropress limeade.&lt;br&gt;
+&lt;/ol&gt;</content><category term="blogpost"/><category term="short"/><category term="web"/><category term="rant"/></entry><entry><title>Changed up my site's philosophy</title><link href="https://drewsh.com/reorganising-site-repositories.html" rel="alternate"/><published>2025-01-15T21:31:00+05:30</published><updated>2025-01-15T21:31:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-01-15:/reorganising-site-repositories.html</id><summary type="html">&lt;p&gt;I have decided to not package my site's theme to be reused by others anymore&lt;/p&gt;</summary><content type="html">&lt;p&gt;Earlier, my site used to have two parts in my &lt;a href="https://git.drewsh.com"&gt;git forge&lt;/a&gt;; blog, and Solarized-Flex.
+“blog” contained just the text and the pelican config,
+while “Solarized-Flex” is my fork of &lt;a href="https://github.com/alexandrevicenzi/flex"&gt;another pelican theme&lt;/a&gt; with colours I like.&lt;/p&gt;
+&lt;p&gt;I noticed that the font files and css used by my site was much heavier than what I actually needed, as it used &lt;a href="https://fontawesome.com/"&gt;font-awesome&lt;/a&gt;, a big font with icons meant to be used as little images. My site only used four of them.&lt;/p&gt;
+&lt;p&gt;I kept them as-is though, in case someone else wanted to use my theme.&lt;/p&gt;
+&lt;p&gt;That's probably never going to happen, so now I have a much smaller site with all the extra bits removed; and just one git repository to deal with.&lt;/p&gt;</content><category term="blogpost"/><category term="short"/><category term="blogging"/></entry><entry><title>Subsetting my fonts to speed up page loads</title><link href="https://drewsh.com/subsetting-fontawesome.html" rel="alternate"/><published>2025-01-10T19:46:00+05:30</published><updated>2025-01-28T19:46:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2025-01-10:/subsetting-fontawesome.html</id><summary type="html">&lt;p&gt;Removing unused fonts from my site to reduce its download size.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Subsetting a font means to remove all the characters you don’t actually use in order to reduce the size of the files.
+My site theme uses the &lt;a href="https://fontawesome.com/"&gt;font-awesome&lt;/a&gt; icon font, which maps code points to tiny images like the mastodon logo for example.
+I only use 4 of these, so the thousands of other icons is just unnecessary data that viewers have to download.&lt;/p&gt;
+&lt;p&gt;I will be using a js package called &lt;a href="https://github.com/zachleat/glyphhanger"&gt;&lt;code&gt;glyphhanger&lt;/code&gt;&lt;/a&gt;, which in turn uses the python library &lt;code&gt;fonttools&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use npm or pnpm to install glyphhanger globally: &lt;code&gt;pnpm add -g glyphhanger&lt;/code&gt; or &lt;code&gt;npm install -g glyphhanger&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Use pipx to install fonttools into its own virtual environment (you can install pipx via your package manager or via pip) &lt;code&gt;pipx install fonttools&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install compression libraries for use by glyphhanger into the fonttool environment: &lt;code&gt;pipx inject fonttools zopfli brotli&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Move to the directory with your fonts and execute: &lt;code&gt;glyphhanger 'https://drewsh.com' --subset='*.ttf'&lt;/code&gt;.
+   This will subset all fonts with the .ttf extension based on what is used in drewsh.com.
+   You can also give a path to HTML files if you haven’t published the site yet.&lt;/li&gt;
+&lt;li&gt;You will get a bunch of files ending with &lt;code&gt;-subset&lt;/code&gt; and then the extension, which you can use in your site.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can see the size savings for yourself:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="output of glyphhanger: a few unicode points, then next 10 lines are of the form &amp;quot;Subsetting x.ttf to x-subset.woff2&amp;quot;, most of them are reduced by 98%" src="https://drewsh.com/images/subset-fonts.avif"&gt;&lt;/p&gt;</content><category term="blogpost"/><category term="web"/><category term="short"/></entry><entry><title>Fauxspresso Lemonade</title><link href="https://drewsh.com/fauxspresso-lemonade.html" rel="alternate"/><published>2024-12-10T14:49:00+05:30</published><updated>2024-12-10T14:49:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-12-10:/fauxspresso-lemonade.html</id><summary type="html">&lt;p&gt;Something that tastes like espresso lemonade, but with less fancy ingredients&lt;/p&gt;</summary><content type="html">&lt;p&gt;Okay, this is actually an aeropress limeade.&lt;br&gt;
 This is sort of a modified version of an &lt;a href="https://www.youtube.com/watch?v=PUsHI7jdX1k"&gt;aeropress recipe from Coffee with April&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Ingredients&lt;/h2&gt;
 &lt;ul&gt;
@@ -391,7 +428,7 @@ All you need to do is add a ‘recipe’ to the &lt;a href="https://github.com/m
 &lt;p&gt;&lt;img alt="Github UI with a green tick next to the latest commit message" src="https://drewsh.com/images/github_workflow_result.avif"&gt;&lt;/p&gt;
 &lt;p&gt;The tick indicates that the workflow is successful, and a red cross would indicate that the workflow failed.
 You can click on them to see the result of the workflow.&lt;/p&gt;
-&lt;p&gt;If the workflow succeeds, your package will probably be accepted by MELPA.&lt;/p&gt;</content><category term="blogpost"/><category term="emacs"/><category term="github"/></entry><entry><title>Games I want to emulate</title><link href="https://drewsh.com/retro-games-to-play.html" rel="alternate"/><published>2024-04-19T19:35:00+05:30</published><updated>2024-05-17T19:35:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-04-19:/retro-games-to-play.html</id><summary type="html">&lt;p&gt;‘Retro’ games I want to play.&lt;/p&gt;</summary><content type="html">&lt;p&gt;I like older games a lot, I grew up playing the gameboy pokémons
+&lt;p&gt;If the workflow succeeds, your package will probably be accepted by MELPA.&lt;/p&gt;</content><category term="blogpost"/><category term="emacs"/></entry><entry><title>Games I want to emulate</title><link href="https://drewsh.com/retro-games-to-play.html" rel="alternate"/><published>2024-04-19T19:35:00+05:30</published><updated>2024-05-17T19:35:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-04-19:/retro-games-to-play.html</id><summary type="html">&lt;p&gt;‘Retro’ games I want to play.&lt;/p&gt;</summary><content type="html">&lt;p&gt;I like older games a lot, I grew up playing the gameboy pokémons
 and the gameboy advance fire emblems on my cracked PSP. I did
 play a couple of actual PSP games on it as well.&lt;/p&gt;
 &lt;h2&gt;The hardware&lt;/h2&gt;
@@ -463,7 +500,7 @@ tell, I haven’t played many of the classics!&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Quest 64 (N64, duh)&lt;/li&gt;
 &lt;li&gt;Jetpack (DOS)&lt;/li&gt;
-&lt;/ul&gt;</content><category term="blogpost"/><category term="short"/></entry><entry><title>Participating in the Spring Lisp Game jam, why and how</title><link href="https://drewsh.com/lisp-game-jam.html" rel="alternate"/><published>2024-04-17T11:42:00+05:30</published><updated>2024-05-16T19:08:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-04-17:/lisp-game-jam.html</id><summary type="html">&lt;p&gt;My tech stack for the lisp game jam, why I’m using it, and how
+&lt;/ul&gt;</content><category term="blogpost"/><category term="games"/><category term="short"/></entry><entry><title>Participating in the Spring Lisp Game jam, why and how</title><link href="https://drewsh.com/lisp-game-jam.html" rel="alternate"/><published>2024-04-17T11:42:00+05:30</published><updated>2024-05-16T19:08:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-04-17:/lisp-game-jam.html</id><summary type="html">&lt;p&gt;My tech stack for the lisp game jam, why I’m using it, and how
 I’m planning to distribute my game.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://lobste.rs/s/qomtd5/participating_spring_lisp_game_jam_why"&gt;Discussion at lobste.rs&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Please participate in the jam!&lt;/h2&gt;
 &lt;p&gt;If you’re on this webpage, there’s a good chance you’re already into lisp,
@@ -591,7 +628,7 @@ something I do not want to do.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://libresprite.github.io/#!/"&gt;LibreSprite&lt;/a&gt;, a great sprite editor.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://milkytracker.org/"&gt;Milkytracker&lt;/a&gt;, an old school audio
   workstation.&lt;/li&gt;
-&lt;/ul&gt;</content><category term="blogpost"/><category term="lisp"/><category term="python"/></entry><entry><title>How to act on command output containing spaces in Bash loops</title><link href="https://drewsh.com/working-on-input-with-spaces-bash.html" rel="alternate"/><published>2024-02-27T14:08:00+05:30</published><updated>2025-12-26T19:23:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-02-27:/working-on-input-with-spaces-bash.html</id><summary type="html">&lt;p&gt;A fool-proof way to write loops in bash that don't split input on spaces.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Bash is weird&lt;/h2&gt;
+&lt;/ul&gt;</content><category term="blogpost"/><category term="games"/><category term="lisp"/></entry><entry><title>How to act on command output containing spaces in Bash loops</title><link href="https://drewsh.com/working-on-input-with-spaces-bash.html" rel="alternate"/><published>2024-02-27T14:08:00+05:30</published><updated>2025-12-26T19:23:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-02-27:/working-on-input-with-spaces-bash.html</id><summary type="html">&lt;p&gt;A fool-proof way to write loops in bash that don't split input on spaces.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Bash is weird&lt;/h2&gt;
 &lt;p&gt;Whenever you make an input in bash, it gets split into "words" based on whitespace.
 Usually, this is what you want, and it lets you write commands like&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;x&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;~/Documents&lt;span class="w"&gt; &lt;/span&gt;~/Downloads&lt;span class="w"&gt; &lt;/span&gt;~/Photos
@@ -671,127 +708,4 @@ This will prevent nasty and confusing bugs.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
 
 &lt;p&gt;I still prefer the &lt;code&gt;xargs&lt;/code&gt; solution.&lt;/p&gt;
-&lt;p&gt;EDIT: Using &lt;code&gt;ls&lt;/code&gt; for looping through directory members is actually not a great idea. Filenames &lt;em&gt;may&lt;/em&gt; contain newlines, after all, and there is a much better solution given on this &lt;a href="https://mywiki.wooledge.org/BashPitfalls#for_f_in_.24.28ls_.2A.mp3.29:~:text=So%2C%20what%27s%20the%20right%20way%20to%20do%20it"&gt;wiki page of bash pitfalls&lt;/a&gt;&lt;/p&gt;</content><category term="blogpost"/><category term="unix"/><category term="linux"/><category term="shell"/><category term="short"/></entry><entry><title>When you might want classes</title><link href="https://drewsh.com/state-without-classes.html" rel="alternate"/><published>2024-02-19T11:29:00+05:30</published><updated>2024-02-19T11:29:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-02-19:/state-without-classes.html</id><summary type="html">&lt;p&gt;Sometimes it's much easier to work in inherently stateful design spaces with an Object-Oriented-first design approach.&lt;/p&gt;</summary><content type="html">&lt;p&gt;The &lt;a href="https://craftinginterpreters.com/contents.html"&gt;web version of the crafting interpreters book&lt;/a&gt; is available to read for free.
-It uses Java, a popular Object-Oriented language to explain the implementation of an interpreter
-for a simple language. It does not actually do so in a language-agnostic way
-(which would obviously be pretty hard to do), thus using an Object-Oriented approach.
-The language I am using to go through it, Common Lisp,
-while having &lt;a href="https://lispcookbook.github.io/cl-cookbook/clos.html"&gt;an impressive implementation of object-oriented programming&lt;/a&gt;,
-does not really prefer any programming style in particular.&lt;/p&gt;
-&lt;p&gt;I would not like to pull in classes till they are absolutely needed
-(and they definitely might at some point when creating an interpreter),
-but the book adds features as it goes along, increasing the complexity of the implementation slowly.&lt;/p&gt;
-&lt;p&gt;For example, one of the first pieces of code uses the Java Scanner class to split a line of input into
-tokens. This usually occurs on-demand, with the user calling scanner.token() to get the next token.
-The code in question just splits it into an array of tokens, sidestepping any complexity mentioned here,
-but I accidentally made things harder for myself by overlooking that.&lt;/p&gt;
-&lt;p&gt;Anyway, the &lt;code&gt;scanner&lt;/code&gt; class will have the string in question stored in some member variable, with
-a pointer to the current location in the generating process. All of this is hidden from the caller,
-so that it's just a simple call to get the next token.&lt;/p&gt;
-&lt;p&gt;We do not have this luxury in a non-OO environment, and have to handle everything ourselves.
-In this case, the state space is modeled entirely through function signatures, somewhat like:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nf"&gt;nextToken&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;::&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;Char&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Where the first &lt;code&gt;String&lt;/code&gt; is the input, &lt;code&gt;Char&lt;/code&gt; is the delimiter,
-and the output tuple represenst the output token, and the rest of the string.&lt;/p&gt;
-&lt;p&gt;What was being handled by a class is now passed to any calling functions,
-which are free to do whatever they wish with the output, even discard it completely.&lt;/p&gt;
-&lt;p&gt;This &lt;em&gt;might&lt;/em&gt; lead to unintended consequences, so the OO approach can be considered safer.&lt;/p&gt;
-&lt;p&gt;It's a bit tedious to implement, however.&lt;/p&gt;</content><category term="blogpost"/><category term="short"/></entry><entry><title>Write your first drafts with pen and paper (...if you are able to, at least)</title><link href="https://drewsh.com/writing-with-pen-and-paper.html" rel="alternate"/><published>2024-02-10T18:15:00+05:30</published><updated>2026-01-26T10:53:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-02-10:/writing-with-pen-and-paper.html</id><summary type="html">&lt;p&gt;I wrote this blog post first on paper, and had a lot of fun doing it. Maybe you'd like to try it as well.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Why would you ever do this?&lt;/h2&gt;
-&lt;p&gt;If the unending deluge of online content is stopping you from undertaking creative activities, insulating yourself from them might make you more productive.&lt;/p&gt;
-&lt;p&gt;At least, that is what &lt;a href="https://getfreewrite.com/"&gt;Freewrite&lt;/a&gt; says, the creator of many devices and
-online platforms that help you write in a low-noise environment and then export
-it to your editing software. The freewrite typewriters purport to minimize
-distractions and let you focus on getting your ideas out on the medium as fast as possible. &lt;/p&gt;
-&lt;p&gt;The issue for me is that they also cost a lot,
-more than many laptops, which I cannot abide.
-To me they are just a combination of a microprocessor and an LCD or e-ink screen.
-No shade to the creators, but I feel like I'm getting the same results out of
-the really fancy fountain pen and matcha green ink my partner got me,
-which looks much prettier than an 80-column monochrome screen,
-and is about 1/50&lt;sup&gt;th&lt;/sup&gt; of the cost to boot.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="freewrite alpha, writing tool with a small LCD screen and a keyboard in a tiny form factor" src="https://drewsh.com/images/small_freewrite.webp"&gt;&lt;br&gt;
-&lt;strong&gt;&lt;em&gt;The cheapest freewrite device stands at USD 350&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;With this setup, just like with a Freewrite, there is nothing to distract you while you write,
-no notifications, no way to accidentally switch desktops
-and end up on an open browser window that has some useless website open which has nothing to do with what you're writing.&lt;/p&gt;
-&lt;p&gt;There might be less pressure to get everything perfect based on how you view
-the medium of handwriting, for instance if it feels less permanent to you,
-less &lt;u&gt;final&lt;/u&gt;&lt;/p&gt;
-&lt;h3&gt;How do I write &lt;strong&gt;bold&lt;/strong&gt; text on paper?&lt;/h3&gt;
-&lt;p&gt;You can use light-weight markup to indicate how you want your text to be styled,
-like *this* for bold. This corresponds to how I write my blog anyway, but might
-be a bit foreign to users of editors such as LibreOffice Writer. Or, you could simply make your letters thicker.&lt;/p&gt;
-&lt;h2&gt;The downsides&lt;/h2&gt;
-&lt;h3&gt;Typing everything wholesale, after you've already written it down&lt;/h3&gt;
-&lt;p&gt;You have to get your words to other people in some way, and the most common way to do that is to use a computer.
-If you've started by writing everything out on paper, you will now have to type out everything you've written
-a second time, just to get it in a usable medium. You could use Optical Character Recognition, which tries its
-best to digitize everything you've written by scanning your words, but your results will depend on how legible
-your handwriting is in the first place.&lt;/p&gt;
-&lt;h3&gt;You're probably going to be slower&lt;/h3&gt;
-&lt;p&gt;Most people type much faster than they can write, on account of typing using both hands (ideally). It might get
-a smidge frustrating having to slow down your thoughts for the benefit your pen. You could try learning how to
-write &lt;a href="https://en.wikipedia.org/wiki/Teeline_Shorthand"&gt;shorthand&lt;/a&gt;, but personally, that seems like a waste of time to me.
-Experienced practitioners can get up to 100WPM using the Teeline shorthand system linked above.&lt;/p&gt;
-&lt;h3&gt;Some people have horrendous writing&lt;/h3&gt;
-&lt;p&gt;Your handwriting needs to be readable, at least by you. I went to school with a few people who could not read
-what they'd written in haste just days ago. Make sure this isn't you.&lt;/p&gt;
-&lt;h2&gt;Prior art&lt;/h2&gt;
-&lt;p&gt;Of course, I am not the first person to ever think of writing drafts down on paper.
-Here are a few articles I've seen online about the topic, for your benefit.
-Endorsements from published writers might carry more weight as well.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://web.archive.org/web/20221208163319/https://followthatstory.substack.com/p/why-i-handwrite-first-drafts-and"&gt;Why I Handwrite First Drafts (and why you might consider it), by Diana Zahuranec&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.bryndonovan.com/2020/09/16/the-benefits-of-writing-a-novel-by-hand/"&gt;The benefits of writing a novel by hand, by Bryn Donovan&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;A confession&lt;/h2&gt;
-&lt;p&gt;While I thought I had the meat of the article all set when I was done writing it on paper,
-in the process of transferring it to Emacs, I felt like adding more stuff, reordering headings, and the sort.
-I suppose it adds up to more than simply an editing phase.
-There is also the fact that while editing for a hyper-textual medium you need to
-get references and outbound links to make your document livelier.
-This requires you to surf websites anyway, and maybe you'll find interesting things you'd want to add to your writing.
-It might be beneficial to integrate this earlier in your writing process,
-which the distraction-free clique says you &lt;em&gt;shouldn’t&lt;/em&gt; do.&lt;/p&gt;
-&lt;!-- Notes --&gt;</content><category term="blogpost"/><category term="blogging"/><category term="writing"/></entry><entry><title>Reading CBZ Manga in emacs</title><link href="https://drewsh.com/reading-naruto-in-emacs.html" rel="alternate"/><published>2024-02-01T09:11:00+05:30</published><updated>2024-02-01T09:11:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-02-01:/reading-naruto-in-emacs.html</id><summary type="html">&lt;p&gt;An excuse to write more emacs lisp, saving seconds of effort on my part in my
-quest to read all of "Naruto".&lt;/p&gt;</summary><content type="html">&lt;p&gt;After purchasing a physical copy of the popular Naruto manga's volume 3, I set out
-to read the rest of the chapters until the end. I've obtained an archive of CBZs
-(basically a zip file of images representing comic book pages).&lt;/p&gt;
-&lt;p&gt;Somehow, on trying to open them in Calibre, it tries to convert the CBZs to... CBZ?
-This seems to lead to an infinite loop so you can't really read them directly.
-Resigned to my fate, I loaded them 10 at a time to calibre and converted them to PDFs.
-This is really manual and sort of boring, so I set out to discover something better.&lt;/p&gt;
-&lt;h2&gt;Do it in Emacs!&lt;/h2&gt;
-&lt;p&gt;I already read PDFs and EPUBs in emacs 
-(epubs via &lt;a href="https://depp.brause.cc/nov.el/"&gt;nov.el&lt;/a&gt;, which is a really good name),
-so I figured why not just try and find a package to read comics in it as well.&lt;/p&gt;
-&lt;p&gt;Turns out the built-in doc-view mode natively supports CBRs by opening each as an archive
-and allowing the reader to go the the next or previous image via &lt;code&gt;n&lt;/code&gt; or &lt;code&gt;p&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Since it's basically images nested deep in a few directories, going to the next chapter
-is not the greatest UX, so I just automated it in a function since the chapters are numbered
-predictably (000-500, left padded with 0s).&lt;/p&gt;
-&lt;h2&gt;Emacs Lisp!&lt;/h2&gt;
-&lt;p&gt;You could say I am rather fond of &lt;a href="https://drewsh.com/monkeytype-emacs-workflow.html"&gt;writing emacs-lisp&lt;/a&gt;, so this was a joy, writing something for my specific needs only.
-This only works while you're already reading a chapter!&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;defun&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;next-comic&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;interactive&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;let*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nv"&gt;curr-img&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;buffer-file-name&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;curr-cbz&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;car&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;split-string&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;curr-img&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;:&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;;; buffer has the name file:001.png for instance&lt;/span&gt;
-&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;curr-volume&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string-to-number&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;file-name-base&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;file-name-sans-extension&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;curr-cbz&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
-&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;volumes-dir&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;file-name-directory&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;curr-img&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;next-file&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;expand-file-name&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;format&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;%03d.cbz&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;curr-volume&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;;; pad to 3 digits&lt;/span&gt;
-&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="nv"&gt;volumes-dir&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;kill-buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;find-file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;next-file&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;bind-key&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;kbd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;C-c n&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;#39;next-comic&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;#39;image-mode-map&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;;; nifty binding&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blogpost"/><category term="emacs"/><category term="reading"/></entry></feed>
+&lt;p&gt;EDIT: Using &lt;code&gt;ls&lt;/code&gt; for looping through directory members is actually not a great idea. Filenames &lt;em&gt;may&lt;/em&gt; contain newlines, after all, and there is a much better solution given on this &lt;a href="https://mywiki.wooledge.org/BashPitfalls#for_f_in_.24.28ls_.2A.mp3.29:~:text=So%2C%20what%27s%20the%20right%20way%20to%20do%20it"&gt;wiki page of bash pitfalls&lt;/a&gt;&lt;/p&gt;</content><category term="blogpost"/><category term="unix"/><category term="linux"/><category term="shell"/><category term="short"/></entry></feed>
