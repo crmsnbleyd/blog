@@ -8,24 +8,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
 
-    <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/stylesheet/style.min.css">
+    <link rel="stylesheet" type="text/css" href="./theme/stylesheet/style.min.css">
 
     <link id="dark-theme-style" rel="stylesheet" type="text/css"
           media="(prefers-color-scheme: dark)"
-    href="https://drewsh.com/theme/stylesheet/dark-theme.min.css">
+    href="./theme/stylesheet/dark-theme.min.css">
 
     <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
               media="(prefers-color-scheme: dark)"
-          href="https://drewsh.com/theme/pygments/inkpot.min.css">
+          href="./theme/pygments/inkpot.min.css">
     <link id="pygments-light-theme" rel="stylesheet" type="text/css"
               media="(prefers-color-scheme: light)"
-          href="https://drewsh.com/theme/pygments/friendly.min.css">
+          href="./theme/pygments/friendly.min.css">
 
 
 
-  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/fontawesome.css">
-  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/brands.css">
-  <link rel="stylesheet" type="text/css" href="https://drewsh.com/theme/font-awesome/css/solid.css">
+  <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/solid.css">
 
 
   <link rel="icon" href="/images/favicon.png" type="image/png">
@@ -50,11 +50,11 @@
   <meta property="og:title" content="Small server in python without dependencies">
   <meta property="og:description" content="Code example using just built-ins for testing small proofs-of-concept">
   <meta property="og:locale" content="en_US">
-  <meta property="og:url" content="https://drewsh.com/minimal-python-server.html">
+  <meta property="og:url" content="./minimal-python-server.html">
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="2025-01-28 21:31:00+05:30">
   <meta property="article:modified_time" content="">
-  <meta property="article:author" content="https://drewsh.com/author/drew-jose.html">
+  <meta property="article:author" content="./author/drew-jose.html">
   <meta property="article:section" content="blogpost">
   <meta property="article:tag" content="short">
   <meta property="article:tag" content="python">
@@ -70,12 +70,12 @@
 
 <aside>
   <div>
-    <a href="https://drewsh.com/">
+    <a href="./">
       <img src="/images/emacs.jpg" alt="" title="">
     </a>
 
     <h1>
-      <a href="https://drewsh.com/"></a>
+      <a href="./"></a>
     </h1>
 
     <p class="site-subtitle">These are public thoughts</p>
@@ -87,13 +87,13 @@
 
             <li>
               <a target="_self"
-                 href="https://drewsh.com/pages/buttons.html">
+                 href="./pages/buttons.html">
                 Buttons
               </a>
             </li>
             <li>
               <a target="_self"
-                 href="https://drewsh.com/pages/newsletter.html">
+                 href="./pages/newsletter.html">
                 Newsletter
               </a>
             </li>
@@ -150,7 +150,7 @@ rel="me"           href="https://hachyderm.io/@crmsnbleyd">
     Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
     </span>
   <script id="dark-theme-script"
-          src="https://drewsh.com/theme/dark-theme/dark-theme.js"
+          src="./theme/dark-theme/dark-theme.js"
           data-enable-auto-detect-theme="True"
           data-default-theme="light"
           type="text/javascript">
@@ -162,7 +162,7 @@ rel="me"           href="https://hachyderm.io/@crmsnbleyd">
   <main>
 
 <nav>
-  <a href="https://drewsh.com/">Home</a>
+  <a href="./">Home</a>
 
   <a href="/archives.html">Archives</a>
   <a href="/tags.html">Tags</a>
@@ -176,7 +176,7 @@ rel="me"           href="https://hachyderm.io/@crmsnbleyd">
       
     <h1 id="minimal-python-server">Small server in python without dependencies</h1>
     <p>
-      Posted on Jan 28, 2025 in <a href="https://drewsh.com/category/blogpost.html">blogpost</a>
+      Posted on Jan 28, 2025 in <a href="./category/blogpost.html">blogpost</a>
 
     </p>
   </header>
@@ -237,7 +237,7 @@ I don’t know how they implemented this, but it doesn’t sound like it would b
 The response is supposed to be a bytestring, hence the <code>b"""</code>,
 and it needs to be valid HTTP so that whatever tool we use to read it does not choke on it.
 Write the headers you want (including response code) and then the body.</p>
-<p><img alt="the response open in emacs saying &quot;minimal page written in python&quot;" src="https://drewsh.com/images/eww-minimal-page.avif"></p>
+<p><img alt="the response open in emacs saying &quot;minimal page written in python&quot;" src="./images/eww-minimal-page.avif"></p>
 <p>There’s also a <a href="https://docs.python.org/3/library/http.server.html#http.server.ThreadingHTTPServer">threading server</a> you can use if you want concurrency, I’ve never tried it.</p>
 <h2>Extra info because I’m nice</h2>
 <p>Inside any directory with web files, you can run</p>
@@ -248,9 +248,9 @@ Write the headers you want (including response code) and then the body.</p>
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="https://drewsh.com/tag/short.html">short</a>
-      <a href="https://drewsh.com/tag/python.html">python</a>
-      <a href="https://drewsh.com/tag/web.html">web</a>
+      <a href="./tag/short.html">short</a>
+      <a href="./tag/python.html">python</a>
+      <a href="./tag/web.html">web</a>
     </p>
   </div>
 
@@ -285,7 +285,7 @@ Built with <a href="https://getpelican.com" target="_blank">Pelican</a>
   "@context" : "http://schema.org",
   "@type" : "Blog",
   "name": " Drew's blogsite ",
-  "url" : "https://drewsh.com",
+  "url" : ".",
   "image": "/images/emacs.jpg",
   "description": "Texts mostly about tech and writing."
 }
