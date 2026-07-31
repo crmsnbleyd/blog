@@ -2,10 +2,10 @@
 @use "sass:map"
 
 $heading-colors: (
-  h1: $blue,
-  h2: $green,
-  h3: $cyan,
-  h4: $magenta
+  h1: var(--color-h1),
+  h2: $cyan,
+  h3: $yellow,
+  h4: var(--color-article-link)
 )
 
 $heading-sizes: (
@@ -35,7 +35,9 @@ h6
     font-size: $value
 
 :root
-  font-size: $text-scale
+  // these are css variables that will be changed in dark theme
+  --color-h1: #{$green}
+  --color-article-link: #{$magenta}
 
 body
   margin: 0
@@ -43,6 +45,9 @@ body
   background-color: $body-bg
   color: $text-color
   font-family: $sans
+  // https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/
+  font-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  line-height: 1.6;
 
 // https://css-tricks.com/two-issues-styling-the-details-element-and-how-to-solve-them/
 details
@@ -88,6 +93,9 @@ a
     font-weight: bold
     &:hover
       color: $black
+  .theme-options
+    display: inline-block;
+    white-space: nowrap;
 
 hr
   color: $med-grey
@@ -209,7 +217,7 @@ main
         margin-bottom: 0
 
       .home-article-title > a
-        color: $article-link-color
+        color: var(--color-article-link)
         font-weight: 500
         &:hover
           color: $light-orange
