@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Drew's blogsite - blogpost</title><link href="https://drewsh.com/" rel="alternate"/><link href="https://drewsh.com/feeds/blogpost.atom.xml" rel="self"/><id>https://drewsh.com/</id><updated>2026-07-04T16:20:00+05:30</updated><subtitle>Welcome to my spot on the internet</subtitle><entry><title>What I would do if I was invisible for a day</title><link href="https://drewsh.com/invisible-for-a-day.html" rel="alternate"/><published>2026-07-04T16:20:00+05:30</published><updated>2026-07-04T16:20:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-07-04:/invisible-for-a-day.html</id><summary type="html">&lt;p&gt;Article based on a prompt. Suggestions welcome.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This prompt comes from &lt;a href="https://blr.indiewebclub.org/"&gt;IndieWebClub Bangalore&lt;/a&gt;. I have had 25 minutes to pen this down.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Drew's blogsite - blogpost</title><link href="https://drewsh.com/" rel="alternate"/><link href="https://drewsh.com/feeds/blogpost.atom.xml" rel="self"/><id>https://drewsh.com/</id><updated>2026-08-01T14:06:00+05:30</updated><subtitle>Welcome to my spot on the internet</subtitle><entry><title>Why it took me a while to go vegan</title><link href="https://drewsh.com/why-im-vegan-now.html" rel="alternate"/><published>2026-08-01T14:06:00+05:30</published><updated>2026-08-01T14:06:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-08-01:/why-im-vegan-now.html</id><summary type="html">&lt;p&gt;I don't like explaining things that are self-evident to me so here it is once and for all&lt;/p&gt;</summary><content type="html">&lt;p&gt;The reasons to become vegan are well-known, (&lt;a href="https://www.vegansociety.com/go-vegan/why-go-vegan"&gt;here are some reasons to go vegan&lt;/a&gt;), and it’s not as hard to go vegan as one would think.
+This post is specifically about why I never went vegan earlier than when I actually did.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Cows grazing and lounging near brick houses on a green hill. Sheep far away on another hill" src="https://drewsh.com/images/grazing_cotswolds_II_edward_hersey.webp"&gt;&lt;/p&gt;
+&lt;h2&gt;Reasons for me to not go vegan&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;I did not grow up in a vegetarian family, and the inherent casteism of Indian vegetarianism&lt;a href="https://www.goya.in/blog/the-many-red-flags-of-the-big-green-dot-the-caste-roots-of-vegetarianism"&gt;&lt;sup class="citation"&gt;[1]&lt;/sup&gt;&lt;/a&gt; (it’s mostly about ritual purity rather than actual care for animals, since they’d be vegan otherwise) alienated me from vegetarianism, and by extension, veganism.&lt;/li&gt;
+&lt;li&gt;If you start thinking about minimising suffering from a utilitarian perspective, there is almost nothing you can do to not be involved in it, at least indirectly. There is intense slavery in the globalised supply chain&lt;a href="https://www.business-humanrights.org/en/latest-news/drc-majority-of-cobalt-miners-trapped-in-forced-labour-says-university-of-nottingham-report/"&gt;&lt;sup class="citation"&gt;[2]&lt;/sup&gt;&lt;/a&gt;, for example, and if one wished to clean their hands of everything wrong with the world, there’s not much they could participate in.&lt;/li&gt;
+&lt;li&gt;I always thought people positioning veganism as the only moral option was unfair on indigenous people who live(d) sustainably as part of their surroundings, rather than engaging in destructive practices.&lt;/li&gt;
+&lt;li&gt;I thought PETA was annoying.&lt;/li&gt;
+&lt;li&gt;I used to live with someone who ate a lot of chicken, and could not be arsed to cook a separate meal for myself.&lt;/li&gt;
+&lt;li&gt;I had trouble eating vegetables when I was younger. This might be because I hated the way they were cooked at home.&lt;/li&gt;
+&lt;li&gt;Vegan food is still niche in India where even though there’s a sizeable vegetarian population, dairy is everywhere.
+  I believe if you tell the average Indian you don’t consume dairy they’re going to think you’re crazy.&lt;/li&gt;
+&lt;li&gt;I felt people would no longer take me seriously if I told them I was vegan.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;My current thoughts&lt;/h2&gt;
+&lt;p&gt;Being vegan for me is specifically about not being complicit in unnecessary animal deaths.
+It is okay to decide what I wish to eat on my short life on this planet.
+I don’t want to eat animals and I don’t want them to be grown for food, when perfectly serviceable alternatives exist.
+I don’t have to participate in this just to prove some sort of point to myself.
+I no longer feel like have to solve all the issues in the world to care about this one thing.&lt;/p&gt;
+&lt;style&gt;
+a:has(&gt; sup.citation) {
+  text-decoration: none;
+
+  sup.citation {
+    font-size: 0.75em;
+  }
+}
+&lt;/style&gt;</content><category term="blogpost"/><category term="food"/><category term="short"/></entry><entry><title>What I would do if I was invisible for a day</title><link href="https://drewsh.com/invisible-for-a-day.html" rel="alternate"/><published>2026-07-04T16:20:00+05:30</published><updated>2026-07-04T16:20:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-07-04:/invisible-for-a-day.html</id><summary type="html">&lt;p&gt;Article based on a prompt. Suggestions welcome.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This prompt comes from &lt;a href="https://blr.indiewebclub.org/"&gt;IndieWebClub Bangalore&lt;/a&gt;. I have had 25 minutes to pen this down.&lt;/p&gt;
 &lt;p&gt;Frankly, logistics are the main constraint. I would hate to spend my period of invisibility on an airplane flying to a different country in order to optimise my experience, but thankfully there is much to do within the bounds of Bangalore.&lt;/p&gt;
 &lt;p&gt;Something that would be very tempting to do is go somewhere with a high density of valuable goods and start stealing stuff, but I don’t reckon the prompt was about how to extract the maximum economic benefit from my condition.&lt;/p&gt;
 &lt;p&gt;If highly illegal stuff (like say, breaking into a corrupt individual’s home in order to reveal their crimes, not that I would ever consider it in any other non-hypothetical situation) is off the table, I might go to a library, as schlocky as that may sound. I haven’t been to a proper, huge library since my university days, and would love to just go around looking at all the books available and noting down what interests me. The way one finds out what to read without a library is this neat trick called “asking people”, but I have not gotten many suggestions yet. If you’re reading this, email me book suggestions.&lt;/p&gt;
@@ -628,84 +657,4 @@ something I do not want to do.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://libresprite.github.io/#!/"&gt;LibreSprite&lt;/a&gt;, a great sprite editor.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://milkytracker.org/"&gt;Milkytracker&lt;/a&gt;, an old school audio
   workstation.&lt;/li&gt;
-&lt;/ul&gt;</content><category term="blogpost"/><category term="games"/><category term="lisp"/></entry><entry><title>How to act on command output containing spaces in Bash loops</title><link href="https://drewsh.com/working-on-input-with-spaces-bash.html" rel="alternate"/><published>2024-02-27T14:08:00+05:30</published><updated>2025-12-26T19:23:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-02-27:/working-on-input-with-spaces-bash.html</id><summary type="html">&lt;p&gt;A fool-proof way to write loops in bash that don't split input on spaces.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Bash is weird&lt;/h2&gt;
-&lt;p&gt;Whenever you make an input in bash, it gets split into "words" based on whitespace.
-Usually, this is what you want, and it lets you write commands like&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;x&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;~/Documents&lt;span class="w"&gt; &lt;/span&gt;~/Downloads&lt;span class="w"&gt; &lt;/span&gt;~/Photos
-&lt;span class="k"&gt;do&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;du&lt;span class="w"&gt; &lt;/span&gt;-h&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$x&lt;/span&gt;
-&lt;span class="k"&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Here, all of the filenames given are interpreted separately.&lt;br&gt;
-If in case you want to pass the name of a string with does have spaces in it,
-you would usually quote it with single quotes, which makes sure the shell does
-not process it and takes it literally.&lt;br&gt;
-For example 'My Photos' is the name of a single directory and not two directories.
-However, the &lt;code&gt;du -h $x&lt;/code&gt; command will then try to access them separately and complain
-about 'My' and 'Photos' not existing!&lt;/p&gt;
-&lt;h2&gt;Strings with spaces in them are sometimes messed up&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;test&lt;/span&gt;
-touch&lt;span class="w"&gt; &lt;/span&gt;test/&lt;span class="s1"&gt;&amp;#39;this has spaces&amp;#39;&lt;/span&gt;
-&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;x&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;ls&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;test&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;do&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;file&lt;span class="w"&gt; &lt;/span&gt;test/&lt;span class="nv"&gt;$x&lt;/span&gt;
-&lt;span class="k"&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;You will get the output&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;test/this:    cannot open `test/this&amp;#39; (No such file or directory)
-test/has:     cannot open `test/has&amp;#39; (No such file or directory)
-test/spaces:  cannot open `test/spaces&amp;#39; (No such file or directory)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;You can see that the loop tries to take each space-delimited "word" as an item
-of the loop, which is not what we actually want. We want to treat each line of
-ls as an item, and not break up each individual line.&lt;/p&gt;
-&lt;p&gt;Just to be clear, I'd personally use &lt;a href="https://en.wikipedia.org/wiki/Xargs"&gt;&lt;code&gt;xargs&lt;/code&gt;&lt;/a&gt; and do the rather silly looking&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ls&lt;span class="w"&gt; &lt;/span&gt;~/test/&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;tr&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\n&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;\0&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;xargs&lt;span class="w"&gt; &lt;/span&gt;-0&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;printf&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;--&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;test/%s\0&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;xargs&lt;span class="w"&gt; &lt;/span&gt;-0&lt;span class="w"&gt; &lt;/span&gt;file
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;my &lt;code&gt;xargs&lt;/code&gt; does not seem to have the &lt;code&gt;--delimiter&lt;/code&gt; flag, so I had to use the
-&lt;code&gt;-0&lt;/code&gt; flag that takes the null byte as separator. &lt;/p&gt;
-&lt;h2&gt;How to control the splitting&lt;/h2&gt;
-&lt;p&gt;Bash uses a special variable called &lt;code&gt;$IFS&lt;/code&gt; which
-controls how bash splits strings.&lt;/p&gt;
-&lt;p&gt;Its default value contains the space character,
-tab character and the newline character.&lt;/p&gt;
-&lt;p&gt;You can edit it to only be the newline character
-if you wish to only split on newlines 
-(like for example in the case of ls, which gives each file/dir its own line)&lt;/p&gt;
-&lt;p&gt;To make more resilient scripts, be sure to store the previous value of &lt;code&gt;$IFS&lt;/code&gt;
-somewhere before changing it, and revert back to that value when you're done.
-This will prevent nasty and confusing bugs.&lt;/p&gt;
-&lt;h2&gt;Putting the pieces together&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
-&lt;span class="normal"&gt; 2&lt;/span&gt;
-&lt;span class="normal"&gt; 3&lt;/span&gt;
-&lt;span class="normal"&gt; 4&lt;/span&gt;
-&lt;span class="normal"&gt; 5&lt;/span&gt;
-&lt;span class="normal"&gt; 6&lt;/span&gt;
-&lt;span class="normal"&gt; 7&lt;/span&gt;
-&lt;span class="normal"&gt; 8&lt;/span&gt;
-&lt;span class="normal"&gt; 9&lt;/span&gt;
-&lt;span class="normal"&gt;10&lt;/span&gt;
-&lt;span class="normal"&gt;11&lt;/span&gt;
-&lt;span class="normal"&gt;12&lt;/span&gt;
-&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Set IFS to newline to properly handle filenames with spaces&lt;/span&gt;
-&lt;span class="nv"&gt;OLD_IFS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$IFS&lt;/span&gt;
-&lt;span class="nv"&gt;IFS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;$&amp;#39;\n&amp;#39;&lt;/span&gt;
-
-&lt;span class="c1"&gt;# Loop over each file in the directory&lt;/span&gt;
-&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;file&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;ls&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;do&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;test&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;-f&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;$file&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;then&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Processing file: &lt;/span&gt;&lt;span class="nv"&gt;$file&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;fi&lt;/span&gt;
-&lt;span class="k"&gt;done&lt;/span&gt;
-
-&lt;span class="c1"&gt;# revert to old IFS&lt;/span&gt;
-&lt;span class="nv"&gt;IFS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$OLD_IFS&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
-
-&lt;p&gt;I still prefer the &lt;code&gt;xargs&lt;/code&gt; solution.&lt;/p&gt;
-&lt;p&gt;EDIT: Using &lt;code&gt;ls&lt;/code&gt; for looping through directory members is actually not a great idea. Filenames &lt;em&gt;may&lt;/em&gt; contain newlines, after all, and there is a much better solution given on this &lt;a href="https://mywiki.wooledge.org/BashPitfalls#for_f_in_.24.28ls_.2A.mp3.29:~:text=So%2C%20what%27s%20the%20right%20way%20to%20do%20it"&gt;wiki page of bash pitfalls&lt;/a&gt;&lt;/p&gt;</content><category term="blogpost"/><category term="unix"/><category term="linux"/><category term="shell"/><category term="short"/></entry></feed>
+&lt;/ul&gt;</content><category term="blogpost"/><category term="games"/><category term="lisp"/></entry></feed>
