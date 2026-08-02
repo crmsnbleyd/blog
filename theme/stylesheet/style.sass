@@ -144,8 +144,33 @@ aside
     font-size: 1.28em
     text-transform: lowercase
 
+  nav:not(.primary-nav) a:hover
+    color: $yellow
+
   .site-subtitle
-    font-size: 1.5em
+    font-size: 1.25em
+    font-weight: 300
+    line-height: 1.25
+
+  .primary-nav
+    display: flex
+    justify-content: center
+    gap: .75rem
+    margin: 1.5rem 0 0
+
+    a
+      color: $brwhite
+      font-size: .72rem
+      font-weight: 600
+      letter-spacing: .06em
+      text-decoration: underline
+      text-decoration-color: rgba($brcyan, .65)
+      text-decoration-thickness: 1px
+      text-underline-offset: .35em
+      text-transform: uppercase
+
+      &:hover
+        color: $yellow
 
 main 
   a
@@ -157,29 +182,7 @@ main
   h2 a 
       text-decoration: none
   
-  nav
-    text:
-      align: center
-      ransform: uppercase
-    padding: 14px 0 8px 0
-    border-bottom: none
-
-    // Need to use font-size of 0 so that whitespace between the <a> tags
-    // doesn't have an affect on alignment.
-    font-size: 0
-
-    &::after
-      content: ""
-      display: block
-      width: 3rem
-      height: 1px
-      margin: .5rem auto 0
-      background-color: $brcyan
-      border-radius: 999px
-      opacity: .4
-  
-
-  nav, .translations 
+  .translations 
     a 
       font-size: 0.9rem
       padding: 0 7px
