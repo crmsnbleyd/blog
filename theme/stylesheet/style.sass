@@ -42,7 +42,9 @@ h6
 body
   margin: 0
   padding: 0
-  background-color: $body-bg
+  // Solarized's base3 is the intended light "paper" colour. It keeps the
+  // palette warm while giving long pages a little more breathing room.
+  background-color: $brwhite
   color: $text-color
   font-family: $sans
   // https://www.smashingmagazine.com/2022/01/modern-fluid-typography-css-clamp/
@@ -159,23 +161,32 @@ main
     text:
       align: center
       ransform: uppercase
-    padding: 14px 0 14px 0
-    border-bottom: $nav-border-color 1px solid
+    padding: 14px 0 8px 0
+    border-bottom: none
 
     // Need to use font-size of 0 so that whitespace between the <a> tags
     // doesn't have an affect on alignment.
     font-size: 0
+
+    &::after
+      content: ""
+      display: block
+      width: 3rem
+      height: 1px
+      margin: .5rem auto 0
+      background-color: $brcyan
+      border-radius: 999px
+      opacity: .4
   
 
   nav, .translations 
     a 
       font-size: 0.9rem
-      padding: 0 4px
+      padding: 0 7px
       border-right: $nav-item-border-color 1px solid
       text-decoration-style: solid
-
-    &:last-child
-      border-right: none
+      &:last-child
+        border-right: none
 
 
   .neighbors
@@ -195,6 +206,15 @@ main
 
   article
     margin: 0 8% 2% 8%
+
+    // A quiet, book-like pause between listing entries.
+    & > hr
+      width: 3rem
+      height: 1px
+      margin: 2.25rem auto
+      background-color: $brcyan
+      border-radius: 999px
+      opacity: .4
 
     @each $key, $value in $heading-colors
       #{$key}
@@ -281,7 +301,10 @@ main
 
     *:not(pre) > code 
       font-size: .8em
-      white-space: nowrap
+      // Inline commands should wrap at their spaces instead of forcing the
+      // reading column wider. `anywhere` only applies when one token is long.
+      white-space: break-spaces
+      overflow-wrap: anywhere
       color: $magenta
       padding: 1px 3px
       background-color: #f7f7f9
@@ -548,6 +571,11 @@ ul.social
       ul.list 
         li 
           padding: 2px
+
+  // Centre the capped reading column in the space beside the sidebar.
+  main article
+    margin: 0 auto 2% auto
+    width: calc(100% - clamp(2rem, 16%, 8rem))
 
 // Admonition
 div.admonition 
