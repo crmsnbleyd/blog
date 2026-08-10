@@ -2,10 +2,10 @@
 @use "sass:map"
 
 $heading-colors: (
-  h1: var(--color-h1),
+  h1: $magenta,
   h2: $cyan,
   h3: $yellow,
-  h4: var(--color-article-link)
+  h4: $green
 )
 
 $heading-sizes: (
@@ -34,10 +34,6 @@ h6
   #{$size}
     font-size: $value
 
-:root
-  // these are css variables that will be changed in dark theme
-  --color-h1: #{$magenta}
-  --color-article-link: #{$green}
 
 body
   margin: 0
@@ -550,11 +546,17 @@ ul.social
 //
 
 @media screen and (min-width: 768px) 
+  body
+    display: grid
+    grid-template-columns: max-content minmax(0, 1fr)
+    height: auto
+    min-height: 100vh
+
   aside 
-    width: 25vw
+    align-self: start
     height: 100vh
-    position: fixed
-    z-index: 1000
+    position: sticky
+    top: 0
 
     div 
       padding: 36px 18px
@@ -569,12 +571,12 @@ ul.social
         padding-top: 32px
 
   main 
-    height: 100vh
+    min-height: 100vh
     position: relative
-    padding-left: 25vw
 
     article 
       max-width: 760px
+      margin-left: 4%
 
       ul.list 
         li 
