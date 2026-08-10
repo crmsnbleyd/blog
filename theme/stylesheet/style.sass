@@ -36,8 +36,8 @@ h6
 
 :root
   // these are css variables that will be changed in dark theme
-  --color-h1: #{$green}
-  --color-article-link: #{$magenta}
+  --color-h1: #{$magenta}
+  --color-article-link: #{$green}
 
 body
   margin: 0
@@ -190,6 +190,11 @@ main
       text-decoration-style: solid
       &:last-child
         border-right: none
+
+
+  .h-entry:not(:last-child)
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
 
 
   .neighbors
