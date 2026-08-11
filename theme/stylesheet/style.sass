@@ -85,12 +85,12 @@ a
 // theme switcher in sidebar
 .theme-switch-links
   font-size: small
+
   a
-    color: $light-grey
+    color: $sidebar-link-color
     text-decoration: underline
     font-weight: bold
-    &:hover
-      color: $yellow
+
   .theme-options
     display: inline-block;
     white-space: nowrap;
@@ -141,7 +141,7 @@ aside
     text-transform: lowercase
 
   nav:not(.primary-nav) a:hover
-    color: $yellow
+    color: $light-orange
 
   .site-subtitle
     font-size: 1.25em
@@ -155,7 +155,7 @@ aside
     margin: 1.5rem 0 0
 
     a
-      color: $brwhite
+      color: $sidebar-link-color
       font-size: .72rem
       font-weight: 600
       letter-spacing: .06em
@@ -166,7 +166,7 @@ aside
       text-transform: uppercase
 
       &:hover
-        color: $yellow
+        color: $light-orange
 
 main 
   a
@@ -499,6 +499,7 @@ ul.social
     display: inline
 
   a 
+    color: $brwhite
     display: inline-block
     width: 36px
     height: 36px
