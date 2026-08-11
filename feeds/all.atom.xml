@@ -1,5 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Drew's blogsite</title><link href="https://drewsh.com/" rel="alternate"/><link href="https://drewsh.com/feeds/all.atom.xml" rel="self"/><id>https://drewsh.com/</id><updated>2026-08-01T14:06:00+05:30</updated><entry><title>Why it took me a while to go vegan</title><link href="https://drewsh.com/why-im-vegan-now.html" rel="alternate"/><published>2026-08-01T14:06:00+05:30</published><updated>2026-08-01T14:06:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-08-01:/why-im-vegan-now.html</id><summary type="html">&lt;p&gt;I don't like explaining things that are self-evident to me so here it is once and for all&lt;/p&gt;</summary><content type="html">&lt;p&gt;The reasons to become vegan are well-known, (&lt;a href="https://www.vegansociety.com/go-vegan/why-go-vegan"&gt;here are some reasons to go vegan&lt;/a&gt;), and it’s not as hard to go vegan as one would think.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Drew's blogsite</title><link href="https://drewsh.com/" rel="alternate"/><link href="https://drewsh.com/feeds/all.atom.xml" rel="self"/><id>https://drewsh.com/</id><updated>2026-08-02T12:00:00+05:30</updated><entry><title>Rules for making a playlist</title><link href="https://drewsh.com/my-playlist-rules.html" rel="alternate"/><published>2026-08-02T12:00:00+05:30</published><updated>2026-08-02T12:00:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-08-02:/my-playlist-rules.html</id><summary type="html">&lt;p&gt;Some guidelines I try to follow when making a playlist for others.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Curating a collection of music for a loved one to listen to is a time-honoured tradition,
+becoming accessible and a huge part of pop culture around the time cassette tapes and home-recording became possible.
+With the rise of music streaming, we mostly make playlists on Deezer or whatever now, sending a link to it instead of transferring a physical object. 
+I deeply enjoy making playlists, so I’ve had a lot of time to think about what I think about when I make one.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="four blank cassette tapes" src="https://drewsh.com/images/cassettes.avif"&gt;
+&lt;a href="https://commons.wikimedia.org/wiki/File:2014_Kasety_magnetofonowe.JPG"&gt;Jacek Halicki&lt;/a&gt;, &lt;a href="https://creativecommons.org/licenses/by-sa/3.0"&gt;CC BY-SA 3.0&lt;/a&gt;, via Wikimedia Commons&lt;/p&gt;
+&lt;h2&gt;I got new rules I count 'em&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Only one song per artist. I have favourites sometimes, and this prevents me from just stuffing the playlist with their songs.&lt;/li&gt;
+&lt;li&gt;It either has a specific mood: that is, it tries to evoke a certain emotion.
+  If it is intended to switch between emotions, the shifts should be gradual and smooth.&lt;/li&gt;
+&lt;li&gt;Medium length, between 20 to 45 minutes. I want the recipient to be able to listen to it all at once,
+  and feel satisfied if they do.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These rules are obviously not concrete. You can (and I do) break them for effect.
+A short playlist could be used to convey something really specific.
+A long playlist could be used to portray a more general mood, or just act as a soundtrack to some other task (e.g. for a road-trip).
+Artist-specific playlists can obviously exist, as a sort of Greatest Hits compilation.&lt;/p&gt;
+&lt;h2&gt;A playlist&lt;/h2&gt;
+&lt;p&gt;I've lost a bunch of playlists I made on a certain streaming platform once I migrated off it,
+but I made one recently for my beau. I was quite sleepy at around 1 am on a school night,
+so it might not exactly be a work of art, but I'd just like to immortalise it in a way outside of a proprietary service.
+This also contains a bunch of my favourite songs (though I guess all playlists I make would?)&lt;/p&gt;
+&lt;!-- note to self: add actual snippets of the song as self-hosted media
+
+you can use
+
+curl -s "https://itunes.apple.com/search?term=Vampire+Weekend+Diplomats+Son&amp;entity=song&amp;limit=1" \
+  | jq -r '.results[0].previewUrl'
+
+to get an .m4a snippet, which I will self host
+
+&lt;audio controls preload="none"&gt;
+  &lt;source src="/audio/diplomats-son.m4a" type="audio/mp4"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;
+
+--&gt;
+
+&lt;p&gt;8 titles, 28 minutes.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Vampire Weekend - "Diplomat's Son"&lt;/p&gt;
+&lt;p&gt;&lt;audio controls preload="none"&gt;
+  &lt;source src="https://drewsh.com/audio/vampire-weekend-diplomats-son.m4a" type="audio/mp4"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Men I Trust - "Sugar"&lt;/p&gt;
+&lt;p&gt;&lt;audio controls preload="none"&gt;
+  &lt;source src="https://drewsh.com/audio/men-i-trust-sugar.m4a" type="audio/mp4"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Caroline Polachek - "Sunset"&lt;/p&gt;
+&lt;p&gt;&lt;audio controls preload="none"&gt;
+  &lt;source src="https://drewsh.com/audio/caroline-polachek-sunset.m4a" type="audio/mp4"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Charli xcx - "Camera"&lt;/p&gt;
+&lt;p&gt;&lt;audio controls preload="none"&gt;
+  &lt;source src="https://drewsh.com/audio/charli-xcx-camera.m4a" type="audio/mp4"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lorde - "What Was That"&lt;/p&gt;
+&lt;p&gt;&lt;audio controls preload="none"&gt;
+  &lt;source src="https://drewsh.com/audio/lorde-what-was-that.m4a" type="audio/mp4"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ninajirachi - "iPod Touch"&lt;/p&gt;
+&lt;p&gt;&lt;audio controls preload="none"&gt;
+  &lt;source src="https://drewsh.com/audio/ninajirachi-ipod-touch.m4a" type="audio/mp4"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Japanese Breakfast - "Kokomo, IN"&lt;/p&gt;
+&lt;p&gt;&lt;audio controls preload="none"&gt;
+  &lt;source src="https://drewsh.com/audio/japanese-breakfast-kokomo-in.m4a" type="audio/mp4"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;boygenius - "Souvenir"&lt;/p&gt;
+&lt;p&gt;&lt;audio controls preload="none"&gt;
+  &lt;source src="https://drewsh.com/audio/boygenius-souvenir.m4a" type="audio/mp4"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content><category term="blogpost"/><category term="short"/><category term="music"/></entry><entry><title>Why it took me a while to go vegan</title><link href="https://drewsh.com/why-im-vegan-now.html" rel="alternate"/><published>2026-08-01T14:06:00+05:30</published><updated>2026-08-01T14:06:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-08-01:/why-im-vegan-now.html</id><summary type="html">&lt;p&gt;I don't like explaining things that are self-evident to me so here it is once and for all&lt;/p&gt;</summary><content type="html">&lt;p&gt;The reasons to become vegan are well-known, (&lt;a href="https://www.vegansociety.com/go-vegan/why-go-vegan"&gt;here are some reasons to go vegan&lt;/a&gt;), and it’s not as hard to go vegan as one would think.
 This post is specifically about why I never went vegan earlier than when I actually did.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Cows grazing and lounging near brick houses on a green hill. Sheep far away on another hill" src="https://drewsh.com/images/grazing_cotswolds_II_edward_hersey.webp"&gt;&lt;/p&gt;
 &lt;h2&gt;Reasons for me to not go vegan&lt;/h2&gt;
@@ -529,132 +626,4 @@ tell, I haven’t played many of the classics!&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Quest 64 (N64, duh)&lt;/li&gt;
 &lt;li&gt;Jetpack (DOS)&lt;/li&gt;
-&lt;/ul&gt;</content><category term="blogpost"/><category term="games"/><category term="short"/></entry><entry><title>Participating in the Spring Lisp Game jam, why and how</title><link href="https://drewsh.com/lisp-game-jam.html" rel="alternate"/><published>2024-04-17T11:42:00+05:30</published><updated>2024-05-16T19:08:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-04-17:/lisp-game-jam.html</id><summary type="html">&lt;p&gt;My tech stack for the lisp game jam, why I’m using it, and how
-I’m planning to distribute my game.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://lobste.rs/s/qomtd5/participating_spring_lisp_game_jam_why"&gt;Discussion at lobste.rs&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;Please participate in the jam!&lt;/h2&gt;
-&lt;p&gt;If you’re on this webpage, there’s a good chance you’re already into lisp,
-or that the new notation will not scare you. The link to the jam:
-&lt;a href="https://itch.io/jam/spring-lisp-game-jam-2024"&gt;https://itch.io/jam/spring-lisp-game-jam-2024&lt;/a&gt;. 
-Read ahead if you’re interested in participating, I have some game engine options you might like!&lt;/p&gt;
-&lt;p&gt;&lt;img alt="A happy goblin and an owl looking at multicolored text that reads “Lisp Game Jam”" src="/images/spring_game_jam_spritely.avif"&gt;  &lt;/p&gt;
-&lt;center&gt;
-&lt;i&gt;
-Image by the &lt;a href="https://spritely.institute"&gt;Spritely Institute&lt;/a&gt;
-&lt;/i&gt;
-&lt;/center&gt;
-&lt;h2&gt;Why I love the concept&lt;/h2&gt;
-&lt;p&gt;I’m a big lisp-head, with my longtime editor being emacs, and my current
-preferred language for doing tasks being Common Lisp.
-This is why I was chuffed to hear about the tradition of Lisp Game Jams,
-even though I’ve never made a game before.&lt;/p&gt;
-&lt;h2&gt;What should you use to participate?&lt;/h2&gt;
-&lt;p&gt;For someone who has &lt;em&gt;never&lt;/em&gt; made a video game, it’s best to use a game
-engine/library to handle the nitty-gritty of game code and just focus on the
-ideas you are bringing. &lt;/p&gt;
-&lt;h3&gt;Game engines and libraries for classic lisps&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://shirakumo.github.io/trial"&gt;Trial&lt;/a&gt;, a Common Lisp game engine
-  that has already been used to make a commercial game, &lt;a href="https://store.steampowered.com/app/1261430/Kandria/"&gt;Kandria&lt;/a&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://dthompson.us/projects/chickadee.html"&gt;Chickadee&lt;/a&gt;, 
-  a game development library (as the 
-  &lt;a href="https://lobste.rs/s/qomtd5/participating_spring_lisp_game_jam_why#c_fujjmc"&gt;author clarified&lt;/a&gt;)
-  for Guile Scheme, a language that would be familiar to users of the
-  Guix package manager.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I like both of these options, but at first I dismissed them because there
-is no way to distribute these games on the web in the form of HTML5 games.&lt;/p&gt;
-&lt;h3&gt;Godot&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://godotengine.org/"&gt;Godot&lt;/a&gt; is a classic game engine with a GUI,
-sort of reminiscent of something like Unity or Unreal, but much better
-because it’s free and open source. It supports a lot of languages, one
-of which is a native lisp called &lt;a href="https://github.com/Mercerenies/gdlisp"&gt;GDLisp&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Use this if you like Graphical interfaces, and would love to have
-way more tutorials than all of the other options combined.&lt;/p&gt;
-&lt;h3&gt;Javascript game frameworks&lt;/h3&gt;
-&lt;p&gt;There are two ways to compile a lisp to JavaScript,
-&lt;a href="https://clojurescript.org/"&gt;ClojureScript&lt;/a&gt;,
-and &lt;a href="https://parenscript.common-lisp.dev/"&gt;Parenscript&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;ClojureScript is the whole clojure language that compiles to javascript,
-and has lispy bindings available to a lot of javascript libraries. I found
-the setup a bit compilcated, but it’s a great choice. More information about
-a setup here: &lt;a href="https://github.com/trevordilley/phaser-cljs-template"&gt;https://github.com/trevordilley/phaser-cljs-template&lt;/a&gt; (it is
-a bit out-dated so you can shoot me an email on clojure @ this domain if you
-want help)&lt;/p&gt;
-&lt;p&gt;Parenscript is a common lisp library that allows you to use macros to
-generate javascript. In this method we would just write lisp with an eye
-on the javascript being generated as we go, as this is not a language
-proper. The mailing list is incredibly helpful: &lt;a href="https://common-lisp.net/cgi-bin/mailman/listinfo/parenscript-devel"&gt;https://common-lisp.net/cgi-bin/mailman/listinfo/parenscript-devel&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Alright, now that we know how to use lisps to generate javascript, here’s
-a couple libraries you can use:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://phaser.io"&gt;https://phaser.io&lt;/a&gt;: Seems to be the most popular JS game library,
-  and has a module available for Clojure&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://melonjs.org/"&gt;https://melonjs.org/&lt;/a&gt;: Has a bit simpler of an API, but is not as
-  popular.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Lua land&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://fennel-lang.org/"&gt;Fennel&lt;/a&gt; is a lispy layer
-over Lua that is compiled out to plain Lua.
-I don’t particularly like it because it is a very leaky
-abstraction exactly due to the fact that it does not have a runtime,
-you sort of have to learn Lua to actually use it. This limitation comes
-with a great benefit though, you can use it wherever you can use lua.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://www.love2d.org/"&gt;Love2D&lt;/a&gt;, a 2D (duh) game engine that uses
-  Lua, and games made here can be compiled to absolutely any platform,
-  including the browser, which makes it a great choice for game jams,
-  where you want as many people to be able to play your game as possible.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://tic80.com/"&gt;TIC-80&lt;/a&gt;, a fantasy console that is a self-contained
-  application for making games, with a built-in code editor,
-  audio workstation, map, and sprite editor. Probably the best choice
-  for making a tiny game and supports fennel as well. The only possible
-  drawback might be the retro limitations on code size, sound channels,
-  4-bit colour, etc.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This is what I would recommend if you are fine with Lua.&lt;/p&gt;
-&lt;p&gt;Edit from June 2025: I quite like fennel now, and in fact, I &lt;a href="https://nebunez.itch.io/slugger"&gt;wrote a game in it!&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Web with Scheme&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://spritely.institute/hoot/"&gt;Guile Hoot&lt;/a&gt; is a toolchain that compiles scheme to webassembly.
-Last year, two games for the lisp game jam were using this stack, using an earlier version and loads of boilerplate.
-This year, all of that work is done for you already, using the HTML5 Canvas API for drawing things to the screen.
-Learn more about it at spritely’s blog post: &lt;a href="https://spritely.institute/news/make-a-game-with-hoot-for-the-lisp-game-jam.html"&gt;https://spritely.institute/news/make-a-game-with-hoot-for-the-lisp-game-jam.html&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Dark horse: Python!?&lt;/h3&gt;
-&lt;p&gt;&lt;a href="https://www.pygame.org/wiki/about"&gt;PyGame&lt;/a&gt; is a very simple game library
-that runs absolutely anywhere you could run python. I use python for
-my dayjob, and I love it very much. &lt;/p&gt;
-&lt;p&gt;Coming to how to use it with lisp, &lt;a href="https://hylang.org/"&gt;Hy&lt;/a&gt; is a lisp
-that runs on python and can use any python library. It feels much nicer
-to use than Fennel, and any leakiness in the implementation is not an issue
-for me, since I’m quite good at python.&lt;/p&gt;
-&lt;center&gt;
-&lt;img src="https://drewsh.com/images/cuddles.avif" alt="Cuddles, the Hylang mascot, a squid"&gt;
-&lt;br&gt;&lt;em&gt;&lt;strong&gt;A cute mascot is a plus!&lt;/strong&gt;&lt;/em&gt;
-&lt;/center&gt;
-
-&lt;p&gt;There are many ways to bundle python scripts into self contained 
-applications, which need you to have the platforms on hand to actually
-do it for different operating systems, which is also not an issue for
-me since I have access to all three major operating systems.&lt;/p&gt;
-&lt;p&gt;The issue with this is you can’t compile for the web without uploading
-a whole python interpreter using WebAssembly, which sounds like
-something I do not want to do.&lt;/p&gt;
-&lt;h2&gt;Other useful tools:&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://www.mapeditor.org/"&gt;Tiled&lt;/a&gt;, a map editor natively supported by
-  many engines&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://libresprite.github.io/#!/"&gt;LibreSprite&lt;/a&gt;, a great sprite editor.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://milkytracker.org/"&gt;Milkytracker&lt;/a&gt;, an old school audio
-  workstation.&lt;/li&gt;
-&lt;/ul&gt;</content><category term="blogpost"/><category term="games"/><category term="lisp"/></entry></feed>
+&lt;/ul&gt;</content><category term="blogpost"/><category term="games"/><category term="short"/></entry></feed>
