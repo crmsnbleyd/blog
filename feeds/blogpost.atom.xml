@@ -1,5 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Drew's blogsite - blogpost</title><link href="https://drewsh.com/" rel="alternate"/><link href="https://drewsh.com/feeds/blogpost.atom.xml" rel="self"/><id>https://drewsh.com/</id><updated>2026-08-02T12:00:00+05:30</updated><entry><title>Rules for making a playlist</title><link href="https://drewsh.com/my-playlist-rules.html" rel="alternate"/><published>2026-08-02T12:00:00+05:30</published><updated>2026-08-02T12:00:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-08-02:/my-playlist-rules.html</id><summary type="html">&lt;p&gt;Some guidelines I try to follow when making a playlist for others.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Curating a collection of music for a loved one to listen to is a time-honoured tradition,
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Drew's blogsite - blogpost</title><link href="https://drewsh.com/" rel="alternate"/><link href="https://drewsh.com/feeds/blogpost.atom.xml" rel="self"/><id>https://drewsh.com/</id><updated>2026-08-15T16:00:00+05:30</updated><entry><title>Getting into craft coffee</title><link href="https://drewsh.com/starting-craft-coffee.html" rel="alternate"/><published>2026-08-15T16:00:00+05:30</published><updated>2026-08-15T16:00:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-08-15:/starting-craft-coffee.html</id><summary type="html">&lt;p&gt;Explaining why I drink my coffee black and what I like about it&lt;/p&gt;</summary><content type="html">&lt;p&gt;Thank you &lt;a href="https://yap.zyd.lol/@zyd"&gt;@zyd&lt;/a&gt; for the request, and &lt;a href="https://blr.indiewebclub.org/"&gt;IndieWebClub Bangalore&lt;/a&gt; for the prompt that sort-of points to it.&lt;/p&gt;
+&lt;p&gt;You probably don’t need coffee explained to you.
+It’s the most popular drug delivery mechanism in the world, and could be considered the lifeblood of modern civilisation (or at least jobs-oriented capitalism).
+That is to say, you might consume, or be surrounded by people who consume the liquid.
+Most people use it just as a way to receive the alertness that comes with ingesting caffeine.
+It can also add a sort of roast-y and rich flavour to popular food items like your tiramisus, affogatos, and caramel macchiatos.&lt;br&gt;
+I also like coffee a lot (check out my domain https://drew.coffee if you’re not reading this over there),
+but without any adornments like milk, sweeteners, or additional flavour. 
+This does cause a bit of surprise to anyone visiting my home or hanging out at a café with me,
+due to the assumption that coffee on its own tastes pretty bad, which in turn still surprises me a little.&lt;/p&gt;
+&lt;p&gt;Coffee is a beverage brewed from roasted and ground coffee beans, coffee beans being the seed of the Coffea plants. 
+They’re not actually beans, since they’re not a legume, but the point is they come from a fruit.
+Coffee thus actually has a quite fruity flavour when not roasted too darkly (and even then you can taste a hint),
+along with an assortment of other flavours due to the content of the soil, how the plant was grown, the altitude, and so on.&lt;/p&gt;
+&lt;h2&gt;Why you think coffee tastes like charcoal on its own&lt;/h2&gt;
+&lt;p&gt;The reason why most people associate coffee with a stronger roast and the distinct flavour that comes with it is because:
+- Strongly roasted beans last a smidge longer without going bad
+- The fruity and aromatic flavours of a lighter roast go away much quicker when stored
+- When you’re selling coffee at a large-scale business like starbucks, you want your base ingredient to taste consistent,
+  and a strong roast burns away all the uniqueness of the seeds, and you just taste the roast.
+- People assume a stronger roasted coffee contains more caffeine (the opposite is true)
+- It tastes better with milk drinks, since the flavour cuts through the milk and other things one might add to the drink.
+- Darker roasted beans are easier to work with for espressos, which are the most popular drink base in cafés.&lt;/p&gt;
+&lt;h2&gt;Craft (or specialty) coffee&lt;/h2&gt;
+&lt;p&gt;Ever heard a sommelier talk about wine? Each estate and vintage is supposed to have its own unique characteristics which you can taste (though the jury’s out on whether sommeliers are faking it for attention). They taste different because they were grown on different soil and atmospheric conditions, and processed a bit differently after harvest. The same applies to coffee. When you treat the coffee itself as the end-goal and not a necessary evil you need to get your dose of stimulants,
+there’s a lot which you can play with.
+You can taste the intrinsic flavours of the bean itself (though this is a bit subtle), the way in which it was prepared for roasting (some methods aim to clear as much fruit as effectively as possible, leading to a clearer coffee flavour, while others ferment with the skin on or media like honey), and even aging.
+There’s a world of experiences when consuming coffee this way, and you could go your whole life without tasting every possible method. And after you get a bit accustomed to it, you will be able to taste the &lt;em&gt;flavour notes&lt;/em&gt; of each bag or cup of coffee you get from a specialty coffee shop. Those are usually noted on the menu, such as various fruits, chocolate, and other yummy things. If you’re used to dark-roasted coffee this might seem like a bit of hogwash, but it’s real.&lt;/p&gt;
+&lt;h2&gt;How to get into it&lt;/h2&gt;
+&lt;p&gt;The first order of business is to figure out whether you even like coffee on its own.
+There’s no shame in it if you don’t.
+Look up specialty coffee + your city/neighbourhood in your search engine of choice, 
+and go to the friendly barista and tell them you’d like to try a manual pour.
+Maybe you can talk to them and figure out what exactly you’re looking for.
+If you have a friend who’s into specialty coffee,
+that’s perfect because they’re probably going to froth at their mouth when faced with the idea of inducting someone else into the hobby.
+If you don’t like it, and you trust that the person who prepared it did not screw up, you may stop.&lt;/p&gt;
+&lt;p&gt;If you want to brew coffee at home, there’s not much in the way of requirements! You just need:
+- Coffee grounds
+- A way to heat water
+- A way to filter out the grounds when brewed.&lt;/p&gt;
+&lt;p&gt;You can get pre-ground coffee anywhere, just look for a lighter roast ground a bit course if all you have is a sieve (otherwise you’ll get grounds in the end product; not the best accouterment).
+Once you decide you like coffee enough to invest in making it at home, here’s the equipment you’ll be happy you have:
+- A conical-burr grinder. Pre-ground coffee is good, but this is fresher
+- A coffee maker like a french press.
+- A scale to figure out what ratio of coffee to water you enjoy (there are recommendations, but your taste is unique).&lt;/p&gt;
+&lt;p&gt;Good luck, and send me an email if you try specialty coffee.&lt;/p&gt;</content><category term="blogpost"/><category term="food"/></entry><entry><title>Rules for making a playlist</title><link href="https://drewsh.com/my-playlist-rules.html" rel="alternate"/><published>2026-08-02T12:00:00+05:30</published><updated>2026-08-02T12:00:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-08-02:/my-playlist-rules.html</id><summary type="html">&lt;p&gt;Some guidelines I try to follow when making a playlist for others.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Curating a collection of music for a loved one to listen to is a time-honoured tradition,
 becoming accessible and a huge part of pop culture around the time cassette tapes and home-recording became possible.
 With the rise of music streaming, we mostly make playlists on Deezer or whatever now, sending a link to it instead of transferring a physical object. 
 I deeply enjoy making playlists, so I’ve had a lot of time to think about what I think about when I make one.&lt;/p&gt;
@@ -554,76 +600,4 @@ All you need to do is add a ‘recipe’ to the &lt;a href="https://github.com/m
 &lt;p&gt;&lt;img alt="Github UI with a green tick next to the latest commit message" src="https://drewsh.com/images/github_workflow_result.avif"&gt;&lt;/p&gt;
 &lt;p&gt;The tick indicates that the workflow is successful, and a red cross would indicate that the workflow failed.
 You can click on them to see the result of the workflow.&lt;/p&gt;
-&lt;p&gt;If the workflow succeeds, your package will probably be accepted by MELPA.&lt;/p&gt;</content><category term="blogpost"/><category term="emacs"/></entry><entry><title>Games I want to emulate</title><link href="https://drewsh.com/retro-games-to-play.html" rel="alternate"/><published>2024-04-19T19:35:00+05:30</published><updated>2024-05-17T19:35:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-04-19:/retro-games-to-play.html</id><summary type="html">&lt;p&gt;‘Retro’ games I want to play.&lt;/p&gt;</summary><content type="html">&lt;p&gt;I like older games a lot, I grew up playing the gameboy pokémons
-and the gameboy advance fire emblems on my cracked PSP. I did
-play a couple of actual PSP games on it as well.&lt;/p&gt;
-&lt;h2&gt;The hardware&lt;/h2&gt;
-&lt;p&gt;Hopefully a Retroid 4 pro, which is an android device with decent
-specs which should allow up to PS2 emulation. I placed an order
-for it a month ago and there’s no sign of it yet, but I’ve got my
-fingers crossed. &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Update 17 May 2024&lt;/strong&gt;: Looks like I won’t be getting the device after all.
-I shall be playing these on my PC instead.&lt;/p&gt;
-&lt;h2&gt;Games list&lt;/h2&gt;
-&lt;p&gt;I’m only listing games I haven’t played, and as you could probably
-tell, I haven’t played many of the classics!&lt;/p&gt;
-&lt;h3&gt;SNES&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;The Mega Man X series&lt;/strong&gt; : I’ll probably only play the first one
-  and move on to the sequels when I’m done with the other games
-  on the list&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Chrono Trigger&lt;/strong&gt; : Maybe the most well-known JRPG? I find playing
-  RPGs a bit taxing due to how long they are, but I’ll make an
-  exception for this and possibly &lt;a href="https://en.wikipedia.org/wiki/EarthBound"&gt;one more&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;PlayStation&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Castlevania Symphony of the Night&lt;/strong&gt; : The game that put ‘vania’ in
-  metroidvania. I played the Castlevania advance collection on my
-  switch and this is supposed to be much better, so I’m excited.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Metal Gear Solid&lt;/strong&gt; : I might play MGS2 and MGS3 later as well.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Dreamcast&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Jet Set Radio&lt;/strong&gt; : The graphics still seem to hold up today.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Crazy Taxi&lt;/strong&gt; : I played a bit of this in an arcade 10 years ago.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;GBA&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Legend of Zelda minish cap&lt;/strong&gt; : I got stuck at some point as a child
-  and could not advance the story, time for revenge.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Metroid Fusion&lt;/strong&gt; : I guess this puts the ‘metroid’ in metroidvania?&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Kuru Kuru Kururin&lt;/strong&gt; : Awesome name&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;N64&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Majora’s Mask&lt;/strong&gt; : I love the Legend of Zelda, how could you tell?&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Mario 64&lt;/strong&gt; : This would be my first 3D Mario, actually.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Crowdsourced suggestions&lt;/h2&gt;
-&lt;p&gt;From the lovely community over on the
-&lt;a href="https://emacs.ch/@crmsnbleyd/112298365477625955"&gt;fediverse&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://mirageisland.nl/users/prinsje"&gt;https://mirageisland.nl/users/prinsje&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Banjo-Kazooie (N64)&lt;/li&gt;
-&lt;li&gt;Grandia (PS1)&lt;/li&gt;
-&lt;li&gt;Kirby Super Star (SNES)&lt;/li&gt;
-&lt;li&gt;Kirby’s Dream Land 3 (SNES)&lt;/li&gt;
-&lt;li&gt;Kirby: The Crystal Shards (N64)&lt;/li&gt;
-&lt;li&gt;Knuckles Chaotix (32X)&lt;/li&gt;
-&lt;li&gt;NIGHTS into Dreams (Sega Saturn)&lt;/li&gt;
-&lt;li&gt;Pokemon Puzzle Challenge (GBC)&lt;/li&gt;
-&lt;li&gt;Sonic CD (Sega CD)&lt;/li&gt;
-&lt;li&gt;Sonic R (Sega Saturn)&lt;/li&gt;
-&lt;li&gt;Sonic Spinball (Sega Genesis)&lt;/li&gt;
-&lt;li&gt;The Pokémon Stadium games (N64)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href="https://emacs.ch/@yeti"&gt;https://emacs.ch/@yeti&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Any Leo Cristopherson game (TRS-80)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href="https://social.sdf.org/@notptr"&gt;https://social.sdf.org/@notptr&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Quest 64 (N64, duh)&lt;/li&gt;
-&lt;li&gt;Jetpack (DOS)&lt;/li&gt;
-&lt;/ul&gt;</content><category term="blogpost"/><category term="games"/><category term="short"/></entry></feed>
+&lt;p&gt;If the workflow succeeds, your package will probably be accepted by MELPA.&lt;/p&gt;</content><category term="blogpost"/><category term="emacs"/></entry></feed>
