@@ -34,13 +34,12 @@ but they also quite commonly have things like lyrics booklets, &lt;/p&gt;
 &lt;h3&gt;Records themselves look good as well&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="A blue-green record spinning" src="https://drewsh.com/images/vinyl_post/turntable_playing_ali.mp4"&gt;&lt;/p&gt;
 &lt;p&gt;Our first record, ali by Vieux Farka Touré and Khruangbin, was a translucent blue-green instead of the usual black, which was such a pleasant surprise.&lt;/p&gt;
-&lt;video controls width="100%" preload="metadata" aria-label="compressed to all hell video of a turntable playing the clear red record of is this it by the strokes. the sleeve is next to it"&gt;
-    &lt;source src="https://drewsh.com/images/vinyl_post/turntable_playing_is_this_it.mp4" type="video/mp4"&gt;
-    Your browser does not support the video tag.
-&lt;/video&gt;
-
+&lt;p&gt;&lt;img alt="turntable playing the clear red record of is this it by the strokes. the sleeve is next to it" src="https://drewsh.com/images/vinyl_post/turntable_playing_is_this_it.avif"&gt;&lt;/p&gt;
 &lt;p&gt;Another record I purchased, “Is This It” by The Strokes, is a limited editiion translucent red.&lt;/p&gt;
-&lt;video controls width="100%" preload="metadata" aria-label="A black record of Punisher spinning, with the album cover next to it"&gt;
+&lt;video 
+    controls width="100%" preload="metadata" 
+    aria-label="A black record of Punisher spinning, with the album cover next to it"
+    poster="https://drewsh.com/images/vinyl_post/turntable_playing_punisher_cover.avif"&gt;
     &lt;source src="https://drewsh.com/images/vinyl_post/turntable_playing_punisher.mp4" type="video/mp4"&gt;
     Your browser does not support the video tag.
 &lt;/video&gt;
