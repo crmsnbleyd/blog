@@ -1,5 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Drew's blogsite - blogpost</title><link href="https://drewsh.com/" rel="alternate"/><link href="https://drewsh.com/feeds/blogpost.atom.xml" rel="self"/><id>https://drewsh.com/</id><updated>2026-08-15T16:00:00+05:30</updated><entry><title>Getting into craft coffee</title><link href="https://drewsh.com/starting-craft-coffee.html" rel="alternate"/><published>2026-08-15T16:00:00+05:30</published><updated>2026-08-15T16:00:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-08-15:/starting-craft-coffee.html</id><summary type="html">&lt;p&gt;Explaining why I drink my coffee black and what I like about it&lt;/p&gt;</summary><content type="html">&lt;p&gt;Thank you &lt;a href="https://yap.zyd.lol/@zyd"&gt;@zyd&lt;/a&gt; for the request, and &lt;a href="https://blr.indiewebclub.org/"&gt;IndieWebClub Bangalore&lt;/a&gt; for the prompt that sort-of points to it.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Drew's blogsite - blogpost</title><link href="https://drewsh.com/" rel="alternate"/><link href="https://drewsh.com/feeds/blogpost.atom.xml" rel="self"/><id>https://drewsh.com/</id><updated>2026-09-25T14:21:00+05:30</updated><entry><title>Waxing poetic about my records and turntable</title><link href="https://drewsh.com/first-records-and-turntable.html" rel="alternate"/><published>2026-09-25T14:21:00+05:30</published><updated>2026-09-25T14:21:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-09-25:/first-records-and-turntable.html</id><summary type="html">&lt;p&gt;My thoughts on collecting and playing vinyl records.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="alt text" src="https://drewsh.com/images/vinyl_post/otjf_records_display.avif"&gt;&lt;/p&gt;
+&lt;p&gt;Music in the streaming age is weightless. It reaches you through the aether from servers thousands of miles away into whatever speaker happens to be nearby.
+It seems almost infinite, is completely free of friction, and incredibly easy to take for granted.&lt;/p&gt;
+&lt;p&gt;I recently bought a record player and my first three records, with plans to buy more.&lt;/p&gt;
+&lt;p&gt;To anyone used to tapping a glass screen to hear any song ever recorded, this looks like too much work to listen to a limited number of tunes.
+Records are bulky, inconvenient, require physical storage, and only hold about twenty minutes of music per side before you have to get up and flip them over.&lt;/p&gt;
+&lt;p&gt;Yet, much like taking the time to manually grind whole coffee beans instead of stirring instant powder into boiling water, the friction adds to its appeal.&lt;/p&gt;
+&lt;p&gt;The instant coffee vs. freshly brewed coffee analogy breaks down when it comes to quality though.
+Any coffee connoisseur will say brewed coffee tastes better than instant (due to a variety of reasons), 
+but standard CD-quality digital audio technically has higher fidelity and dynamic range than vinyl ever will.
+Records degrade over time due to dust and scratches, leading to sound artifacts (which I am coming to terms with),
+and cost a ridiculous amount of money in India, thanks to import duties and a weak rupee.&lt;/p&gt;
+&lt;h2&gt;What makes a record “worth it”, still&lt;/h2&gt;
+&lt;p&gt;I’m sort of a minimalist and never thought I’d have a collection of anything,
+but I love music and hate how exploitative streaming is (more on this later),
+so it makes complete sense to have a little record collection.&lt;/p&gt;
+&lt;p&gt;Here are some reasons I started one, in no particular order.&lt;/p&gt;
+&lt;h3&gt;Difference from digital media&lt;/h3&gt;
+&lt;p&gt;Unlike digital files which store sound as a collection of bits, a vinyl record is a direct physical artifact of audio.&lt;/p&gt;
+&lt;p&gt;When a record is pressed, soundwaves are literally etched into a single continuous groove on a sheet of PVC plastic. 
+If you zoomed in with a microscope, you'd see the actual undulating shape of the soundwaves themselves.&lt;/p&gt;
+&lt;p&gt;It’s such a delicate, magical, yet simple thing, and it boggles my mind that this exists at all.&lt;/p&gt;
+&lt;h3&gt;Relative rarity&lt;/h3&gt;
+&lt;p&gt;Vinyl records went out of fashion because of their cost of production, fragility, and low portability,
+and everyone streams, so it makes the experience even more interesting, as I didn’t get to listen to any until recently.
+You did however see them in all sorts of media, especially that from the heyday of records,
+which added to the mystique.&lt;/p&gt;
+&lt;h3&gt;The art looks really pretty&lt;/h3&gt;
+&lt;p&gt;The sleeve, of course, has the album art, which is usually pretty enough on its own,
+but they also quite commonly have things like lyrics booklets, &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Black cover of the lyric book of Punisher with white line art filled with references to the songs in the album" src="https://drewsh.com/images/vinyl_post/punisher_lyric_book_cover.avif"&gt;
+&lt;img alt="Lyrics of Chinese Satellite with an illustration of Phoebe being picked up by a UFO" src="https://drewsh.com/images/vinyl_post/punisher_lyric_book_inside.avif"&gt;&lt;/p&gt;
+&lt;h3&gt;Records themselves look good as well&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="A blue-green record spinning" src="https://drewsh.com/images/vinyl_post/turntable_playing_ali.mp4"&gt;&lt;/p&gt;
+&lt;p&gt;Our first record, ali by Vieux Farka Touré and Khruangbin, was a translucent blue-green instead of the usual black, which was such a pleasant surprise.&lt;/p&gt;
+&lt;video controls width="100%" preload="metadata" aria-label="compressed to all hell video of a turntable playing the clear red record of is this it by the strokes. the sleeve is next to it"&gt;
+    &lt;source src="https://drewsh.com/images/vinyl_post/turntable_playing_is_this_it.mp4" type="video/mp4"&gt;
+    Your browser does not support the video tag.
+&lt;/video&gt;
+
+&lt;p&gt;Another record I purchased, “Is This It” by The Strokes, is a limited editiion translucent red.&lt;/p&gt;
+&lt;video controls width="100%" preload="metadata" aria-label="A black record of Punisher spinning, with the album cover next to it"&gt;
+    &lt;source src="https://drewsh.com/images/vinyl_post/turntable_playing_punisher.mp4" type="video/mp4"&gt;
+    Your browser does not support the video tag.
+&lt;/video&gt;
+
+&lt;p&gt;Plain black records also look great, though.&lt;/p&gt;
+&lt;h3&gt;You might enjoy the music more&lt;/h3&gt;
+&lt;p&gt;The ritual of pulling the disc from its sleeve, cleaning off the dust, gently lowering the tonearm, and watching it spin anchors your attention to the room.
+It turns listening into a dedicated activity rather than background noise.&lt;/p&gt;
+&lt;p&gt;Dust and cat hair gets on the record, which causes pop sounds, so one has to clean it,
+and the act of moving it to and from the sleeves and the turntable creates static, which makes a sort of buzzing sound.
+You really have to love a record to want to go through all of that.
+It connects you to the activity of listening instead of being a passive participant,
+and I guess the work makes you appreciate it more?&lt;/p&gt;
+&lt;h3&gt;Streaming pays very little&lt;/h3&gt;
+&lt;p&gt;The artist gets more money. If you buy a record in India, maybe 10% of the sale price has actually gone to the artist (because the retailer, the government, the publisher, etc all take their cut),
+but it takes 100,000 to 150,000 streams on Spotify for an artist to net the same amount. Streaming is hell for smaller artists especially, and is not enough to make a living.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Criticism_of_Spotify#Allegations_of_unfair_artist_compensation"&gt;A section of Wikipedia on Spotify’s compensation practices&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;More miscellaneous reasons&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;My partner’s cousins and brother have one.&lt;/li&gt;
+&lt;li&gt;It’s a physical display of your music tastes.&lt;/li&gt;
+&lt;li&gt;Actually owning your music.&lt;/li&gt;
+&lt;li&gt;Records and the turntable and other equipment look really good in a room, and you can talk about it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Neighbourhood record store&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Record store sign, it is white and glowing" src="https://drewsh.com/images/vinyl_post/otjf_sign.avif"&gt;
+&lt;img alt="Record store entrance. All of the text is in a pixel font" src="https://drewsh.com/images/vinyl_post/otjf_entrance.avif"&gt;&lt;/p&gt;
+&lt;p&gt;I live quite close to this cute record store called On the jungle floor.
+They’ve got a massive collection of records and the staff is friendly.
+I love visiting there to just look at the really expensive equipment they have and drool at the LPs they have.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Records for sale in a shelf" src="https://drewsh.com/images/vinyl_post/closer_joy_division_record.avif"&gt;
+&lt;img alt="Flipping through records for sale" src="https://drewsh.com/images/vinyl_post/otjf_browsing_records_motion.avif"&gt;&lt;/p&gt;
+&lt;p&gt;Two of the records we’ve bought have been from here!&lt;/p&gt;
+&lt;p&gt;An interesting thing I heard after a couple of conversations there with people either working or hanging out there as friends of the owner,
+people volunteer there for free for some reason? Not sure why anyone would do that other than as a favour to a friend.
+If any reader has done something like this for a for-profit business, please let me know.&lt;/p&gt;
+&lt;video controls width="100%" preload="metadata" aria-label="A white record playing on a fancy turntable"&gt;
+    &lt;source src="https://drewsh.com/images/vinyl_post/otjf_record_playing.mp4" type="video/mp4"&gt;
+    Your browser does not support the video tag.
+&lt;/video&gt;
+
+&lt;p&gt;There was a guy behind the counter who wasn’t an empployee. 
+He’s a DJ and was playing some of his personal records from a massive tote bag full of records,
+trying to figure out what to play on his next set.
+Maybe he was getting the most out of the ₹3L turntable.
+I didn’t get to talk to him too much, but my partner really liked the LPs he had,
+and since we can’t find them for sale anywhere in India, this has caused a lot of consternation.
+For anyone who want to check out his music, his name is Saksham, @ghewxr on Instagram.&lt;/p&gt;
+&lt;h2&gt;The current rig&lt;/h2&gt;
+&lt;p&gt;I’m using an almost entry-level turntable from &lt;/p&gt;
+&lt;p&gt;I just use a portable bluetooth speaker via aux at the moment because dumping all my disposable income into a new hobby would be silly.
+Even when I do get speakers, I’m going for the (relatively) cheaper end for now. I’m not an audiophile, and thank god for that.
+Like every hobby there’s a way to dump all your money into this. After a certain point, you get diminishing returns and are just trying to optimise the fun out of your equipment.&lt;/p&gt;
+&lt;p&gt;I’m thinking of doing listening parties, though, and the idea of bringing people over to listen to music coming out of a cheap portable speaker does seem a bit sad.
+Down the line, the goal is to set up a proper stereo amplifier connected to a decent pair of passive bookshelf speakers, giving the physical media room to actually push some air. 
+The bass on the Strokes album goes hard, so a subwoofer is also on the cards.&lt;/p&gt;
+&lt;p&gt;Thinking of getting Polk Audio Monitor XT15 Compact Bookshelf Speaker from &lt;a href="https://avstore.in/products/polk-audio-monitor-xt15"&gt;avstore.in&lt;/a&gt; alongside the Fosi Audio V3 amplifier.
+This will go great with my hiby music player as well, letting me listen to digital music from a more “intentional” source than streaming.&lt;/p&gt;</content><category term="blogpost"/><category term="music"/></entry><entry><title>Getting into craft coffee</title><link href="https://drewsh.com/starting-craft-coffee.html" rel="alternate"/><published>2026-08-15T16:00:00+05:30</published><updated>2026-08-15T16:00:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-08-15:/starting-craft-coffee.html</id><summary type="html">&lt;p&gt;Explaining why I drink my coffee black and what I like about it&lt;/p&gt;</summary><content type="html">&lt;p&gt;Thank you &lt;a href="https://yap.zyd.lol/@zyd"&gt;@zyd&lt;/a&gt; for the request, and &lt;a href="https://blr.indiewebclub.org/"&gt;IndieWebClub Bangalore&lt;/a&gt; for the prompt that sort-of points to it.&lt;/p&gt;
 &lt;p&gt;You probably don’t need coffee explained to you.
 It’s the most popular drug delivery mechanism in the world, and could be considered the lifeblood of modern civilisation (or at least jobs-oriented capitalism).
 That is to say, you might consume, or be surrounded by people who consume the liquid.
@@ -494,119 +593,4 @@ and it's not great for the environment
   This is not time-sensitive at all, but I find it quite fun and all I need to work on it is gdb and gcc.&lt;/li&gt;
 &lt;li&gt;Writing more of the &lt;a href="https://drewsh.com/lisp-book"&gt;Beginner Common Lisp book&lt;/a&gt;. I don't need to be connected to the internet for this,
   but &lt;a href="https://www.cs.cmu.edu/Groups/AI/html/cltl/cltl2.html"&gt;Common List the Language, 2e&lt;/a&gt; by Guy Steele Jr. is a great reference for it so I have downloaded it.&lt;/li&gt;
-&lt;/ul&gt;</content><category term="blogpost"/><category term="writing"/><category term="lisp"/><category term="short"/></entry><entry><title>Minimally useful Github workflow for Emacs packages</title><link href="https://drewsh.com/emacs-package-github-workflow.html" rel="alternate"/><published>2024-09-02T10:26:00+05:30</published><updated>2024-09-02T10:26:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-09-02:/emacs-package-github-workflow.html</id><summary type="html">&lt;p&gt;Use this if you want to publish your emacs package to Melpa&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://melpa.org/"&gt;Melpa&lt;/a&gt; is one of the most popular and probably the most accessible emacs package repository to publish to.
-All you need to do is add a ‘recipe’ to the &lt;a href="https://github.com/melpa/melpa"&gt;melpa git repository&lt;/a&gt; by following the instructions.&lt;/p&gt;
-&lt;p&gt;They also have a few requirements that you need to adhere to:  &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Your functions and variables should have adequate documentation, as determined by &lt;code&gt;checkdoc&lt;/code&gt;, an emacs built-in.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Your files should follow some elisp programming conventions, which is checked using the &lt;a href="https://github.com/purcell/package-lint"&gt;package-lint&lt;/a&gt; package.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Your package should not throw any errors/warnings when byte-compiled&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Now you can check all of these manually, and the &lt;a href="https://github.com/melpa/melpa/blob/master/CONTRIBUTING.org"&gt;contribution guidelines&lt;/a&gt; show exactly how to do that, but there’s a better way: using github workflows!&lt;/p&gt;
-&lt;p&gt;In fact, the melpa repository uses a similar workflow to see if your package is up to snuff.&lt;/p&gt;
-&lt;h2&gt;The setup&lt;/h2&gt;
-&lt;p&gt;We have two parts, an init.el file which sets up melpa, and the ci.yaml, which installs emacs, package-lint, and our package.&lt;/p&gt;
-&lt;p&gt;Both of these files should be in &lt;Project-dir&gt;/.github/workflows.&lt;/p&gt;
-&lt;h3&gt;init.el&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;progn&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;require&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;#39;package&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;push&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;melpa&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://melpa.org/packages/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;package-archives&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;package-initialize&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;unless&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;seq-find&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;lambda&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nf"&gt;string=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;melpa&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;package-desc-archive&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;cadr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;e&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;package-archive-contents&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;package-refresh-contents&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h3&gt;ci.yml&lt;/h3&gt;
-&lt;p&gt;This is where the actual workflow is defined: what base image we use, installing emacs and package-lint, running package lint and byte-compilation.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
-&lt;span class="normal"&gt; 2&lt;/span&gt;
-&lt;span class="normal"&gt; 3&lt;/span&gt;
-&lt;span class="normal"&gt; 4&lt;/span&gt;
-&lt;span class="normal"&gt; 5&lt;/span&gt;
-&lt;span class="normal"&gt; 6&lt;/span&gt;
-&lt;span class="normal"&gt; 7&lt;/span&gt;
-&lt;span class="normal"&gt; 8&lt;/span&gt;
-&lt;span class="normal"&gt; 9&lt;/span&gt;
-&lt;span class="normal"&gt;10&lt;/span&gt;
-&lt;span class="normal"&gt;11&lt;/span&gt;
-&lt;span class="normal"&gt;12&lt;/span&gt;
-&lt;span class="normal"&gt;13&lt;/span&gt;
-&lt;span class="normal"&gt;14&lt;/span&gt;
-&lt;span class="normal"&gt;15&lt;/span&gt;
-&lt;span class="normal"&gt;16&lt;/span&gt;
-&lt;span class="normal"&gt;17&lt;/span&gt;
-&lt;span class="normal"&gt;18&lt;/span&gt;
-&lt;span class="normal"&gt;19&lt;/span&gt;
-&lt;span class="normal"&gt;20&lt;/span&gt;
-&lt;span class="normal"&gt;21&lt;/span&gt;
-&lt;span class="normal"&gt;22&lt;/span&gt;
-&lt;span class="normal"&gt;23&lt;/span&gt;
-&lt;span class="normal"&gt;24&lt;/span&gt;
-&lt;span class="normal"&gt;25&lt;/span&gt;
-&lt;span class="normal"&gt;26&lt;/span&gt;
-&lt;span class="normal"&gt;27&lt;/span&gt;
-&lt;span class="normal"&gt;28&lt;/span&gt;
-&lt;span class="normal"&gt;29&lt;/span&gt;
-&lt;span class="normal"&gt;30&lt;/span&gt;
-&lt;span class="normal"&gt;31&lt;/span&gt;
-&lt;span class="normal"&gt;32&lt;/span&gt;
-&lt;span class="normal"&gt;33&lt;/span&gt;
-&lt;span class="normal"&gt;34&lt;/span&gt;
-&lt;span class="normal"&gt;35&lt;/span&gt;
-&lt;span class="normal"&gt;36&lt;/span&gt;
-&lt;span class="normal"&gt;37&lt;/span&gt;
-&lt;span class="normal"&gt;38&lt;/span&gt;
-&lt;span class="normal"&gt;39&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;CI&lt;/span&gt;
-
-&lt;span class="nt"&gt;on&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;pull_request&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;push&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-
-&lt;span class="nt"&gt;jobs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;build&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;runs-on&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;ubuntu-latest&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;strategy&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;matrix&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;include&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;emacs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;27.1&lt;/span&gt;
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nt"&gt;ts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nt"&gt;lint&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
-&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;emacs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;snapshot&lt;/span&gt;
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nt"&gt;ts&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
-&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="nt"&gt;lint&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;steps&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;uses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;purcell/setup-emacs@master&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;with&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="nt"&gt;version&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;${{ matrix.emacs }}&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;uses&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;actions/checkout@v4&lt;/span&gt;
-
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Install package-lint&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;run&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;emacs -Q -l .github/workflows/init.el -batch&lt;/span&gt;
-&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;--eval &amp;quot;(package-install &amp;#39;package-lint)&amp;quot;&lt;/span&gt;
-
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Lint flexoki-themes&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;run&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;emacs -Q -l .github/workflows/init.el -batch&lt;/span&gt;
-&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;-f package-lint-batch-and-exit&lt;/span&gt;
-&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;flexoki-themes.el&lt;/span&gt;
-
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;Byte-compile&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="nt"&gt;run&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;emacs -Q -l .github/workflows/init.el -batch&lt;/span&gt;
-&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;-L .&lt;/span&gt;
-&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;--eval &amp;quot;(setq byte-compile-error-on-warn t)&amp;quot;&lt;/span&gt;
-&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;-f batch-byte-compile&lt;/span&gt;
-&lt;span class="w"&gt;                    &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;*.el&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
-
-&lt;p&gt;In the &lt;code&gt;jobs.build.strategy.matrix.include&lt;/code&gt; you can add other emacs versions you want to test on, I’ve seen people use 24 a lot.&lt;/p&gt;
-&lt;p&gt;Instead of &lt;code&gt;flexoki-themes&lt;/code&gt; use your own package name, obviously.&lt;/p&gt;
-&lt;h2&gt;What to expect&lt;/h2&gt;
-&lt;p&gt;&lt;img alt="Github UI with a green tick next to the latest commit message" src="https://drewsh.com/images/github_workflow_result.avif"&gt;&lt;/p&gt;
-&lt;p&gt;The tick indicates that the workflow is successful, and a red cross would indicate that the workflow failed.
-You can click on them to see the result of the workflow.&lt;/p&gt;
-&lt;p&gt;If the workflow succeeds, your package will probably be accepted by MELPA.&lt;/p&gt;</content><category term="blogpost"/><category term="emacs"/></entry></feed>
+&lt;/ul&gt;</content><category term="blogpost"/><category term="writing"/><category term="lisp"/><category term="short"/></entry></feed>
