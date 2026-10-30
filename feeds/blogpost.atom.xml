@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Drew's blogsite - blogpost</title><link href="https://drewsh.com/" rel="alternate"/><link href="https://drewsh.com/feeds/blogpost.atom.xml" rel="self"/><id>https://drewsh.com/</id><updated>2026-09-25T14:21:00+05:30</updated><entry><title>Waxing poetic about my records and turntable</title><link href="https://drewsh.com/first-records-and-turntable.html" rel="alternate"/><published>2026-09-25T14:21:00+05:30</published><updated>2026-09-25T14:21:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-09-25:/first-records-and-turntable.html</id><summary type="html">&lt;p&gt;My thoughts on collecting and playing vinyl records.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="A display of many records at a store" src="https://drewsh.com/images/vinyl_post/otjf_records_display.avif"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Drew's blogsite - blogpost</title><link href="https://drewsh.com/" rel="alternate"/><link href="https://drewsh.com/feeds/blogpost.atom.xml" rel="self"/><id>https://drewsh.com/</id><updated>2026-10-30T21:08:00+05:30</updated><entry><title>Why I'm vegan</title><link href="https://drewsh.com/why-im-vegan-at-all.html" rel="alternate"/><published>2026-10-30T21:08:00+05:30</published><updated>2026-10-30T21:08:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-10-30:/why-im-vegan-at-all.html</id><summary type="html">&lt;p&gt;Post to link to when people ask me why I personally am vegan.&lt;/p&gt;</summary><content type="html">&lt;p&gt;If I shared this post with you, I am not asking you to be vegan.
+There are uncountable injustices in the world, and it is impossible to care about all of them.&lt;/p&gt;
+&lt;p&gt;A lot of what people believe in is based on feelings and socialisation rather than reasoning.
+Eating meat and consuming other animal products is quite common and a huge part of life for many people,
+so it never becomes necessary for anyone to scrutinise it.&lt;/p&gt;
+&lt;p&gt;My personal morality is based around the principles of fairness and avoiding hypocrisy.
+I like cats and dogs and all sorts of other fluffy creatures, like most other people.
+People treat them like family, and are saddened if anything happens to them,
+even if it is not &lt;em&gt;their&lt;/em&gt; pet, but a stray cat, or a dog in a movie.
+I believe it is hypocritical to not extend the same consideration to a chicken,
+or a pig, or cows, which are all smart and adorable living creatures.&lt;/p&gt;
+&lt;p&gt;Instead, we cramp them in tight living spaces, prevent them from living the lives they want to,
+and kill them just because we find them tasty.
+I don’t think killing and enslaving living beings that can feel pain and happiness,
+socialise, solve puzzles, and care for their young is okay if it can be avoided.
+And it can easily be avoided for most people.&lt;/p&gt;</content><category term="blogpost"/><category term="short"/></entry><entry><title>Waxing poetic about my records and turntable</title><link href="https://drewsh.com/first-records-and-turntable.html" rel="alternate"/><published>2026-09-25T14:21:00+05:30</published><updated>2026-09-25T14:21:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2026-09-25:/first-records-and-turntable.html</id><summary type="html">&lt;p&gt;My thoughts on collecting and playing vinyl records.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="A display of many records at a store" src="https://drewsh.com/images/vinyl_post/otjf_records_display.avif"&gt;&lt;/p&gt;
 &lt;p&gt;Music in the streaming age is weightless. It reaches you through the aether from servers thousands of miles away into whatever speaker happens to be nearby.
 It seems almost infinite, is completely free of friction, and incredibly easy to take for granted.&lt;/p&gt;
 &lt;p&gt;I recently bought a record player and my first three records, with plans to buy more.&lt;/p&gt;
@@ -573,27 +588,4 @@ The &lt;code&gt;command&lt;/code&gt; fish built-in ensures that the function doe
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;cliPluginsExtraDirs&amp;quot;&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;[&lt;/span&gt;
 &lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/Users/arnavandrewjose/homebrew/lib/docker/cli-plugins&amp;quot;&lt;/span&gt;
 &lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p p-Indicator"&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blogpost"/><category term="shell"/><category term="short"/></entry><entry><title>Things to do on an upcoming flight</title><link href="https://drewsh.com/staving-off-flight-boredom.html" rel="alternate"/><published>2024-10-26T00:40:00+05:30</published><updated>2024-10-26T00:40:00+05:30</updated><author><name>Drew Jose</name></author><id>tag:drewsh.com,2024-10-26:/staving-off-flight-boredom.html</id><summary type="html">&lt;p&gt;Some things I can do that do not require an internet connection&lt;/p&gt;</summary><content type="html">&lt;p&gt;I hate flying.&lt;/p&gt;
-&lt;p&gt;It's incredibly boring, the security circus is pointless and brings out the worst in co-passengers,
-more time is spent waiting for things to happen than actually being up in the air,
-and it's not great for the environment 
-(though even if we were to stop taking flights, &lt;a href="https://archive.is/rJjtB"&gt;apparently just as many planes would take off&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;I am also not used to being disconnected from the internet.  &lt;/p&gt;
-&lt;p&gt;Here are some things I need to do, though, which can be easily accomplished during this great sinkhole of time.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Writing bindings for &lt;a href="https://melonjs.org/"&gt;MelonJS&lt;/a&gt; for use with &lt;a href="https://spritely.institute/hoot/"&gt;Hoot&lt;/a&gt;, a Wasm compiler for Guile Scheme.
-  To write bindings, you need the API reference, which is available at &lt;a href="https://melonjs.github.io/melonJS/"&gt;https://melonjs.github.io/melonJS/&lt;/a&gt;.
-  They do not make it easy to find and download any offline documentation, which is baffling, surely the docs
-  exist somewhere before you bundle it into a website, why not make it available as text?
-  Anyway, I found a tool called &lt;a href="https://archivebox.io/"&gt;archivebox&lt;/a&gt;, which downloads a website with all linked assets as a bundle,
-  so that should be good enough.&lt;br/&gt;
-  Sidebar: Installing it on a 2015 MacBook Pro via Homebrew turned it into a furnace,
-  probably because it &lt;em&gt;installs node from source&lt;/em&gt;.&lt;br/&gt;
-  Update from the next day: You need to clone the repo, install &lt;code&gt;pnpm&lt;/code&gt;, and run &lt;code&gt;pnpm install&lt;/code&gt; and then &lt;code&gt;pnpm doc&lt;/code&gt; to have the docs show up in the melonjs/docs folder.
-  &lt;img alt="MelonJS homepage, their logo is a hollow green circle with a red dot" src="https://drewsh.com/images/melonjs.webp"&gt;
-  &lt;strong&gt;Their logo isn't even a melon!&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Continuing work on my C-based static-site generator (edit: I stopped work on it and nuked the codebase. maybe i'll do it in common lisp).
-  This is not time-sensitive at all, but I find it quite fun and all I need to work on it is gdb and gcc.&lt;/li&gt;
-&lt;li&gt;Writing more of the &lt;a href="https://drewsh.com/lisp-book"&gt;Beginner Common Lisp book&lt;/a&gt;. I don't need to be connected to the internet for this,
-  but &lt;a href="https://www.cs.cmu.edu/Groups/AI/html/cltl/cltl2.html"&gt;Common List the Language, 2e&lt;/a&gt; by Guy Steele Jr. is a great reference for it so I have downloaded it.&lt;/li&gt;
-&lt;/ul&gt;</content><category term="blogpost"/><category term="writing"/><category term="lisp"/><category term="short"/></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="blogpost"/><category term="shell"/><category term="short"/></entry></feed>
